@@ -30,6 +30,25 @@ body {
 	color : #79bd9a
 }
 
+.title-salt{
+	font-family: "Pretty Smile";
+  color : #cff09e;
+  margin-top: 5%;
+}
+
+
+.title-sugar{
+	font-family: "Pretty Smile";
+  color : #a8dba8;
+  margin-top: 5%;
+}
+
+.title-win{
+	font-family: "Pretty Smile";
+  color : #79bd9a;
+  margin-top: 5%;
+}
+
 .btn-green {
     background-color: #3b8686 !important;
     border-color: #3b8686 !important;
