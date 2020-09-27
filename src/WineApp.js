@@ -1,12 +1,24 @@
 import React from 'react'
 import Wine from './Wine.js'
-import App from './App'
+import WineAppForm from './WineAppForm'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function WineApp() {
   return (
     <div>
       <div class="container marketing">
-      <h1 class="title-win">Vin</h1>
+      <h1 class="title-win">Vin</h1> 
+      <Router>
+      <Link to="/winForm"><p>+</p></Link>
+      <Route path="/winForm">
+          <WineAppForm/>
+      </Route>
+      </Router>
         <div class="row">
           <Wine title="Bordeau" indice="1" />
           <Wine title="Chardonay" indice="5" />
