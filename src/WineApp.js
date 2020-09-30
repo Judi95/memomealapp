@@ -1,24 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Wine from './Wine.js'
 import WineAppForm from './WineAppForm'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
-function WineApp() {
+class WineApp extends Component {
+  state = {hiddenForm: false}
+
+  handleWineForm = event => {
+    this.setState({hiddenForm: !this.state.hiddenForm })
+  }
+
+  
+render() {
   return (
     <div>
       <div class="container marketing">
       <h1 class="title-win">Vin</h1> 
-      <Router>
-      <Link to="/winForm"><p>+</p></Link>
-      <Route path="/winForm">
-          <WineAppForm/>
-      </Route>
-      </Router>
+      <i class="fas fa-plus-circle"></i>
+      <button class="favorite styled" type="button" onClick={this.handleWineForm} >
+          +
+      </button>
+      {this.state.hiddenForm && <WineAppForm handleWineForm = {this.handleWineForm}/>} 
         <div class="row">
           <Wine title="Bordeau" indice="1" />
           <Wine title="Chardonay" indice="5" />
@@ -30,5 +31,8 @@ function WineApp() {
     </div>
   );
 }
+
+}
+
 
 export default WineApp;

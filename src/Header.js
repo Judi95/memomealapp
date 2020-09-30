@@ -8,12 +8,12 @@ import {
   import WineApp from './WineApp.js'
   import SaltMealApp from './SaltMealApp.js'
   import SugarMealApp from './SugarMealApp.js'
-  import Wellcome from './Wellcome.js'
   import App from './App.js'
 
 function Header() {
     return ( 
         <header>
+            <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
             <Router>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bar-green">
                 <Link to="/"><a class="navbar-brand" href="#">ACCUEIL</a></Link>
