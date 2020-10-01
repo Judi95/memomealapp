@@ -11,6 +11,33 @@ body {
   color: #5a5a5a;
 }
 
+.wine-button{
+  margin-top: 4%;
+  margin-left: 4%;
+  color : #3b8686;
+  background-color: transparent;
+}
+
+.star-bar{
+  margin-top: 2%;
+  margin-left: 2% !important;
+}
+
+.star-wine{
+  color : #D8D8D8;
+}
+
+.star-wine:hover{
+  color : #3b8686;
+}
+
+.wine-button-form{
+  margin-left: 1%;
+  background-color: #3b8686;
+  color: white;
+}
+
+
 .bar-green{
 	background-color : #3b8686;
 }

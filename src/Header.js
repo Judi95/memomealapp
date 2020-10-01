@@ -13,7 +13,6 @@ import {
 function Header() {
     return ( 
         <header>
-            <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
             <Router>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bar-green">
                 <Link to="/"><a class="navbar-brand" href="#">ACCUEIL</a></Link>
@@ -34,8 +33,7 @@ function Header() {
                         </li>
                     </ul>
                 </div>
-                </nav>
-
+                </nav>  
                 <Switch>
                     <Route path="/salt">
                         <SaltMealApp/>

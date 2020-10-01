@@ -14,11 +14,12 @@ render() {
   return (
     <div>
       <div class="container marketing">
-      <h1 class="title-win">Vin</h1> 
-      <i class="fas fa-plus-circle"></i>
-      <button class="favorite styled" type="button" onClick={this.handleWineForm} >
-          +
-      </button>
+      <div class="row">
+        <h1 class="title-win">Vin</h1> 
+        <button class="btn fa-2x wine-button" type="button" onClick={this.handleWineForm} >
+          <i class="fa fa-plus-circle"></i>
+        </button>
+      </div>
       {this.state.hiddenForm && <WineAppForm handleWineForm = {this.handleWineForm}/>} 
         <div class="row">
           <Wine title="Bordeau" indice="1" />
