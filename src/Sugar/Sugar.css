@@ -1,0 +1,61 @@
+/* GLOBAL STYLES
+#cff09e
+#a8dba8
+#79bd9a
+#3b8686
+*/
+
+
+.sugar-button{
+  margin-top: 4%;
+  margin-left: 4%;
+  color : #79bd9a;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.sugar-button:active{
+  border-color: white !important;
+}
+
+.btn-group-form{
+  margin-top: 2%;
+}
+
+.star-bar{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 2% !important;
+}
+
+.star-sugar{
+  color : #D8D8D8;
+}
+
+.star-sugar:hover{
+  color : #79bd9a;
+}
+
+.sugar-button-form{
+  margin-left: 1%;
+  margin-right: 1%;
+  background-color: #79bd9a !important;
+  border-color:#79bd9a !important;
+  color: white;
+}
+
+.bar-green{
+	background-color : #79bd9a;
+}
+
+@font-face {
+	font-family: "Pretty Smile";
+	src: url("../Pretty_Smile.otf") format("opentype");
+  font-display: auto;
+}
+
+.title-win{
+	font-family: "Pretty Smile";
+  color : #79bd9a;
+  margin-top: 5%;
+}

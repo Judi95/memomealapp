@@ -1,0 +1,58 @@
+/* GLOBAL STYLES
+#cff09e
+#a8dba8
+#79bd9a
+#cff09e
+*/
+
+
+.salt-button{
+  margin-top: 4%;
+  margin-left: 4%;
+  color : #cff09e;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.salt-button:active{
+  border-color: white !important;
+}
+
+.btn-group-form{
+  margin-top: 2%;
+}
+
+.star-bar{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 2% !important;
+}
+
+.star-salt{
+  color : #D8D8D8;
+}
+
+.star-salt:hover{
+  color : #cff09e;
+}
+
+.salt-button-form{
+  margin-left: 1%;
+  margin-right: 1%;
+  background-color: #cff09e !important;
+  border-color:#cff09e !important;
+  color: white;
+}
+
+
+@font-face {
+	font-family: "Pretty Smile";
+	src: url("../Pretty_Smile.otf") format("opentype");
+  font-display: auto;
+}
+
+.title-win{
+	font-family: "Pretty Smile";
+  color : #79bd9a;
+  margin-top: 5%;
+}

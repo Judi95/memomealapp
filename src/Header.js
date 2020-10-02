@@ -5,9 +5,9 @@ import {
     Route,
     Link
   } from "react-router-dom";
-  import WineApp from './WineApp.js'
-  import SaltMealApp from './SaltMealApp.js'
-  import SugarMealApp from './SugarMealApp.js'
+  import WineApp from './Wine/WineApp.js'
+  import SaltMealApp from './Salt/SaltMealApp.js'
+  import SugarMealApp from './Sugar/SugarMealApp.js'
   import App from './App.js'
 
 function Header() {
