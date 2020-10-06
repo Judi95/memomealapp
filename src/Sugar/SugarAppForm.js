@@ -1,18 +1,17 @@
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { Tooltip, Button, OverlayTrigger } from 'react-bootstrap';
+import React from 'react'
+import { Button } from 'react-bootstrap';
 
 function SugarAppForm ({handleSugarForm}) {
     return (
       <div>
         <form className="highScoreInput">
-            <div class="form-group">
+            <div className="form-group">
               <label for="exampleFormControlInput1">Nom</label>
-              <input type="Text" class="form-control" id="exampleFormControlInput1"/>
+              <input type="Text" className="form-control" id="exampleFormControlInput1"/>
               <label for="exampleFormControlInput1">Descriptif</label>
-              <textarea type="" class="form-control" id="exampleFormControlInput1"/>
+              <textarea type="" className="form-control" id="exampleFormControlInput1"/>
               
-              <div class="btn-group-form">
+              <div className="btn-group-form">
               <Button className="sugar-button-form">Ajouter</Button>
               <Button variant="secondary" onClick={handleSugarForm}>Annuler</Button>
               </div>

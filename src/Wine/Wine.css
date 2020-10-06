@@ -27,6 +27,14 @@
   margin-left: 2% !important;
 }
 
+.star-wine-grade{
+  color : #79bd9a;
+}
+
+.star-wine-under-grade{
+  color : #D8D8D8;
+}
+
 .star-wine{
   color : #D8D8D8;
 }

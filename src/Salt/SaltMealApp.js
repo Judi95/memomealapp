@@ -13,15 +13,15 @@ class SaltMealApp extends Component {
   render() {
     return (
       <div>
-        <div class="container marketing">
-        <div class="row">
-          <h1 class="title-salt">Salé</h1>
-            <button class="fa-2x salt-button" type="button" onClick={this.handleSaltForm} >
-              <i class="fa fa-plus-circle"></i>
+        <div className="container marketing">
+        <div className="row">
+          <h1 className="title-salt">Salé</h1>
+            <button className="fa-2x salt-button" type="button" onClick={this.handleSaltForm} >
+              <i className="fa fa-plus-circle"></i>
             </button>
           </div>
           {this.state.hiddenForm && <SaltAppForm handleSaltForm = {this.handleSaltForm}/>} 
-          <div class="row">
+          <div className="row">
             <SaltMeal title="Tarte épinards"/>
             <SaltMeal title="Quiche"/>
             <SaltMeal title="Burger"/>

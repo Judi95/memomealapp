@@ -14,16 +14,16 @@ class SugarMealApp extends Component {
   render() {
     return (
       <div>
-        <div class="container marketing">
+        <div className="container marketing">
         
-        <div class="row">
-        <h1 class="title-sugar">Sucré</h1>
-          <button class="fa-2x sugar-button" type="button" onClick={this.handleSugarForm} >
-            <i class="fa fa-plus-circle"></i>
+        <div className="row">
+        <h1 className="title-sugar">Sucré</h1>
+          <button className="fa-2x sugar-button" type="button" onClick={this.handleSugarForm} >
+            <i className="fa fa-plus-circle"></i>
           </button>
         </div>
         {this.state.hiddenForm && <SugarAppForm handleSugarForm = {this.handleSugarForm}/>} 
-          <div class="row">
+          <div className="row">
             <SugarMeal title="Tarte sucre"/>
             <SugarMeal title="Clafouti"/>
             <SugarMeal title="Crème anglaise"/>

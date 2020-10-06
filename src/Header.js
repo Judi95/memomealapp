@@ -8,33 +8,31 @@ import {
   import WineApp from './Wine/WineApp.js'
   import SaltMealApp from './Salt/SaltMealApp.js'
   import SugarMealApp from './Sugar/SugarMealApp.js'
+  import DetailsSugar from './Sugar/DetailsSugar.js'
   import App from './App.js'
 
 function Header() {
     return ( 
         <header>
             <Router>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bar-green">
-                <Link to="/"><a class="navbar-brand" href="#">ACCUEIL</a></Link>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                    <span> ACCUEIL</span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                        <Link to="/salt"><a class="nav-link" href="#">Salé</a></Link>
+            <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
+                <Link to="/" className="navbar-brand">ACCUEIL</Link>                
+                <div className="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                        <Link to="/salt" className="nav-link">Salé</Link>
                         </li>
-                        <li class="nav-item">
-                        <Link to="/sugar"><a class="nav-link" href="#">Sucré</a></Link>
+                        <li className="nav-item">
+                        <Link to="/sugar" className="nav-link">Sucré</Link>
                         </li>
-                        <li class="nav-item">
-                        <Link to="/wine"><a class="nav-link" href="#">Vin</a></Link>
+                        <li className="nav-item">
+                        <Link to="/wine" className="nav-link">Vin</Link>
                         </li>
                     </ul>
                 </div>
                 </nav>  
-                <Switch>
+            
+                <Switch>                    
                     <Route path="/salt">
                         <SaltMealApp/>
                     </Route>
@@ -43,13 +41,16 @@ function Header() {
                     </Route>
                     <Route path="/wine">
                         <WineApp />
+                    </Route>                    
+                    <Route path="/details">
+                        <DetailsSugar/>
                     </Route>
                     <Route path="/">
                         <App/>
                     </Route>
                 </Switch>
-                </Router>
-            </header>
+            </Router>
+        </header>
         
     );
 }

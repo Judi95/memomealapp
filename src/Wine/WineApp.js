@@ -14,15 +14,15 @@ class WineApp extends Component {
   render() {
     return (
       <div>
-        <div class="container marketing">
-        <div class="row">
-          <h1 class="title-win">Vin</h1> 
-          <button class="fa-2x wine-button" type="button" onClick={this.handleWineForm} >
-            <i class="fa fa-plus-circle"></i>
+        <div className="container marketing">
+        <div className="row">
+          <h1 className="title-win">Vin</h1> 
+          <button className="fa-2x wine-button" type="button" onClick={this.handleWineForm} >
+            <i className="fa fa-plus-circle"></i>
           </button>
         </div>
         {this.state.hiddenForm && <WineAppForm handleWineForm = {this.handleWineForm}/>} 
-          <div class="row">
+          <div className="row">
             <Wine title="Bordeau" indice="1" />
             <Wine title="Chardonay" indice="5" />
             <Wine title="Côte du Rhone" indice="3" />

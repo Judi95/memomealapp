@@ -1,11 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const numbers = [1, 2, 3, 4, 5];
+
 const Wine = ({ title, indice}) => (
-    <div class="col-md-4">
-        <h2>{title} / {indice}*</h2>
+    <div className="col-md-4">
+        <div className="row">
+            <h2>{title}</h2>
+            <p>
+                {numbers.map(nb => {
+                        if(nb <= indice)
+                            return <i className="fa fa-star fa-2x star-wine-grade"></i>
+                        return <i className="fa fa-star fa-2x star-wine-under-grade"></i>
+                    }
+
+                )}
+            </p>
+        </div>
         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
 )
 
