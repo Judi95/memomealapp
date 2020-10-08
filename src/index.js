@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './Memo.css';
 import Header from './Header';
+import MyComponent from './MyComponent'
 import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
+    <Header  />
   </React.StrictMode>,
   document.getElementById('root')
 );
