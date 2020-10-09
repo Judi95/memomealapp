@@ -1,39 +1,53 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { Tooltip, Button, OverlayTrigger } from 'react-bootstrap';
-import { saveWine } from './WineApp'
 
-class WineAppForm extends Component {
+const WineAppForm = ({saveWine}) => {
 
-  state = {title: '', desc: ''}
+  const [name , setName] = useState('')
+  const [description , setDescription] = useState('')
+  const [evaluation , setEvaluation] = useState(0)
 
-  handleTitleUpdate = event => {
-    this.setState({title: event.target.value})
+  const handleNameUpdate = event => {
+    setName(event.target.value)
   }
 
-  persistWine = event => {
+  const handleDescUpdate = event => {
+    setDescription(event.target.value)
+  }
+
+  const handleEvaluationUpdate = event => {
+    setEvaluation(event.target.value)
+  }
+
+  const persistWine = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      const newEntry = {title: this.state.title}
+      const newEntry = {name: name, description: description, evaluation:evaluation}
+      console.log('TEST newEntry : ', newEntry)
       saveWine(newEntry)
-  }
+  } 
 
-  render() {
     return (
       <div>
-        <form className="highScoreInput" onSubmit={this.persistWine}>
+        <form className="highScoreInput" onSubmit={persistWine}>
             <div className="form-group">
 
               <label htmlFor="exampleFormControlInput1">Nom</label>
               <input type="Text" 
               className="form-control" 
               id="exampleFormControlInput1"
-              value ={this.state.title}
-              onChange={this.handleTitleUpdate}/>
+              value ={name}
+              onChange={handleNameUpdate}/>
 
               <label htmlFor="exampleFormControlInput1">Descriptif</label>
-              <textarea type="" className="form-control" id="exampleFormControlInput1"/>
-              <div className="row star-bar">
-                {['1', '2', '3', '4', '5'].map((note) => (
+              <textarea type="" 
+              className="form-control" 
+              id="exampleFormControlInput1"
+              value ={description}
+              onChange={handleDescUpdate}/>
+
+              <div className="row star-bar form-star">
+                {[1,2, 3, 4, 5].map((note) => (
                   <OverlayTrigger
                     key={note}
                     note={note}
@@ -43,7 +57,9 @@ class WineAppForm extends Component {
                       </Tooltip>
                     }
                   >
-                    <i key={note} className="fa fa-star fa-2x star-wine"></i>
+                    
+                  
+                    <input type="radio" className="fa fa-star fa-2x star-wine-add" value={note} onChange={handleEvaluationUpdate}></input>
                   </OverlayTrigger>
                 ))}
             </div>
@@ -53,7 +69,7 @@ class WineAppForm extends Component {
         </form>
       </div>
     
-    )}
+    )
 
 }
 

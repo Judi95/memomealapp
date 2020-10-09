@@ -16,6 +16,15 @@ class WineApp extends Component {
     this.setState({hiddenForm: !this.state.hiddenForm })
   }
   
+  saveWine = (entry) => {
+    entry.id = this.state.existingWine.length + 1
+
+    this.setState({
+      hiddenForm: !this.state.hiddenForm,
+      existingWine: this.state.existingWine.concat( entry )
+    });
+  }
+
   render() {
     return (
 
@@ -27,9 +36,9 @@ class WineApp extends Component {
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
-          {this.state.hiddenForm && <WineAppForm/>}
+          {this.state.hiddenForm && <WineAppForm saveWine={this.saveWine} />}
           <div className="row">
-            {this.state.existingWine.map ((wine) =>  <Wine title={wine.name} key={wine.id} indice={wine.evaluation} />)}
+            {this.state.existingWine.map ((wine) =>  <Wine key={wine.id} name={wine.name}  description={wine.description} evaluation={wine.evaluation} />)}
           </div>
         </div>
       </div>
@@ -40,18 +49,18 @@ class WineApp extends Component {
     fetch("http://localhost:8080/api/wines", { 
       method: 'get', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjI0ODc4Mn0.akhGpH0FmaTC3CdbdXYBZDjuGofMEaVLKgLwDy0ZUijuGqffi6vCDkXU7ocM2SCKV0tGbJJpwrVE_Mh4jfi6Mg'
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q'
       })
     })
-    .then(res => res.json()
-    )
+    .then(res => res.json())
     .then(
       (result) => {
-          console.log(result)
-        this.setState({
-          isLoaded: true,
-          existingWine: this.state.existingWine.concat( result )
-        });
+          if(result.length > 0){
+            console.log(result)
+            this.setState({
+              existingWine: this.state.existingWine.concat( result )
+            });
+          }
       },
       (error) => {
         this.setState({
@@ -75,10 +84,3 @@ WineApp.propTypes = {
 }
 
 export default WineApp;
-
-export function saveWine(entry, onStored) {
-  //const lastId = this.existingWine.length;
-
-  //this.state.existingWine = this.state.existingWine.concat( { id: lastId+1, title: entry.title, indice: 5 })
-
-}
