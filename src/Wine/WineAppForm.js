@@ -1,7 +1,8 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Tooltip, Button, OverlayTrigger } from 'react-bootstrap';
+import ReactStars from 'react-rating-stars-component';
 
-const WineAppForm = ({saveWine}) => {
+const WineAppForm = ({saveWine, handleWineForm}) => {
 
   const [name , setName] = useState('')
   const [description , setDescription] = useState('')
@@ -15,8 +16,9 @@ const WineAppForm = ({saveWine}) => {
     setDescription(event.target.value)
   }
 
-  const handleEvaluationUpdate = event => {
-    setEvaluation(event.target.value)
+  const handleEvaluationUpdate =(newRating) => {
+    console.log(newRating);
+    setEvaluation(newRating)
   }
 
   const persistWine = event => {
@@ -46,25 +48,21 @@ const WineAppForm = ({saveWine}) => {
               value ={description}
               onChange={handleDescUpdate}/>
 
-              <div className="row star-bar form-star">
-                {[1,2, 3, 4, 5].map((note) => (
-                  <OverlayTrigger
-                    key={note}
-                    note={note}
-                    overlay={
-                      <Tooltip id={`tooltip-top`}>
-                        <strong>{note}</strong>/5
-                      </Tooltip>
-                    }
-                  >
-                    
-                  
-                    <input type="radio" className="fa fa-star fa-2x star-wine-add" value={note} onChange={handleEvaluationUpdate}></input>
-                  </OverlayTrigger>
-                ))}
-            </div>
+              <div className="row star-bar">
+                <ReactStars
+                  count={5}
+                  onChange={handleEvaluationUpdate}
+                  size={45}
+                  fullIcon="fa fa-star"
+                  activeColor="#79bd9a"
+                />
+              </div>
 
             <Button type="submit" className="wine-button-form">Ajouter</Button>
+            <Button variant="secondary" onClick={handleWineForm}>Annuler</Button>
+            </div>
+            <div class="mb-4">
+              <hr class="wine-solid"/>
             </div>
         </form>
       </div>

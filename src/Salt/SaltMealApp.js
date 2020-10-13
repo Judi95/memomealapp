@@ -1,36 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import SaltMeal from './SaltMeal.js'
 import SaltAppForm from './SaltAppForm.js'
 import './Salt.css';
 
-class SaltMealApp extends Component {
-  state = {hiddenForm: false}
+const SaltMealApp = () => {
+  const [hiddenForm , setHiddenForm] = useState(false)
+  const [existingSaltMeal , setExistingSaltMeal] = useState([])
 
-  handleSaltForm = event => {
-    this.setState({hiddenForm: !this.state.hiddenForm })
+  const handleSaltForm = event => {
+    return setHiddenForm(!hiddenForm)
   }
 
-  render() {
+  const saveSaltRecipe = (entry) => {
+    entry.id = existingSaltMeal.length + 1
+    
+    setExistingSaltMeal(existingSaltMeal.concat(entry))
+
+  }
+
+
     return (
       <div>
         <div className="container marketing">
         <div className="row">
           <h1 className="title-salt">Salé</h1>
-            <button className="fa-2x salt-button" type="button" onClick={this.handleSaltForm} >
+            <button className="fa-2x salt-button" type="button" onClick={handleSaltForm} >
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
-          {this.state.hiddenForm && <SaltAppForm handleSaltForm = {this.handleSaltForm}/>} 
+          {hiddenForm && <SaltAppForm handleSaltForm={handleSaltForm} saveSaltRecipe={saveSaltRecipe}/>} 
           <div className="row">
-            <SaltMeal title="Tarte épinards"/>
-            <SaltMeal title="Quiche"/>
-            <SaltMeal title="Burger"/>
-            <SaltMeal title="Salade de riz"/>
-            <SaltMeal title="Ratatouille"/>
+            {existingSaltMeal.map((recipe) => <SaltMeal key={recipe.id} name={recipe.name} description={recipe.description} />)}
             </div>
         </div>
       </div>
     );
-  }
 }
+
 export default SaltMealApp;

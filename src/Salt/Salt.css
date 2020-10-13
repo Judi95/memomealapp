@@ -22,18 +22,31 @@
   margin-top: 2%;
 }
 
-.star-bar{
-  margin-top: 2%;
-  margin-bottom: 2%;
-  margin-left: 2% !important;
-}
-
-.star-salt{
-  color : #D8D8D8;
-}
-
-.star-salt:hover{
+.salt-add-ingredient-button{
+  margin-top: -1%;
+  margin-left: 1%;
   color : #cff09e;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.salt-remove-ingredient-button{
+  margin-top: 12%;
+  color : #cff09e;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.ingredients{
+  margin-top: 2%;
+}
+  
+
+.salt-button:active, .salt-button:focus, .salt-remove-ingredient-button:active, 
+.salt-add-ingredient-button:active, .salt-remove-ingredient-button:focus, .salt-add-ingredient-button:focus{
+  box-shadow:transparent !important;
+  border-color: white !important;
+  border-style: none !important;
 }
 
 .salt-button-form{
@@ -44,6 +57,16 @@
   color: white;
 }
 
+.salt-form {
+  margin-bottom: 2%;
+}
+
+hr.salt-solid {
+  margin-top: 3%;
+  border-top: 2px solid #cff09e;
+}
+
+
 
 @font-face {
 	font-family: "Pretty Smile";
@@ -51,8 +74,3 @@
   font-display: auto;
 }
 
-.title-win{
-	font-family: "Pretty Smile";
-  color : #79bd9a;
-  margin-top: 5%;
-}

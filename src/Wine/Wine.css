@@ -23,16 +23,8 @@
 }
 
 .star-bar{
-  margin-top: 2%;
-  margin-left: 2% !important;
-}
-
-.star-wine-grade{
-  color : #79bd9a;
-}
-
-.star-wine-under-grade{
-  color : #D8D8D8;
+  margin-top: -1%;
+  margin-left: 1% !important;
 }
 
 .star-wine-add{
@@ -63,6 +55,11 @@
   background-color: #79bd9a !important;
   border-color:#79bd9a !important;
   color: white;
+}
+
+hr.wine-solid {
+  margin-top: 3%;
+  border-top: 2px solid #79bd9a;
 }
 
 

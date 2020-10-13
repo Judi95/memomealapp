@@ -5,10 +5,10 @@ import {
   Link
 } from "react-router-dom";
 
-const SaltMeal = ({ title, indice}) => (
+const SaltMeal = ({ name, description}) => (
   <div className="col-md-4">
-      <h2>{title}</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+      <h2>{name}</h2>
+      <p>{description}</p>
       <p><Link to="/details">  <Button className="salt-button-form">Recette</Button></Link></p>
     </div>
 )
@@ -16,7 +16,7 @@ const SaltMeal = ({ title, indice}) => (
 
 SaltMeal.propTypes = {
     title: PropTypes.string.isRequired,
-    comment: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired
   }
 
   export default SaltMeal;

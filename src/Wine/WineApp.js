@@ -1,51 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import Wine from './Wine.js'
 import './Wine.css';
 import WineAppForm from './WineAppForm'
-import PropTypes, { func } from 'prop-types'
-import { Tooltip, Button, OverlayTrigger } from 'react-bootstrap';
- 
-class WineApp extends Component {
 
-  state = {
-    hiddenForm: false, 
-    existingWine: []
-  }
+const WineApp = () => {
 
-  handleWineForm = event => {
-    this.setState({hiddenForm: !this.state.hiddenForm })
+  const [hiddenForm , setHiddenForm] = useState(false)
+  const [existingWine , setExistingWine] = useState([])
+
+
+  const handleWineForm = event => {
+    setHiddenForm(!hiddenForm )
   }
   
-  saveWine = (entry) => {
-    entry.id = this.state.existingWine.length + 1
-
-    this.setState({
-      hiddenForm: !this.state.hiddenForm,
-      existingWine: this.state.existingWine.concat( entry )
-    });
+  const saveWine = (entry) => {
+    entry.id = existingWine.length + 1
+    setHiddenForm(!hiddenForm)
+    setExistingWine(existingWine.concat( entry ))
   }
 
-  render() {
-    return (
-
-      <div>
-        <div className="container marketing">
-          <div className="row">
-            <h1 className="title-win">Vin</h1> 
-            <button className="fa-2x wine-button" type="button" onClick={this.handleWineForm} >
-              <i className="fa fa-plus-circle"></i>
-            </button>
-          </div>
-          {this.state.hiddenForm && <WineAppForm saveWine={this.saveWine} />}
-          <div className="row">
-            {this.state.existingWine.map ((wine) =>  <Wine key={wine.id} name={wine.name}  description={wine.description} evaluation={wine.evaluation} />)}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  componentDidMount(){
+  useEffect(() => {
     fetch("http://localhost:8080/api/wines", { 
       method: 'get', 
       headers: new Headers({
@@ -60,26 +34,37 @@ class WineApp extends Component {
             this.setState({
               existingWine: this.state.existingWine.concat( result )
             });
+          }else{
+            console.log(result)
           }
       },
       (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
+        console.log(error)
       }
     )
-  }
-  
-}
+  })
 
-WineApp.propTypes = {
-  entries: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      comment: PropTypes.string
-    })
-  ).isRequired,
+
+  return (
+
+    <div>
+      <div className="container marketing">
+        <div className="row">
+          <h1 className="title-win">Vin</h1> 
+          <button className="fa-2x wine-button" type="button" onClick={handleWineForm} >
+            <i className="fa fa-plus-circle"></i>
+          </button>
+        </div>
+        {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
+        <div className="row">
+          {existingWine.map ((wine) =>  <Wine key={wine.id} name={wine.name}  description={wine.description} evaluation={wine.evaluation} />)}
+        </div>
+      </div>
+    </div>
+  );
+  
+
+  
   
 }
 

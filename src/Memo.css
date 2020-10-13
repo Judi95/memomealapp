@@ -11,6 +11,10 @@ body {
   color: #5a5a5a;
 }
 
+:focus {
+  outline: none !important;
+}
+
 .bar-green{
 	background-color : #3b8686;
 }
