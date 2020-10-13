@@ -10,18 +10,18 @@ import {
 import DetailsSugar from './DetailsSugar.js'
 
 
-const SugarMeal = ({ title, indice}) => (
+const SugarMeal = ({ name, description, id}) => (
   <div className="col-md-4">
-      <h2>{title}</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><Link to="/details">  <Button className="sugar-button-form">Recette</Button></Link></p>
+      <h2>{name}</h2>
+      <p> {description} </p>
+        <p><Link to="/details?recipeId={id}">  <Button className="sugar-button-form">Recette</Button></Link></p>
     </div>
 )
 
 
 SugarMeal.propTypes = {
-    title: PropTypes.string.isRequired,
-    comment: PropTypes.string.isRequired
-  }
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
+}
 
   export default SugarMeal;

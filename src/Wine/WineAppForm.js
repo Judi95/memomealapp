@@ -61,8 +61,8 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
             <Button type="submit" className="wine-button-form">Ajouter</Button>
             <Button variant="secondary" onClick={handleWineForm}>Annuler</Button>
             </div>
-            <div class="mb-4">
-              <hr class="wine-solid"/>
+            <div className="mb-4">
+              <hr className="wine-solid"/>
             </div>
         </form>
       </div>

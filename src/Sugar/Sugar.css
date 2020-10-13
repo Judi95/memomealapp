@@ -1,15 +1,14 @@
 /* GLOBAL STYLES
-#cff09e
-#a8dba8
-#79bd9a
+#a8dba8 SALT
+#a8dba8 SUGAR
+#79bd9a WINE
 #3b8686
 */
-
 
 .sugar-button{
   margin-top: 4%;
   margin-left: 4%;
-  color : #79bd9a;
+  color : #a8dba8;
   background-color: transparent;
   border-color: transparent;
 }
@@ -22,13 +21,50 @@
   margin-top: 2%;
 }
 
+.sugar-add-ingredient-button{
+  margin-top: -1%;
+  margin-left: 1%;
+  color : #a8dba8;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.sugar-remove-ingredient-button{
+  margin-top: 12%;
+  color : #a8dba8;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.ingredients{
+  margin-top: 2%;
+}
+  
+
+.sugar-button:active, .sugar-button:focus, .sugar-remove-ingredient-button:active, 
+.sugar-add-ingredient-button:active, .sugar-remove-ingredient-button:focus, .sugar-add-ingredient-button:focus{
+  box-shadow:transparent !important;
+  border-color: white !important;
+  border-style: none !important;
+}
+
 .sugar-button-form{
   margin-left: 1%;
   margin-right: 1%;
-  background-color: #79bd9a !important;
-  border-color:#79bd9a !important;
+  background-color: #a8dba8 !important;
+  border-color:#a8dba8 !important;
   color: white;
 }
+
+.sugar-form {
+  margin-bottom: 2%;
+}
+
+hr.sugar-solid {
+  margin-top: 3%;
+  border-top: 2px solid #a8dba8;
+}
+
 
 
 @font-face {
