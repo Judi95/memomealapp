@@ -16,7 +16,7 @@ function Header() {
         <header>
             <Router>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
-                <Link to="/" className="navbar-brand">ACCUEIL</Link>                
+                <Link to="/" className="home-logo"><img src="HomeIcone.png" alt="Accueil MemoMeal" width="40%"/></Link>                
                 <div className="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">

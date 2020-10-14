@@ -20,7 +20,13 @@ body {
 }
 
 .bar-green{
-	background-color : #3b8686;
+  background-color : #3b8686;
+  padding-bottom: 0 !important;
+}
+
+.home-logo{
+  margin-bottom: 1%;
+  margin-right: -5%;
 }
 
 .head-green{
@@ -88,6 +94,13 @@ body {
   margin-top: 1% !important;
 }
 
+.link-list-items a:hover{
+  text-decoration: none !important ;
+}
+
+.content-item{
+  padding: 8%;
+}
 
 .button-item{
   display: flex;
