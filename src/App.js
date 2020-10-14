@@ -1,16 +1,31 @@
 import React from 'react'
-import BubbleHome from './BubbleHome'
 import MemoHead from './MemoHead';
+import {  Button } from 'react-bootstrap';
+import {
+    Link
+  } from "react-router-dom";
 
 function App() {
   return (
     <div>
       <MemoHead />
       <div className="container marketing">
-            <div className="row">            
-              <BubbleHome title="Salé" comment="bla bla bla" color_bubble="#cff09e" url="/salt" className="salt-button-form"/>
-              <BubbleHome title="Sucré" comment="bla bla bla" color_bubble="#a8dba8" url="/sugar" className="sugar-button-form"/>
-              <BubbleHome title="Vins" comment="bla bla bla" color_bubble="#79bd9a" url="/wine" className="wine-button-form"/>
+            <div className="row">
+            <div className="col-lg-4">
+              <div className="salt-icon"><i className="fa fa-plus fa-50x"></i></div>
+              <h2>Mes recettes salées</h2>
+              <p><Link to="/salt">  <Button className="salt-button-form">Voir</Button></Link></p>
+            </div>
+            <div className="col-lg-4">
+            <div className="sugar-icon"><i className="fa fa-ice-cream"></i></div>
+              <h2>Mes recettes sucrées</h2>
+              <p><Link to="/sugar">  <Button className="sugar-button-form">Voir</Button></Link></p>
+            </div>
+            <div className="col-lg-4">
+            <div className="wine-icon"><i class="fa fa-wine-bottle"></i></div>
+              <h2>Ma cave à vins</h2>
+              <p><Link to="/wine">  <Button className="wine-button-form">Voir</Button></Link></p>
+            </div>
           </div> 
       </div>
     </div>

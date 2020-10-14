@@ -11,6 +11,19 @@ body {
   color: #5a5a5a;
 }
 
+.salt-icon{
+  color: #cff09e;
+  font-size: 50px;
+}
+
+.sugar-icon{
+  color: #a8dba8;
+}
+
+.wine-icon{
+  color: #79bd9a;
+}
+
 .description {
   white-space: pre;
 }
