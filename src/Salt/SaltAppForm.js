@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap'
+import ImageUploader from 'react-images-upload'
 
 const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
 
   
   const [name , setName] = useState('')
   const [description , setDescription] = useState('')
+  const [image , setImage] = useState('')
   const [ingredients , setIngredients] = useState([])
+  const [unitIngredient , setIUnitngredients] = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe"])
 
   const addInput = () => {
     const newInput = [{id: ingredients.length + 1, name: '', quantity: 0}]
@@ -20,6 +23,20 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
 
   const handleNameUpdate = event => {
     setName(event.target.value)
+  }
+
+  const handlePictureUpdate = (newPicture) => {
+
+    if(newPicture.length > 0){
+      let reader = new FileReader();
+      reader.readAsDataURL(newPicture[0]);
+      reader.onloadend = () => {
+        setImage(reader.result)
+      };
+      
+    }else{
+      setImage('')
+    }
   }
 
   const handleDescUpdate = event => {
@@ -40,7 +57,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
     setIngredients(newList);
   }
 
-  const handlenameUpdate = event => {
+  const handleIngredientNameUpdate = event => {
 
     const newList = ingredients.map((item) => {
       if (item.id == event.target.id) {
@@ -54,11 +71,26 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
     setIngredients(newList);
   }
 
+  const handleUnitUpdate = event => {
+
+    const newList = ingredients.map((item) => {
+      if (item.id == event.target.id) {
+        item.unit = event.target.value 
+        return item;
+      }
+ 
+      return item;
+    });
+ 
+    setIngredients(newList);
+  }
+
+
 
   const persistSaltRecipe = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      const newEntry = {name: name, description: description, ingredients: ingredients}
+      const newEntry = {name: name, description: description, ingredients: ingredients, image: image}
       handleSaltForm()
       saveSaltRecipe(newEntry)
   } 
@@ -80,8 +112,20 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
             className="form-control" 
             id="exampleFormControlInput1"
             value ={description}
+            rows="10" 
+            cols="100%"
             onChange={handleDescUpdate}/>
 
+            <ImageUploader
+                buttonText='Ajouter une image'
+                onChange={handlePictureUpdate}
+                imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                withLabel= {false}
+                withIcon= {false}
+                withPreview= {true}
+                className= "add-picture"
+            />
 
             <div className="row ingredients">
               <h5>Ingrédients</h5>
@@ -93,7 +137,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
             {ingredients.map(nbIngredient => (
               <div key={nbIngredient.id}  className="row">
 
-                <div className="col-md-2">
+                <div className="col-sm-2">
                   <label htmlFor="exampleFormControlInput1">Quantité</label>
                   <input type="number" 
                   className="form-control" 
@@ -102,11 +146,18 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
                 </div>
 
                 <div className="col-md-4">
-                  <label htmlFor="exampleFormControlInput1">Name</label>
+                  <label htmlFor="exampleFormControlInput1">Unité</label>
+                  <select  className="form-control" onChange={handleUnitUpdate}>
+                    {unitIngredient.map((type, index) => <option key={index} value={type}>{type}</option>)}
+                  </select>
+                </div>
+
+                <div className="col-md-4">
+                  <label htmlFor="exampleFormControlInput1">Nom</label>
                   <input type="Text" 
                   className="form-control" 
                   id={nbIngredient.id}
-                  onChange={handlenameUpdate}/>
+                  onChange={handleIngredientNameUpdate}/>
                 </div>
 
                 <div className="col-md-2">

@@ -67,14 +67,14 @@ const SugarMealApp = () => {
       <div>
         <div className="container marketing">
         <div className="row">
-          <h1 className="title-sugar">Salé</h1>
+          <h1 className="title-sugar">Sucré</h1>
             <button className="fa-2x sugar-button" type="button" onClick={handleSugarForm} >
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
           {hiddenForm && <SugarAppForm handleSugarForm={handleSugarForm} saveSugarRecipe={saveSugarRecipe}/>} 
           <div className="row">
-            {existingSugarMeal.map((recipe) => <SugarMeal key={recipe.id} name={recipe.name} description={recipe.description} />)}
+            {existingSugarMeal.map((recipe) => <SugarMeal key={recipe.id} name={recipe.name} image={recipe.image} id={recipe.id}/>)}
             </div>
         </div>
       </div>

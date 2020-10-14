@@ -74,7 +74,7 @@ const SaltMealApp = () => {
           </div>
           {hiddenForm && <SaltAppForm handleSaltForm={handleSaltForm} saveSaltRecipe={saveSaltRecipe}/>} 
           <div className="row">
-            {existingSaltMeal.map((recipe) => <SaltMeal key={recipe.id} name={recipe.name} description={recipe.description} />)}
+            {existingSaltMeal.map((recipe) => <SaltMeal key={recipe.id} name={recipe.name} image={recipe.image} id={recipe.id} />)}
             </div>
         </div>
       </div>

@@ -62,6 +62,9 @@ hr.wine-solid {
   border-top: 2px solid #79bd9a;
 }
 
+.img-wine{
+  border-radius: 0px 0px 10px 10px;
+}
 
 @font-face {
 	font-family: "Pretty Smile";

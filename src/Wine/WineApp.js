@@ -77,7 +77,7 @@ const WineApp = () => {
         </div>
         {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
         <div className="row">
-          {existingWine.map ((wine) =>  <Wine key={wine.id} name={wine.name}  description={wine.description} evaluation={wine.evaluation} />)}
+          {existingWine.map ((wine) =>  <Wine key={wine.id} name={wine.name}  description={wine.description} evaluation={wine.evaluation} image={wine.image}/>)}
         </div>
       </div>
     </div>

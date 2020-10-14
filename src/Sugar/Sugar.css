@@ -56,6 +56,20 @@
   color: white;
 }
 
+.sugar-button-item{
+  background-color: white !important;
+  border-color: white!important;
+  color: #a8dba8;
+}
+
+.sugar-button-item:active{
+  color: #a8dba8 !important;
+}
+
+.sugar-button-item:focus{
+  box-shadow: none !important;
+}
+
 .sugar-form {
   margin-bottom: 2%;
 }

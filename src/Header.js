@@ -8,7 +8,7 @@ import {
   import WineApp from './Wine/WineApp.js'
   import SaltMealApp from './Salt/SaltMealApp.js'
   import SugarMealApp from './Sugar/SugarMealApp.js'
-  import DetailsSugar from './Sugar/DetailsSugar.js'
+  import Details from './Details.js'
   import App from './App.js'
 
 function Header() {
@@ -42,8 +42,8 @@ function Header() {
                     <Route path="/wine">
                         <WineApp />
                     </Route>                    
-                    <Route path="/details">
-                        <DetailsSugar/>
+                    <Route path="/details/:id">
+                        <Details/>
                     </Route>
                     <Route path="/">
                         <App/>

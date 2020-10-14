@@ -5,11 +5,11 @@ import {
   Link
 } from "react-router-dom";
 
-const SaltMeal = ({ name, description}) => (
-  <div className="col-md-4">
-      <h2>{name}</h2>
-      <p>{description}</p>
-      <p><Link to="/details">  <Button className="salt-button-form">Recette</Button></Link></p>
+const SaltMeal = ({ name, image, id}) => (
+  <div className="col-md-3 mt-5 mr-4 list-items">
+      <div className="title-item"><h2>{name}</h2></div>
+      {image !== null && <img className="img-item" src={image} alt="Recipe Image" width="100%"/>}
+     <Link to={`details/${id}`}> <Button className="button-item salt-button-item">Recette</Button></Link>
     </div>
 )
 

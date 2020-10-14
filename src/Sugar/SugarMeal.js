@@ -2,26 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {  Button } from 'react-bootstrap';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
-import DetailsSugar from './DetailsSugar.js'
 
-
-const SugarMeal = ({ name, description, id}) => (
-  <div className="col-md-4">
-      <h2>{name}</h2>
-      <p> {description} </p>
-        <p><Link to="/details?recipeId={id}">  <Button className="sugar-button-form">Recette</Button></Link></p>
+const SaltMeal = ({ name, image, id}) => (
+  <div className="col-md-3 mt-5 mr-4 list-items">
+      <div className="title-item"><h2>{name}</h2></div>
+      {image !== null && <img className="img-item" src={image} alt="Recipe Image" width="100%"/>}
+      <p><Link to={`details/${id}`}> <Button className="button-item sugar-button-item">Recette</Button></Link></p>
     </div>
 )
 
 
-SugarMeal.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
-}
+SaltMeal.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
+  }
 
-  export default SugarMeal;
+  export default SaltMeal;

@@ -56,6 +56,20 @@
   color: white;
 }
 
+.salt-button-item{
+  background-color: white !important;
+  border-color: white!important;
+  color: #cff09e;
+}
+
+.salt-button-item:active{
+  color: #cff09e !important;
+}
+
+.salt-button-item:focus{
+  box-shadow: none !important;
+}
+
 .salt-form {
   margin-bottom: 2%;
 }
@@ -64,7 +78,6 @@ hr.salt-solid {
   margin-top: 3%;
   border-top: 2px solid #cff09e;
 }
-
 
 
 @font-face {
