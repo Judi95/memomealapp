@@ -136,7 +136,19 @@ body {
   border-radius: none !important;
 }
 
-/* MARKETING CONTENT
+.delete-recipe{
+  position: absolute;
+  top: -10px;
+  left: 160px;
+  color: #8D8B8B;
+  font-size: 17px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+
+/*
+ MARKETING CONTENT
 -------------------------------------------------- */
 
 /* Center align the text within the three columns below the carousel */

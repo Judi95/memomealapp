@@ -1,7 +1,12 @@
 import React, { Component, useEffect, useState } from 'react'
-import Wine from './Wine.js'
+import ReactStars from 'react-rating-stars-component';
 import './Wine.css';
 import WineAppForm from './WineAppForm'
+import {
+  Link
+} from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const WineApp = () => {
 
@@ -60,6 +65,42 @@ const WineApp = () => {
     )
   }
 
+  const confirmDelete = (id, name) => {
+    confirmAlert({
+      message: 'Êtes-vous sûr de vouloir supprimer la boutielle : ' + name,
+      buttons: [
+        {
+          label: 'Valider',
+          onClick: () => deleteRecipe(id)
+        },
+        {
+          label: 'Annuler',
+          onClick: () =>  {}
+        }
+      ]
+    });
+  }
+  
+  const deleteRecipe = (id) => {
+    console.log("MON ID : ", id)
+    fetch(`http://localhost:8080/api/wines/${id}`, { 
+      method: 'delete', 
+      headers: new Headers({
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q'
+      })
+    })
+    .then(
+      (result) => {
+        console.log(result)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+    const newList = existingWine.filter((item) => item.id !== id)
+    return setExistingWine(newList)
+}
+
   useEffect(() => {
     getWines()
   }, [wineId])
@@ -77,7 +118,29 @@ const WineApp = () => {
         </div>
         {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
         <div className="row">
-          {existingWine.map ((wine) =>  <Wine key={wine.id} name={wine.name}  description={wine.description} evaluation={wine.evaluation} image={wine.image}/>)}
+          {existingWine.map ((wine) => {
+            return (
+              <div className="col-md-3 mt-5 mr-5 list-items">
+              <div className="content-item">
+                    <div className="title-item"><h2>{wine.name}</h2></div>
+                    <button className="fa-2x delete-recipe" onClick={() => confirmDelete(wine.id, wine.name)}  >
+                      <i className="fa fa-minus-circle"></i>
+                    </button>
+                      <ReactStars
+                        count={5}
+                        size={30}
+                        value={wine.evaluation}
+                        edit={false}
+                        fullIcon="fa fa-star"
+                        activeColor="#79bd9a"
+                      />
+                <p>{wine.description}</p>
+                </div>
+                {wine.image !== null && wine.image !== '' && <img className="img-item img-wine" src={wine.image} alt="Recipe Image" width="100%"/>}
+              </div>
+
+            )
+          })}
         </div>
       </div>
     </div>

@@ -1,7 +1,11 @@
 import React, { Component, useEffect, useState } from 'react'
-import SugarMeal from './SugarMeal.js'
 import SugarAppForm from './SugarAppForm.js'
 import './Sugar.css';
+import {
+  Link
+} from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const SugarMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
@@ -58,6 +62,42 @@ const SugarMealApp = () => {
     )
   }
 
+  const confirmDelete = (id, name) => {
+    confirmAlert({
+      message: 'Êtes-vous sûr de vouloir supprimer la recette : ' + name,
+      buttons: [
+        {
+          label: 'Valider',
+          onClick: () => deleteRecipe(id)
+        },
+        {
+          label: 'Annuler',
+          onClick: () =>  {}
+        }
+      ]
+    });
+  }
+  
+  const deleteRecipe = (id) => {
+    console.log("MON ID : ", id)
+    /*fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
+      method: 'delete', 
+      headers: new Headers({
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q'
+      })
+    })
+    .then(
+      (result) => {
+        console.log(result)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )*/
+    const newList = existingSugarMeal.filter((item) => item.id !== id)
+    return setExistingSugarMeal(newList)
+}
+
   useEffect(() => {
     getSugarRecipe()
   }, [recipeId])
@@ -74,7 +114,21 @@ const SugarMealApp = () => {
           </div>
           {hiddenForm && <SugarAppForm handleSugarForm={handleSugarForm} saveSugarRecipe={saveSugarRecipe}/>} 
           <div className="row">
-            {existingSugarMeal.map((recipe) => <SugarMeal key={recipe.id} name={recipe.name} image={recipe.image} id={recipe.id}/>)}
+            {existingSugarMeal.map((recipe) => {
+              return (
+                <div className="col-md-3 mt-5 mr-4 list-items">
+                  <div className="content-item">
+                    <div className="title-item"><h2>{recipe.name}</h2></div>
+                  </div>
+                  <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
+                    <i className="fa fa-minus-circle"></i>
+                  </button>   
+                  {recipe.image !== null && recipe.image !== '' && <img className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}  
+                  <p><Link className="link-recipe" to={`details/${recipe.id}`}> <button className="btn button-item sugar-button-item">Recette</button></Link></p>
+                  </div>
+
+              )
+            })}
             </div>
         </div>
       </div>

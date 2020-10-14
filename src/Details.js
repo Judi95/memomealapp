@@ -31,11 +31,11 @@ const Details = () => {
             console.log(error)
           }
         )
-      }
-    
-      useEffect(() => {
-        getOneRecipe()
-      }, [countRecipe])
+    }
+
+    useEffect(() => {
+      getOneRecipe()
+    }, [countRecipe])
 
     return (
         <div>
@@ -45,8 +45,9 @@ const Details = () => {
                 <p className="description">{recipe.description}</p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    {typeof recipe.ingredients != 'undefined' && recipe.ingredients !== null && recipe.ingredients.length > 0 && 
-                        recipe.ingredients.map((ing, index) => <li key={index} className="list-group-item">{ing.quantity} {ing.unit} {ing.name}</li>)
+                  {console.log("LISTE INGREDIENT : ", recipe.ingredients)}
+                    {typeof recipe.ingredients != 'undefined' && recipe.ingredients !== null && recipe.ingredients.length > 0 &&
+                        recipe.ingredients.filter((item) => item.name !== "").map((ing, index) => <li key={index} className="list-group-item">{ing.quantity} {ing.unit} {ing.name}</li>)
                     }
                 </ul>
             </div>
