@@ -1,16 +1,15 @@
 ## MemoMeal
 
-In the project directory, you can run:
+Livre de recette et oenologie en ligne.
 
-### `npm start`
+### `V 0.1`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 3 catégories : Salé, sucré, vins
+- Pouvoir ajouter des recettes salées, sucrées et des vins
+- Pouvoir ajouter des images
+- Pouvoir supprimer une recette salée, sucrée ou un vin
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
+### `V 0.2`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
