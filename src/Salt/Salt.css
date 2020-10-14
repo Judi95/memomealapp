@@ -62,8 +62,9 @@
   color: #cff09e;
 }
 
-.salt-button-item:active{
+.salt-button-item:active, .salt-button-item:hover{
   color: #cff09e !important;
+  text-decoration: none !important;
 }
 
 .salt-button-item:focus{

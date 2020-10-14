@@ -62,7 +62,7 @@
   color: #a8dba8;
 }
 
-.sugar-button-item:active{
+.sugar-button-item:active, .sugar-button-item:hover{
   color: #a8dba8 !important;
 }
 

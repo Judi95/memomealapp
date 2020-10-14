@@ -11,7 +11,7 @@ const SaltMeal = ({ name, image, id}) => (
         <div className="title-item"><h2>{name}</h2></div>
       </div>
       {image !== null && <img className="img-item" src={image} alt="Recipe Image" width="100%"/>}
-      <p><Link className="link-recipe" to={`details/${id}`}> <Button className="button-item sugar-button-item">Recette</Button></Link></p>
+      <p><Link className="link-recipe" to={`details/${id}`}> <button className="btn button-item sugar-button-item">Recette</button></Link></p>
     </div>
 )
 

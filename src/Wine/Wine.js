@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReactStars from 'react-rating-stars-component';
 
 const Wine = ({ name, description, evaluation, image}) => (
-    <div className="col-md-3 mt-5 mr-4 list-items">
+    <div className="col-md-3 mt-5 mr-5 list-items">
       <div className="content-item">
             <div className="title-item"><h2>{name}</h2></div>
               <ReactStars

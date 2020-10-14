@@ -11,17 +11,29 @@ body {
   color: #5a5a5a;
 }
 
+.jumbotron{
+  padding-bottom: 1% !important;
+  padding-top: 3% !important;
+}
+
+.nav-item{
+  font-size: 20px;
+  margin-right: 5%;
+}
+
 .salt-icon{
   color: #cff09e;
-  font-size: 50px;
+  font-size: 80px;
 }
 
 .sugar-icon{
   color: #a8dba8;
+  font-size: 80px;
 }
 
 .wine-icon{
   color: #79bd9a;
+  font-size: 80px;
 }
 
 .description {
@@ -34,12 +46,13 @@ body {
 
 .bar-green{
   background-color : #3b8686;
-  padding-bottom: 0 !important;
+  padding: 0 !important;
 }
 
 .home-logo{
-  margin-bottom: 1%;
+
   margin-right: -5%;
+  margin-left: 5%;
 }
 
 .head-green{

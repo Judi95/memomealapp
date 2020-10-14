@@ -12,7 +12,7 @@ function App() {
       <div className="container marketing">
             <div className="row">
             <div className="col-lg-4">
-              <div className="salt-icon"><i className="fa fa-plus fa-50x"></i></div>
+              <div className="salt-icon"><i className="fa fa-hamburger"></i></div>
               <h2>Mes recettes salées</h2>
               <p><Link to="/salt">  <Button className="salt-button-form">Voir</Button></Link></p>
             </div>
