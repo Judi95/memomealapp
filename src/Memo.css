@@ -116,8 +116,8 @@ body {
 .title-item h2{
   text-align: center;
   font-size: x-large;
-  margin-top: 2%;
   margin-top: 1% !important;
+  margin-bottom: 0 !important;
 }
 
 .link-list-items a:hover{
@@ -138,15 +138,44 @@ body {
 
 .delete-recipe{
   position: absolute;
-  top: -10px;
-  left: 160px;
+  top: -3%;
+  left: 90%;
   color: #8D8B8B;
   font-size: 17px;
   background-color: transparent;
   border-color: transparent;
 }
 
+.user-account{
+  color: #cff09e;
+  text-align: right;
+}
 
+.fileContainer{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.wellcome{
+  font-family: "Pretty Smile";
+  margin-top: 15%;
+  text-align: center;
+  color: white;
+}
+
+.connexion{
+  font-family: "Pretty Smile";
+  margin-top: 24%;
+  text-align: center;
+  color: white;
+}
+
+.wrong-password{
+  font-size: small;
+  color: #C00000;
+  font-style: italic;
+  margin-bottom: 0 !important;
+}
 /*
  MARKETING CONTENT
 -------------------------------------------------- */

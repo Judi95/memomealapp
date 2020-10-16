@@ -10,6 +10,8 @@ import {
   import SugarMealApp from './Sugar/SugarMealApp.js'
   import Details from './Details.js'
   import App from './App.js'
+  import AccountApp from './AccountApp'
+  import CreateAccountApp from './CreateAccountApp'
 
 function Header() {
     return ( 
@@ -28,6 +30,9 @@ function Header() {
                         <li className="nav-item">
                         <Link to="/wine" className="nav-link">Vin</Link>
                         </li>
+                        <li className="nav-item">
+                        <Link to="/account" className="nav-link"><div className="user-account"><i class="fa fa-user"></i></div></Link>
+                        </li>
                     </ul>
                 </div>
                 </nav>  
@@ -41,7 +46,13 @@ function Header() {
                     </Route>
                     <Route path="/wine">
                         <WineApp />
-                    </Route>                    
+                    </Route>
+                    <Route path="/account">
+                        <AccountApp />
+                    </Route>
+                    <Route path="/createAccount">
+                        <CreateAccountApp />
+                    </Route>            
                     <Route path="/details/:id">
                         <Details/>
                     </Route>

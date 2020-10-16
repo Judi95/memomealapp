@@ -114,9 +114,9 @@ const SugarMealApp = () => {
           </div>
           {hiddenForm && <SugarAppForm handleSugarForm={handleSugarForm} saveSugarRecipe={saveSugarRecipe}/>} 
           <div className="row">
-            {existingSugarMeal.map((recipe) => {
+            {existingSugarMeal.map((recipe, index) => {
               return (
-                <div className="col-md-3 mt-5 mr-4 list-items">
+                <div key={index} className="col-md-3 mt-5 mr-4 list-items">
                   <div className="content-item">
                     <div className="title-item"><h2>{recipe.name}</h2></div>
                   </div>

@@ -134,7 +134,8 @@ const WineApp = () => {
                         fullIcon="fa fa-star"
                         activeColor="#79bd9a"
                       />
-                <p>{wine.description}</p>
+                {wine.type !== null & wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
+                <p className="wine-desc">{wine.description}</p>
                 </div>
                 {wine.image !== null && wine.image !== '' && <img className="img-item img-wine" src={wine.image} alt="Recipe Image" width="100%"/>}
               </div>

@@ -114,19 +114,19 @@ const SaltMealApp = () => {
           </div>
           {hiddenForm && <SaltAppForm handleSaltForm={handleSaltForm} saveSaltRecipe={saveSaltRecipe}/>} 
           <div className="row">
-            {existingSaltMeal.map((recipe) => {
+            {existingSaltMeal.map((recipe, index) => {
               return(
-              <div className="col-sm-3 mt-5 mr-5 list-items">
-              <div className="content-item">
-                <div className="title-item"><h2>{recipe.name}</h2></div>
-              </div>
-              <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
-                <i className="fa fa-minus-circle"></i>
-              </button>
-           
-                {recipe.image !== null && recipe.image !== '' &&<img className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}
-               <Link to={`details/${recipe.id}`}> <button className="btn button-item salt-button-item">Recette</button></Link>
-              </div>)
+                <div key={index} className="col-sm-3 mt-5 mr-5 list-items">
+                  <div className="content-item">
+                    <div className="title-item"><h2>{recipe.name}</h2></div>
+                  </div>
+                  <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
+                    <i className="fa fa-minus-circle"></i>
+                  </button>
+              
+                    {recipe.image !== null && recipe.image !== '' &&<img className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}
+                  <Link to={`details/${recipe.id}`}> <button className="btn button-item salt-button-item">Recette</button></Link>
+                </div>)
             })
           }
             </div>

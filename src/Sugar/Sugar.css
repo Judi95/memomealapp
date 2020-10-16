@@ -36,11 +36,6 @@
   border-color: transparent;
 }
 
-.ingredients{
-  margin-top: 2%;
-}
-  
-
 .sugar-button:active, .sugar-button:focus, .sugar-remove-ingredient-button:active, 
 .sugar-add-ingredient-button:active, .sugar-remove-ingredient-button:focus, .sugar-add-ingredient-button:focus{
   box-shadow:transparent !important;

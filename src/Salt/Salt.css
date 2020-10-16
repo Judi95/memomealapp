@@ -35,10 +35,6 @@
   background-color: transparent;
   border-color: transparent;
 }
-
-.ingredients{
-  margin-top: 2%;
-}
   
 
 .salt-button:active, .salt-button:focus, .salt-remove-ingredient-button:active, 

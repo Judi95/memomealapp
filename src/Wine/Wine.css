@@ -77,3 +77,13 @@ hr.wine-solid {
   color : #79bd9a;
   margin-top: 5%;
 }
+
+.wine-type{
+  font-size: small;
+  font-style: italic;
+  margin-bottom: 0 !important;
+}
+
+.wine-desc{
+  margin-bottom: 0 !important;
+}

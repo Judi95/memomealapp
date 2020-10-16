@@ -142,14 +142,14 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
                   onChange={handleQuantityUpdate}/>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-ms-4">
                   <label htmlFor="exampleFormControlInput1">Unité</label>
                   <select  className="form-control" onChange={handleUnitUpdate}>
                     {unitIngredient.map((type, index) => <option key={index} value={type}>{type}</option>)}
                   </select>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-5">
                   <label htmlFor="exampleFormControlInput1">Name</label>
                   <input type="Text" 
                   className="form-control" 
