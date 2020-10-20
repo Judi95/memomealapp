@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TokenContext } from './TokenContext';
 import MemoHome from './MemoHome'
 import MemoHomeLogin from './MemoHomeLogin'
@@ -8,32 +8,43 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import WineApp from './Wine/WineApp.js'
-import SaltMealApp from './Salt/SaltMealApp.js'
-import SugarMealApp from './Sugar/SugarMealApp.js'
-import Details from './Details.js'
-import AccountApp from './AccountApp'
-import CreateAccountApp from './CreateAccountApp'
+
 import NavApp from './NavApp';
 
 const  App = () => {
 
   const [isLogin, setIsLogin] = useState(false)
   const [token, setToken] = useState('')
+  const [idAuthent, setIdAuthent] = useState('')
+  const theTokenSession = localStorage.getItem('tokenSession')
 
   const getTokenAuth = (idToken) => {
     setToken(idToken)
     setIsLogin(true)
+    localStorage.setItem('tokenSession', idToken);
+    
   }
 
+  const resetTokenAuth = () => {
+    setToken('')
+    setIsLogin(false)
+    localStorage.clear();
+  }
+
+  useEffect(() => {
+
+    if(theTokenSession){
+      setToken(theTokenSession)
+      setIsLogin(true)
+    }
+  }, [idAuthent])
 
   return (
-    
+
       <TokenContext.Provider value={token}>
-         <NavApp isLogin={isLogin} getTokenAuth={getTokenAuth}></NavApp>
+         <NavApp isLogin={isLogin} getTokenAuth={getTokenAuth} resetTokenAuth={resetTokenAuth}></NavApp>
       </TokenContext.Provider>
         
-      
   );
 }
 

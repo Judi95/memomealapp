@@ -22,14 +22,11 @@ const SaltMealApp = () => {
 
   const saveSaltRecipe = (entry) => {
     entry.type = "SALT"
-    const bearer = 'Bearer ' + {token}
-    console.log(token)
-    console.log("BEARER : ", bearer)
     
     fetch("http://localhost:8080/api/cooking-recipes", { 
       method: 'post', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token},
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify(entry)
@@ -48,13 +45,11 @@ const SaltMealApp = () => {
 
   
   const getSaltRecipe = () => {
-    const bearer = 'Bearer ' + {token}
-    console.log(token)
-    console.log("BEARER : ", bearer)
+
     fetch("http://localhost:8080/api/cooking-recipe?type=SALT", { 
       method: 'get', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token}
+        'Authorization': `Bearer ${token}`
       })
     })
     .then(res => res.json())
@@ -90,10 +85,10 @@ const SaltMealApp = () => {
   
   const deleteRecipe = (id) => {
     console.log("MON ID : ", id)
-    /*fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
+    fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token}
+        'Authorization': `Bearer ${token}`,
       })
     })
     .then(
@@ -103,7 +98,7 @@ const SaltMealApp = () => {
       (error) => {
         console.log(error)
       }
-    )*/
+    )
     const newList = existingSaltMeal.filter((item) => item.id !== id)
     return setExistingSaltMeal(newList)
 }

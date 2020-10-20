@@ -13,21 +13,23 @@ const Header = () => {
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
                 <Link to="/" className="home-logo"><img src="/HomeIcone.png" alt="Accueil MemoMeal" width="35%"/></Link> 
                     { theToken &&              
-                    <div className="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <div className="collapse navbar-collapse">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
+                            <li className="nav-item mr-3">
                             <Link to="/salt" className="nav-link">Salé</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item mr-3">
                             <Link to="/sugar" className="nav-link">Sucré</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item mr-3">
                             <Link to="/wine" className="nav-link">Vin</Link>
                             </li>
-                            <li className="nav-item">
-                            <Link to="/account" className="nav-link"><div className="user-account"><i className="fa fa-user"></i></div></Link>
-                            </li>
                         </ul>
+                        <div class="mt-2 mt-md-0">
+                            <button class="btn my-2 my-sm-0 mr-4">
+                            <small><Link to="/logout" className="nav-link"><div className="user-account"> Déconnexion </div></Link></small>
+                            </button>
+                        </div>
                     </div>
                 }
                 </nav>  

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TokenContext } from './TokenContext';
 import MemoHome from './MemoHome'
 import MemoHomeLogin from './MemoHomeLogin'
@@ -13,12 +13,13 @@ import WineApp from './Wine/WineApp.js'
 import SaltMealApp from './Salt/SaltMealApp.js'
 import SugarMealApp from './Sugar/SugarMealApp.js'
 import Details from './Details.js'
-import AccountApp from './AccountApp'
+import LogoutApp from './LogoutApp'
 import CreateAccountApp from './CreateAccountApp'
 
-const  NavApp = ({isLogin, getTokenAuth}) => {
+const  NavApp = ({isLogin, getTokenAuth, resetTokenAuth}) => {
 
     const theToken = useContext(TokenContext)
+    const theTokenSession = sessionStorage.getItem('tokenSession')
 
     function PrivateRoute({ children, ...rest }) {
         return (
@@ -52,8 +53,8 @@ const  NavApp = ({isLogin, getTokenAuth}) => {
             <PrivateRoute path="/wine">
                 <WineApp />
             </PrivateRoute>
-            <PrivateRoute path="/account">
-                <AccountApp />
+            <PrivateRoute path="/logout">
+                <LogoutApp resetTokenAuth={resetTokenAuth}/>
             </PrivateRoute>
             <PrivateRoute path="/createAccount">
                 <CreateAccountApp />

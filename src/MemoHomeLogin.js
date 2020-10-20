@@ -6,11 +6,10 @@ import {
 
 const MemoHomeLogin = ({getTokenAuth}) => {
 
-    const [isLogin, setIsLogin] = useState(false)
     const [rememberMe, setRememberMe] = useState(false)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [token, setToken] = useState("")
+    const [isWrongLogin, setIsWrongLogin] = useState(false)
   
     const handleUsernameUpdate = event => {
       setUsername(event.target.value)
@@ -40,16 +39,15 @@ const MemoHomeLogin = ({getTokenAuth}) => {
       .then(
         (result) => {
           if(result.status){
-            console.log(result)
+            console.log("STATUS : ",result)
+            setIsWrongLogin(true)
           }else{
-            setToken(result.id_token)
-            setIsLogin(true)
             getTokenAuth(result.id_token)
           }
           
         },
         (error) => {
-          console.log(error)
+          console.log("ERROR : ", error)
         }
       )
     }
@@ -57,7 +55,6 @@ const MemoHomeLogin = ({getTokenAuth}) => {
     return ( 
 
         <div className="row home-page">
-          
             <div className="col-md-8">
             <div className="jumbotron">
                     <div className="container">
@@ -98,6 +95,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
                         <h2 className="connexion">Connexion</h2>
                         <div className="d-flex justify-content-center form_container">
                         <form>
+                          {isWrongLogin && <p className="text-danger wrong-login"><small> <em>Informations incorrectes</em></small></p>}
                             <div className="input-group mb-3">
                             <div className="input-group-append">
                                 <span className="input-group-text"><i className="fas fa-user"></i></span>
@@ -106,7 +104,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
                             className="form-control input_user" 
                             value ={username}
                             onChange={handleUsernameUpdate}
-                            placeholder="Login"/>
+                            placeholder="Identifiant"/>
 
                             </div>
                             <div className="input-group mb-2">
@@ -127,14 +125,16 @@ const MemoHomeLogin = ({getTokenAuth}) => {
                         </form>
                         </div>
                     
-                        <div className="mt-2">
-                        <div className="d-flex justify-content-center come-in">
-                            <p className="col-ms-8 no-account mr-1 ">Pas encore de compte ? </p>
-                            <Link to="/createAccount" className="col-ms-5"> Venez vite ! </Link>
-                        </div>
-                        <div className="d-flex justify-content-center mt-1">
-                            <a className="forget-password" href="#">Mot de passe oublié ?</a>
-                        </div>
+                        <div className="mt-2 text-">
+                        <small>
+                          <div className="d-flex justify-content-center come-in">
+                              <p className="col-ms-8 no-account mr-1 ">Pas encore de compte ? </p>
+                              <Link to="/createAccount" className="col-ms-5"> Venez vite ! </Link>
+                          </div>
+                          <div className="d-flex justify-content-center mt-1">
+                              <a className="forget-password text-muted" href="#">Mot de passe oublié ?</a>
+                          </div>
+                          </small>
                         </div>
                     </div>
                     </div>

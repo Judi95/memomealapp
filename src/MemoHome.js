@@ -2,17 +2,20 @@ import React, { useContext } from 'react'
 import Footer from './Footer';
 import Header from './Header';
 import { TokenContext } from './TokenContext';
-import NotAuthorizeApp from './NotAuthorizeApp'
+import {
+  Redirect
+} from "react-router-dom";
 
 const MemoHead = () => {
 
     const theToken = useContext(TokenContext)
+    const theTokenSession = localStorage.getItem('tokenSession')
 
     return ( 
         <div className="row home-page content-page-home">
             <Header/>
             <Footer/>
-            { theToken ?
+            { theToken || theTokenSession ?
             <div className="col-md-12">
             <div className="jumbotron">
                     <div className="container">
@@ -40,7 +43,7 @@ const MemoHead = () => {
                 </div> 
             </div>
         </div>
-        : <NotAuthorizeApp></NotAuthorizeApp>}
+        : <Redirect to="/"/>}
     </div>
         
     );

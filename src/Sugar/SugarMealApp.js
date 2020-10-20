@@ -26,7 +26,7 @@ const SugarMealApp = () => {
     fetch("http://localhost:8080/api/cooking-recipes", { 
       method: 'post', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token},
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify(entry)
@@ -48,7 +48,7 @@ const SugarMealApp = () => {
     fetch("http://localhost:8080/api/cooking-recipe?type=SUGAR", { 
       method: 'get', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token}
+        'Authorization': `Bearer ${token}`,
       })
     })
     .then(res => res.json())
@@ -84,10 +84,10 @@ const SugarMealApp = () => {
   
   const deleteRecipe = (id) => {
     console.log("MON ID : ", id)
-    /*fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
+    fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token}
+        'Authorization': `Bearer ${token}`
       })
     })
     .then(
@@ -97,7 +97,7 @@ const SugarMealApp = () => {
       (error) => {
         console.log(error)
       }
-    )*/
+    )
     const newList = existingSugarMeal.filter((item) => item.id !== id)
     return setExistingSugarMeal(newList)
 }

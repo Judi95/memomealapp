@@ -48,7 +48,7 @@
     margin-bottom: 0 !important;
 }
 .form_container {
-    margin-top: 10px;
+    margin-top: 2%;
 }
 .login_btn {
     width: 100%;
@@ -79,10 +79,18 @@
 }
 .forget-password {
     color: #cff09e;
+    margin-top: 2px;
+}
+
+.come-in{
+    margin-top: 5%;
 }
 
 .come-in a{
     color: #3b8686;
     font-weight: bold;
-    font-size:medium;
+}
+
+.wrong-login{
+    margin-bottom: 0 !important;
 }

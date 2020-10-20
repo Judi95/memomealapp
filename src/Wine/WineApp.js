@@ -26,7 +26,7 @@ const WineApp = () => {
     fetch("http://localhost:8080/api/wines", { 
       method: 'post', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token},
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify(entry)
@@ -48,7 +48,7 @@ const WineApp = () => {
     fetch("http://localhost:8080/api/wines", { 
       method: 'get', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token}
+        'Authorization': `Bearer ${token}`
       })
     })
     .then(res => res.json())
@@ -87,7 +87,7 @@ const WineApp = () => {
     fetch(`http://localhost:8080/api/wines/${id}`, { 
       method: 'delete', 
       headers: new Headers({
-        'Authorization': 'Bearer ' + {token}
+        'Authorization': `Bearer ${token}`
       })
     })
     .then(
@@ -123,7 +123,7 @@ const WineApp = () => {
         <div className="row">
           {existingWine.map ((wine) => {
             return (
-              <div className="col-md-3 mt-4 mr-5 list-items">
+              <div key={wine.id} className="col-md-3 mt-4 mr-5 list-items">
               <div className="content-item">
                     <div className="title-item"><h2>{wine.name}</h2></div>
                     <button className="fa-2x delete-recipe" onClick={() => confirmDelete(wine.id, wine.name)}  >
