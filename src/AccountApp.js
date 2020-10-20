@@ -1,10 +1,12 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { Component, useContext, useEffect, useState } from 'react'
 import './Account.css';
 import {
   Link, Redirect
 } from "react-router-dom";
+import {TokenContext} from './TokenContext'
+import SaltMealApp from './Salt/SaltMealApp';
 
-const AccountApp = () => {
+const AccountApp = (getTokenAuth) => {
 
   const [isLogin, setIsLogin] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
@@ -26,12 +28,12 @@ const AccountApp = () => {
 
   const postLogin = () => {
 
+    
     const entry = {username: username, password:password, rememberMe:rememberMe}
 
     fetch("http://localhost:8080/api/authenticate", { 
       method: 'post', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q',
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify(entry)
@@ -41,34 +43,42 @@ const AccountApp = () => {
       (result) => {
         if(result.status){
           console.log(result)
+        }else{
+          setToken(result.id_token)
+          setIsLogin(true)
+          setTokenContext(result.id_token)
+          console.log("FONC :", getTokenAuth())
         }
-        setToken(result.id_token)
-        setIsLogin(true)
+        
       },
       (error) => {
         console.log(error)
       }
     )
+  }
 
-    }
+  const setTokenContext = (idToken) => {
+    return 
+  }
+
   
   return(
-    <div>
-      {isLogin && <Redirect to="/salt"/>}
-      <div class="container h-100 login-container">
-        <div class="d-flex justify-content-center h-100">
-          <div class="user_card">
-            <div class="d-flex justify-content-center">
-              <div class="brand_logo_container">
-                <img src="/HomeIcone.png" class="brand_logo" alt="Logo"/>
+    
+    <div>      
+      <div className="container h-100 login-container">
+        <div className="d-flex justify-content-center h-100">
+          <div className="user_card">
+            <div className="d-flex justify-content-center">
+              <div className="brand_logo_container">
+                <img src="/HomeIcone.png" className="brand_logo" alt="Logo"/>
               </div>
             </div>
             <h2 className="connexion">Connexion</h2>
-            <div class="d-flex justify-content-center form_container">
+            <div className="d-flex justify-content-center form_container">
               <form>
-                <div class="input-group mb-3">
-                  <div class="input-group-append">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <div className="input-group mb-3">
+                  <div className="input-group-append">
+                    <span className="input-group-text"><i className="fas fa-user"></i></span>
                   </div>
                   <input type="Text" 
                   className="form-control input_user" 
@@ -77,9 +87,9 @@ const AccountApp = () => {
                   placeholder="Login"/>
 
                 </div>
-                <div class="input-group mb-2">
-                  <div class="input-group-append">
-                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                <div className="input-group mb-2">
+                  <div className="input-group-append">
+                    <span className="input-group-text"><i className="fas fa-key"></i></span>
                   </div>
 
                   <input type="password" 
@@ -89,21 +99,19 @@ const AccountApp = () => {
                   placeholder="Mot de passe"/>
 
                 </div>
-                  <div class="d-flex justify-content-center mt-3 login_container">
-              <button type="button" name="button" class="btn login_btn" onClick={postLogin}>Connexion</button>
+                  <div className="d-flex justify-content-center mt-3 login_container">
+              <button type="button" name="button" className="btn login_btn" onClick={postLogin}>Connexion</button>
               </div>
               </form>
             </div>
         
-            <div class="mt-2">
-              <div class="d-flex justify-content-center links-connexion">
-                <div className="row">
-                  <p className="no-account">Pas encore de compte ? </p>
-                  <Link to="/createAccount" className="ml-2"> Venez vite ! </Link>
-                </div>
+            <div className="mt-2">
+              <div className="d-flex justify-content-center come-in">
+                  <p className="col-ms-8 no-account mr-1 ">Pas encore de compte ? </p>
+                  <Link to="/createAccount" className="col-ms-5"> Venez vite ! </Link>
               </div>
-              <div class="d-flex justify-content-center links-connexion">
-                <a href="#">Mot de passe oublié ?</a>
+              <div className="d-flex justify-content-center mt-1">
+                <a className="forget-password" href="#">Mot de passe oublié ?</a>
               </div>
             </div>
           </div>
@@ -113,4 +121,5 @@ const AccountApp = () => {
   )
 }
 
+export const TokenContextConsumer = TokenContext.Consumer
 export default AccountApp;

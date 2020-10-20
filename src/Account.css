@@ -8,6 +8,7 @@
 
 .login-container{
     margin-top: 10%;
+    margin-left: -5%;
 }
 
 .user_card {
@@ -51,8 +52,9 @@
 }
 .login_btn {
     width: 100%;
-    background: #cff09e!important;
+    background: #3b8686!important;
     color: white !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .login_btn:focus {
     box-shadow: none !important;
@@ -75,6 +77,12 @@
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #cff09e!important;
 }
-.links-connexion a {
+.forget-password {
     color: #cff09e;
+}
+
+.come-in a{
+    color: #3b8686;
+    font-weight: bold;
+    font-size:medium;
 }

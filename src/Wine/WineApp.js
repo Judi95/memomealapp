@@ -1,18 +1,19 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ReactStars from 'react-rating-stars-component';
 import './Wine.css';
 import WineAppForm from './WineAppForm'
-import {
-  Link
-} from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import Header from '../Header'
+import Footer from '../Footer'
+import { TokenContext } from '../TokenContext';
 
 const WineApp = () => {
 
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingWine , setExistingWine] = useState([])
   const [wineId, setWineId] = useState(0)
+  const token = useContext(TokenContext)
 
 
   const handleWineForm = event => {
@@ -25,7 +26,7 @@ const WineApp = () => {
     fetch("http://localhost:8080/api/wines", { 
       method: 'post', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q',
+        'Authorization': 'Bearer ' + {token},
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify(entry)
@@ -47,7 +48,7 @@ const WineApp = () => {
     fetch("http://localhost:8080/api/wines", { 
       method: 'get', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q'
+        'Authorization': 'Bearer ' + {token}
       })
     })
     .then(res => res.json())
@@ -86,7 +87,7 @@ const WineApp = () => {
     fetch(`http://localhost:8080/api/wines/${id}`, { 
       method: 'delete', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q'
+        'Authorization': 'Bearer ' + {token}
       })
     })
     .then(
@@ -107,9 +108,11 @@ const WineApp = () => {
 
 
   return (
-
     <div>
-      <div className="container marketing">
+      <Header/>
+      <Footer/>
+      {token &&
+      <div className="container marketing content-page">
         <div className="row">
           <h1 className="title-win">Vin</h1> 
           <button className="fa-2x wine-button" type="button" onClick={handleWineForm} >
@@ -120,7 +123,7 @@ const WineApp = () => {
         <div className="row">
           {existingWine.map ((wine) => {
             return (
-              <div className="col-md-3 mt-5 mr-5 list-items">
+              <div className="col-md-3 mt-4 mr-5 list-items">
               <div className="content-item">
                     <div className="title-item"><h2>{wine.name}</h2></div>
                     <button className="fa-2x delete-recipe" onClick={() => confirmDelete(wine.id, wine.name)}  >
@@ -144,6 +147,7 @@ const WineApp = () => {
           })}
         </div>
       </div>
+      }
     </div>
   );
   

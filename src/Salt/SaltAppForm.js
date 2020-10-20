@@ -10,6 +10,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const [image , setImage] = useState('')
   const [ingredients , setIngredients] = useState([])
   const [unitIngredient , setIUnitngredients] = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe"])
+  const [quantityPeople, setQuantityPeople] = useState('')
 
   const addInput = () => {
     const newInput = [{id: ingredients.length + 1, name: '', quantity: 0}]
@@ -23,6 +24,10 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
 
   const handleNameUpdate = event => {
     setName(event.target.value)
+  }
+
+  const handleQuantityPeopleUpdate = event => {
+    setQuantityPeople(event.target.value)
   }
 
   const handlePictureUpdate = (newPicture) => {
@@ -90,7 +95,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const persistSaltRecipe = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      const newEntry = {name: name, description: description, ingredients: ingredients, image: image}
+      const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople: quantityPeople}
       handleSaltForm()
       saveSaltRecipe(newEntry)
   } 
@@ -100,19 +105,31 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
       <form className="salt-form" >
           <div className="form-group">
 
-            <label htmlFor="exampleFormControlInput1">Nom</label>
-            <input type="Text" 
-            className="form-control" 
-            id="exampleFormControlInput1"
-            value ={name}
-            onChange={handleNameUpdate}/>
+          <div className="row">
+              <div className="col-md-8">
+                <label htmlFor="exampleFormControlInput1">Nom</label>
+                <input type="Text" 
+                className="form-control" 
+                id="exampleFormControlInput1"
+                value ={name}
+                onChange={handleNameUpdate}/>
+              </div>
+              <div className="col-md-3">
+                <label htmlFor="exampleFormControlInput1">Nombre de personne : </label>
+                <input type="Text" 
+                className="form-control" 
+                id="exampleFormControlInput1"
+                value ={quantityPeople}
+                onChange={handleQuantityPeopleUpdate}/>
+              </div>
+            </div>
 
             <label htmlFor="exampleFormControlInput1">Descriptif</label>
             <textarea type="Text" 
             className="form-control" 
             id="exampleFormControlInput1"
             value ={description}
-            rows="10" 
+            rows="5" 
             cols="100%"
             onChange={handleDescUpdate}/>
 

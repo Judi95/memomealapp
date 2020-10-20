@@ -7,13 +7,37 @@
 
 body {
   padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 0;
   color: #5a5a5a;
+}
+
+.home-page{
+  background-color: #e9ecef;
+  width: 100%;
+  margin-left: 0 !important;
+  height: 100vh;
 }
 
 .jumbotron{
   padding-bottom: 1% !important;
-  padding-top: 3% !important;
+  padding-top: 10% !important;
+  margin-bottom: 0 !important;
+}
+
+.home-desc{
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.content-page{
+  margin-top: 5%;
+  margin-bottom: 8%;
+}
+
+.content-page-home .jumbotron {
+  margin-top: 5%;
+  padding-top: 0 !important;
 }
 
 .nav-item{
@@ -176,6 +200,19 @@ body {
   font-style: italic;
   margin-bottom: 0 !important;
 }
+
+.green-footer{
+  background-color: #3b8686;
+  width: 100%;
+  height: 30px;
+}
+
+.not-authorize{
+  text-align: center;
+  font-style: italic;
+  padding-top: 20%;
+}
+
 /*
  MARKETING CONTENT
 -------------------------------------------------- */
@@ -223,4 +260,34 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+@media (min-width: 1161px) {
+  .login-container {
+    margin-top: 40% !important;
+  }
+  .connexion {
+    margin-top: 33% !important;
+  }
+}
+
+@media (max-width: 1160px) {
+  .login-container {
+    margin-top: 50% !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .login-container {
+    margin-top: 70% !important;
+  }
+  .connexion {
+    margin-top: 35% !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .login-container {
+    margin-left: -20% !important;
+}
 }

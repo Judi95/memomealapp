@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MemoHome from './MemoHome';
+
 import './index.css';
 import './Memo.css';
-import Header from './Header';
-import MyComponent from './MyComponent'
+import NavApp from './NavApp';
 import * as serviceWorker from './serviceWorker';
+import {TokenContext} from './TokenContext'
+import App from './App';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header  />
+      <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

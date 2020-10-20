@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { Component, useContext, useEffect, useState } from 'react'
 import SugarAppForm from './SugarAppForm.js'
 import './Sugar.css';
 import {
@@ -6,11 +6,15 @@ import {
 } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import Header from '../Header'
+import Footer from '../Footer'
+import { TokenContext } from '../TokenContext.js';
 
 const SugarMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingSugarMeal , setExistingSugarMeal] = useState([])
   const [recipeId, setRecipeId] = useState(0)
+  const token = useContext(TokenContext)
 
   const handleSugarForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -22,7 +26,7 @@ const SugarMealApp = () => {
     fetch("http://localhost:8080/api/cooking-recipes", { 
       method: 'post', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q',
+        'Authorization': 'Bearer ' + {token},
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify(entry)
@@ -44,7 +48,7 @@ const SugarMealApp = () => {
     fetch("http://localhost:8080/api/cooking-recipe?type=SUGAR", { 
       method: 'get', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q'
+        'Authorization': 'Bearer ' + {token}
       })
     })
     .then(res => res.json())
@@ -83,7 +87,7 @@ const SugarMealApp = () => {
     /*fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYwMjg1ODIzNn0.XnjVeerhnlogvHu4Lg_aKP_EqCPn-v6u1UeIAHfIioI8T-ShlHA9FopTq9oduPUd1GQJOmtfe0IsGTsLp43B1Q'
+        'Authorization': 'Bearer ' + {token}
       })
     })
     .then(
@@ -105,7 +109,10 @@ const SugarMealApp = () => {
 
     return (
       <div>
-        <div className="container marketing">
+        <Header/>
+        <Footer/>
+        { token &&
+        <div className="container marketing content-page">
         <div className="row">
           <h1 className="title-sugar">Sucré</h1>
             <button className="fa-2x sugar-button" type="button" onClick={handleSugarForm} >
@@ -116,7 +123,7 @@ const SugarMealApp = () => {
           <div className="row">
             {existingSugarMeal.map((recipe, index) => {
               return (
-                <div key={index} className="col-md-3 mt-5 mr-4 list-items">
+                <div key={index} className="col-md-3 mt-4 mr-4 list-items">
                   <div className="content-item">
                     <div className="title-item"><h2>{recipe.name}</h2></div>
                   </div>
@@ -131,6 +138,7 @@ const SugarMealApp = () => {
             })}
             </div>
         </div>
+        }
       </div>
     );
 }
