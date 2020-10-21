@@ -6,14 +6,13 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
-import { TokenContext } from '../TokenContext';
 
 const WineApp = () => {
 
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingWine , setExistingWine] = useState([])
   const [wineId, setWineId] = useState(0)
-  const token = useContext(TokenContext)
+  const token = localStorage.getItem('tokenSession')
 
 
   const handleWineForm = event => {
@@ -123,7 +122,7 @@ const WineApp = () => {
         <div className="row">
           {existingWine.map ((wine) => {
             return (
-              <div key={wine.id} className="col-md-3 mt-4 mr-5 list-items">
+              <div key={wine.id} className="col-md-3 mt-4 mr-4 ml-5 list-items">
               <div className="content-item">
                     <div className="title-item"><h2>{wine.name}</h2></div>
                     <button className="fa-2x delete-recipe" onClick={() => confirmDelete(wine.id, wine.name)}  >

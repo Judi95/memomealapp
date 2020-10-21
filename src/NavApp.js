@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { TokenContext } from './TokenContext';
+import React from 'react'
 import MemoHome from './MemoHome'
 import MemoHomeLogin from './MemoHomeLogin'
 import {
@@ -16,22 +15,21 @@ import Details from './Details.js'
 import LogoutApp from './LogoutApp'
 import CreateAccountApp from './CreateAccountApp'
 
-const  NavApp = ({isLogin, getTokenAuth, resetTokenAuth}) => {
+const  NavApp = ({getTokenAuth, resetTokenAuth}) => {
 
-    const theToken = useContext(TokenContext)
-    const theTokenSession = sessionStorage.getItem('tokenSession')
 
     function PrivateRoute({ children, ...rest }) {
+      
         return (
           <Route
             {...rest}
             render={({ location }) =>
-                theToken ? (
+                localStorage.getItem('tokenSession') ? (
                 children
               ) : (
                 <Redirect
                   to={{
-                    pathname: "/",
+                    pathname: "/login",
                     state: { from: location }
                   }}
                 />
@@ -42,6 +40,7 @@ const  NavApp = ({isLogin, getTokenAuth, resetTokenAuth}) => {
       }
 
   return (
+    
     <Router>
         <Switch>                    
             <PrivateRoute path="/salt">
@@ -53,18 +52,21 @@ const  NavApp = ({isLogin, getTokenAuth, resetTokenAuth}) => {
             <PrivateRoute path="/wine">
                 <WineApp />
             </PrivateRoute>
-            <PrivateRoute path="/logout">
+            <Route path="/logout">
                 <LogoutApp resetTokenAuth={resetTokenAuth}/>
-            </PrivateRoute>
+            </Route>
             <PrivateRoute path="/createAccount">
                 <CreateAccountApp />
             </PrivateRoute>            
             <PrivateRoute path="/details/:id">
                 <Details/>
             </PrivateRoute>
-            <Route path="/">
-                {isLogin ? <MemoHome/> : <MemoHomeLogin getTokenAuth={getTokenAuth}/>}
+            <Route path="/login">
+                 <MemoHomeLogin getTokenAuth={getTokenAuth}/>
             </Route>
+            <PrivateRoute path="/">
+                <MemoHome/>
+            </PrivateRoute>
         </Switch>
     </Router>   
         

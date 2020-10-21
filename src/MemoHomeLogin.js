@@ -1,5 +1,5 @@
-import React, { Component, useContext, useEffect, useState } from 'react'
-import AccountApp from './AccountApp';
+import React, { useState } from 'react'
+import './Account.css';
 import {
     Link
   } from "react-router-dom";
@@ -89,7 +89,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
                     <div className="user_card">
                         <div className="d-flex justify-content-center">
                         <div className="brand_logo_container">
-                            <img src="/HomeIcone.png" className="brand_logo" alt="Logo"/>
+                            <img src="/HomeIcon.png" className="brand_logo" alt="Logo"/>
                         </div>
                         </div>
                         <h2 className="connexion">Connexion</h2>

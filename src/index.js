@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MemoHome from './MemoHome';
-
 import './index.css';
 import './Memo.css';
-import NavApp from './NavApp';
 import * as serviceWorker from './serviceWorker';
-import {TokenContext} from './TokenContext'
 import App from './App';
 
 

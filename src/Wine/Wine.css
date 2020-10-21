@@ -12,6 +12,8 @@
   color : #79bd9a;
   background-color: transparent;
   border-color: transparent;
+  position: absolute;
+  left: 70%;
 }
 
 .wine-button::focus:active{

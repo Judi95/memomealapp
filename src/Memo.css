@@ -18,6 +18,10 @@ body {
   height: 100vh;
 }
 
+.memo-logo {
+  margin-left: 10%;
+}
+
 .jumbotron{
   padding-bottom: 1% !important;
   padding-top: 10% !important;
@@ -98,6 +102,8 @@ body {
 	font-family: "Pretty Smile";
   color : #cff09e;
   margin-top: 5%;
+  width: 100%;
+  text-align: center;
 }
 
 
@@ -105,12 +111,16 @@ body {
 	font-family: "Pretty Smile";
   color : #a8dba8;
   margin-top: 5%;
+  width: 100%;
+  text-align: center;
 }
 
 .title-win{
 	font-family: "Pretty Smile";
   color : #79bd9a;
   margin-top: 5%;
+  width: 100%;
+  text-align: center;
 }
 
 .btn-green {
@@ -162,10 +172,10 @@ body {
 
 .delete-recipe{
   position: absolute;
-  top: -3%;
-  left: 90%;
+  top: 0%;
+  left: 85%;
   color: #8D8B8B;
-  font-size: 17px;
+  font-size: 20px;
   background-color: transparent;
   border-color: transparent;
 }

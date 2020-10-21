@@ -1,12 +1,12 @@
-import React, { Component, useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SaltAppForm from './SaltAppForm.js'
 import './Salt.css';
 import {
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import {TokenContext} from '../TokenContext'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -14,7 +14,8 @@ const SaltMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingSaltMeal , setExistingSaltMeal] = useState([])
   const [recipeId, setRecipeId] = useState(0)
-  const token = useContext(TokenContext)
+  const token = localStorage.getItem('tokenSession')
+  const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
 
   const handleSaltForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -34,6 +35,10 @@ const SaltMealApp = () => {
     .then(res => res.json())
     .then(
       (result) => {
+        if(result.status === 401){
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }
         setExistingSaltMeal(existingSaltMeal.concat( result ))
       },
       (error) => {
@@ -46,6 +51,7 @@ const SaltMealApp = () => {
   
   const getSaltRecipe = () => {
 
+
     fetch("http://localhost:8080/api/cooking-recipe?type=SALT", { 
       method: 'get', 
       headers: new Headers({
@@ -55,6 +61,11 @@ const SaltMealApp = () => {
     .then(res => res.json())
     .then(
       (result) => {
+          if(result.status === 401){
+            console.log(result)
+            localStorage.clear();
+            setIsSessionTimeOut(true)
+          }
           if(result.length > 0){
             setExistingSaltMeal(existingSaltMeal.concat( result ))
           }else{
@@ -84,7 +95,7 @@ const SaltMealApp = () => {
   }
   
   const deleteRecipe = (id) => {
-    console.log("MON ID : ", id)
+    
     fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
@@ -93,7 +104,13 @@ const SaltMealApp = () => {
     })
     .then(
       (result) => {
-        console.log(result)
+        if(result.status === 401){
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }else{
+          console.log(result)
+        }
+        
       },
       (error) => {
         console.log(error)
@@ -113,6 +130,7 @@ const SaltMealApp = () => {
       <div>
         <Header/>
         <Footer/>
+        {isSessionTimeOut && <Redirect to ="/"/>}
         {token &&
         <div className="container marketing content-page">
         <div className="row">
@@ -125,7 +143,7 @@ const SaltMealApp = () => {
           <div className="row">
             {existingSaltMeal.map((recipe, index) => {
               return(
-                <div key={index} className="col-sm-3 mt-4 mr-5 list-items">
+                <div key={index} className="col-sm-3 mt-4 mr-4 ml-5 list-items">
                   <div className="content-item">
                     <div className="title-item"><h2>{recipe.name}</h2></div>
                   </div>

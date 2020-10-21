@@ -1,10 +1,7 @@
-import React, { Component, useContext, useEffect, useState } from 'react'
-import './Account.css';
+import React, { useState } from 'react'
 import {
   Link, Redirect
 } from "react-router-dom";
-import {TokenContext} from './TokenContext'
-import SaltMealApp from './Salt/SaltMealApp';
 
 const AccountApp = (getTokenAuth) => {
 
@@ -46,7 +43,6 @@ const AccountApp = (getTokenAuth) => {
         }else{
           setToken(result.id_token)
           setIsLogin(true)
-          setTokenContext(result.id_token)
           console.log("FONC :", getTokenAuth())
         }
         
@@ -56,11 +52,6 @@ const AccountApp = (getTokenAuth) => {
       }
     )
   }
-
-  const setTokenContext = (idToken) => {
-    return 
-  }
-
   
   return(
     
@@ -121,5 +112,4 @@ const AccountApp = (getTokenAuth) => {
   )
 }
 
-export const TokenContextConsumer = TokenContext.Consumer
 export default AccountApp;

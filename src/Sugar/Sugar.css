@@ -11,6 +11,8 @@
   color : #a8dba8;
   background-color: transparent;
   border-color: transparent;
+  position: absolute;
+  left: 70%;
 }
 
 .sugar-button:active{

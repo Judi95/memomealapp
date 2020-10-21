@@ -11,6 +11,8 @@
   color : #cff09e;
   background-color: transparent;
   border-color: transparent;
+  position: absolute;
+  left: 70%;
 }
 
 .salt-button:active{

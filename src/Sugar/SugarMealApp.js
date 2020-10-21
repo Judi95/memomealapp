@@ -1,4 +1,4 @@
-import React, { Component, useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import SugarAppForm from './SugarAppForm.js'
 import './Sugar.css';
 import {
@@ -8,13 +8,12 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
-import { TokenContext } from '../TokenContext.js';
 
 const SugarMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingSugarMeal , setExistingSugarMeal] = useState([])
   const [recipeId, setRecipeId] = useState(0)
-  const token = useContext(TokenContext)
+  const token = localStorage.getItem('tokenSession')
 
   const handleSugarForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -123,7 +122,7 @@ const SugarMealApp = () => {
           <div className="row">
             {existingSugarMeal.map((recipe, index) => {
               return (
-                <div key={index} className="col-md-3 mt-4 mr-4 list-items">
+                <div key={index} className="col-md-3 mt-4 mr-4 ml-5 list-items">
                   <div className="content-item">
                     <div className="title-item"><h2>{recipe.name}</h2></div>
                   </div>
