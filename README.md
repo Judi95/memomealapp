@@ -4,7 +4,7 @@ Livre de recette et oenologie en ligne.
 
 ### `V 0.1`
 
-- 3 catégories : Salé, sucré, vins
+- [ ] 3 catégories : Salé, sucré, vins
 - Pouvoir ajouter des recettes salées, sucrées et des vins
 - Pouvoir ajouter des images
 - Pouvoir supprimer une recette salée, sucrée ou un vin
