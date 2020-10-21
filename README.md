@@ -25,6 +25,8 @@ Livre de recette et oenologie en ligne.
 - Pouvoir modifier une recette existante d'un utilisateur
 - Suppresion recettes et vins d'un utilisateur
 
+### `FIRST DEPLOYMENT`
+
 ### `V 1.2`
 
 - rechercher par type de vin
@@ -32,6 +34,7 @@ Livre de recette et oenologie en ligne.
 - envoi de mail à la création de compte
 - Gestion erreur en front / affichage message
 
+### `DEPLOYMENT`
 
 ### `V 2.0`
 
@@ -40,3 +43,5 @@ Livre de recette et oenologie en ligne.
 - Envoie d'un mail avec une invitation
 - Création d'un groupe d'utilisateurs (DB)
 - Relier les recettes et vins a un groupe d'utilisateur
+
+### `DEPLOYMENT`
