@@ -31,7 +31,7 @@ Livre de recette et oenologie en ligne.
 
 - rechercher par type de vin
 - Gérer "mot de passe oublié"
-- envoi de mail à la création de compte
+- envoi de mail à la création de compte / activation
 - Gestion erreur en front / affichage message
 - Pouvoir supprimer son compte
 
@@ -40,7 +40,6 @@ Livre de recette et oenologie en ligne.
 ### `V 2.0`
 
 - Gestion de compte familial
-- Gérer le Bearer token partagé
 - Envoie d'un mail avec une invitation
 - Création d'un groupe d'utilisateurs (DB)
 - Relier les recettes et vins a un groupe d'utilisateur
