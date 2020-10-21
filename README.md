@@ -33,6 +33,7 @@ Livre de recette et oenologie en ligne.
 - Gérer "mot de passe oublié"
 - envoi de mail à la création de compte
 - Gestion erreur en front / affichage message
+- Pouvoir supprimer son compte
 
 ### `DEPLOYMENT`
 
