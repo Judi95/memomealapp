@@ -223,6 +223,10 @@ body {
   padding-top: 20%;
 }
 
+.chooseFileButton{
+  background: #343a40 !important;
+}
+
 /*
  MARKETING CONTENT
 -------------------------------------------------- */
@@ -299,5 +303,11 @@ body {
 @media (min-width: 1600px) {
   .login-container {
     margin-left: -20% !important;
+  }
 }
+
+@media (max-width: 991px) {
+  .home-page{
+    height: 100% ;
+  }
 }

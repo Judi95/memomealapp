@@ -14,7 +14,6 @@ const WineApp = () => {
   const [wineId, setWineId] = useState(0)
   const token = localStorage.getItem('tokenSession')
 
-
   const handleWineForm = event => {
     setHiddenForm(!hiddenForm )
   }
@@ -33,7 +32,7 @@ const WineApp = () => {
     .then(res => res.json())
     .then(
       (result) => {
-        setExistingWine(existingWine.concat( result ))
+        setExistingWine(existingWine.concat( result ))  
       },
       (error) => {
         console.log(error)
@@ -118,6 +117,7 @@ const WineApp = () => {
             <i className="fa fa-plus-circle"></i>
           </button>
         </div>
+        {existingWine.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajouter votre premier vin !</h2>}
         {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
         <div className="row">
           {existingWine.map ((wine) => {
@@ -136,10 +136,11 @@ const WineApp = () => {
                         fullIcon="fa fa-star"
                         activeColor="#79bd9a"
                       />
-                {wine.type !== null & wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
+                      {console.log(wine.type)}
+                {wine.type !== null && wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
                 <p className="wine-desc">{wine.description}</p>
                 </div>
-                {wine.image !== null && wine.image !== '' && <img className="img-item img-wine" src={wine.image} alt="Recipe Image" width="100%"/>}
+                {wine.image != null && wine.image !== '' && <img className="img-item img-wine" src={wine.image} alt="Recipe Image" width="100%"/>}
               </div>
 
             )

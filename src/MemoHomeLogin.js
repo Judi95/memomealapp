@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './Account.css';
 import {
-    Link
+    Link,
+    Redirect
   } from "react-router-dom";
 
 const MemoHomeLogin = ({getTokenAuth}) => {
@@ -10,6 +11,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [isWrongLogin, setIsWrongLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(false)
   
     const handleUsernameUpdate = event => {
       setUsername(event.target.value)
@@ -43,6 +45,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
             setIsWrongLogin(true)
           }else{
             getTokenAuth(result.id_token)
+            setIsLogin(true)
           }
           
         },
@@ -55,6 +58,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
     return ( 
 
         <div className="row home-page">
+          {isLogin && <Redirect to="/"/>}
             <div className="col-md-8">
             <div className="jumbotron">
                     <div className="container">

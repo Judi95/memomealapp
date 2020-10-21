@@ -113,11 +113,12 @@ const SugarMealApp = () => {
         { token &&
         <div className="container marketing content-page">
         <div className="row">
-          <h1 className="title-sugar">Sucré</h1>
+          <h1 className="title-sugar mb-3">Sucré</h1>
             <button className="fa-2x sugar-button" type="button" onClick={handleSugarForm} >
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
+          {existingSugarMeal.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajouter votre première recette sucrée !</h2>}
           {hiddenForm && <SugarAppForm handleSugarForm={handleSugarForm} saveSugarRecipe={saveSugarRecipe}/>} 
           <div className="row">
             {existingSugarMeal.map((recipe, index) => {

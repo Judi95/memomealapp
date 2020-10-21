@@ -38,8 +38,10 @@ const SaltMealApp = () => {
         if(result.status === 401){
           localStorage.clear();
           setIsSessionTimeOut(true)
+        } if( ! result.status){
+          setExistingSaltMeal(existingSaltMeal.concat( result ))
         }
-        setExistingSaltMeal(existingSaltMeal.concat( result ))
+        
       },
       (error) => {
         console.log(error)
@@ -107,18 +109,19 @@ const SaltMealApp = () => {
         if(result.status === 401){
           localStorage.clear();
           setIsSessionTimeOut(true)
+        }if(result.status === 204){
+          const newList = existingSaltMeal.filter((item) => item.id !== id)
+          setExistingSaltMeal(newList)
         }else{
-          console.log(result)
+          console.log("KO : " ,result)
         }
         
       },
       (error) => {
         console.log(error)
       }
-    )
-    const newList = existingSaltMeal.filter((item) => item.id !== id)
-    return setExistingSaltMeal(newList)
-}
+    ) 
+  }
 
   useEffect(() => {
     getSaltRecipe()
@@ -134,11 +137,12 @@ const SaltMealApp = () => {
         {token &&
         <div className="container marketing content-page">
         <div className="row">
-          <h1 className="title-salt">Salé</h1>
+          <h1 className="title-salt mb-3">Salé</h1>
             <button className="fa-2x salt-button" type="button" onClick={handleSaltForm} >
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
+          {existingSaltMeal.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajouter votre première recette salée !</h2>}
           {hiddenForm && <SaltAppForm handleSaltForm={handleSaltForm} saveSaltRecipe={saveSaltRecipe}/>} 
           <div className="row">
             {existingSaltMeal.map((recipe, index) => {

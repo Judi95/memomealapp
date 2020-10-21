@@ -104,22 +104,37 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
       <form className="sugar-form" >
           <div className="form-group">
 
-            <div className="row">
+          <div className="row">
               <div className="col-md-8">
-                <label htmlFor="exampleFormControlInput1">Nom</label>
-                <input type="Text" 
-                className="form-control" 
-                id="exampleFormControlInput1"
-                value ={name}
-                onChange={handleNameUpdate}/>
+                <div className="row">
+                    <div className="col-md-1">
+                      <label htmlFor="exampleFormControlInput1">Nom </label>
+                    </div>
+                    <div className="col-md-10">
+                      <input type="Text" 
+                        className="form-control" 
+                        id="exampleFormControlInput1"
+                        value ={name}
+                        onChange={handleNameUpdate}/>
+                      </div>
+                  </div>
               </div>
               <div className="col-md-3">
-                <label htmlFor="exampleFormControlInput1">Nombre de personne : </label>
-                <input type="Text" 
-                className="form-control" 
-                id="exampleFormControlInput1"
-                value ={quantityPeople}
-                onChange={handleQuantityPeopleUpdate}/>
+                <div className="row">
+                <div className="col-md-3 pt-2">
+                    <p> Pour </p>
+                  </div>
+                  <div className="col-md-3 p-0 mr-2">
+                    <input type="Text" 
+                    className="form-control " 
+                    id="exampleFormControlInput1"
+                    value ={quantityPeople}
+                    onChange={handleQuantityPeopleUpdate}/>
+                  </div>
+                  <div className="col-md-3 pt-2 pl-0">
+                    <p> personnes.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -188,7 +203,7 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
             <div className="btn-group-form">
               
               <Button className="sugar-button-form" onClick={persistSugarRecipe}>Ajouter la recette</Button>
-              <Button variant="secondary" onClick={handleSugarForm}>Annuler</Button>
+              <Button variant="dark" onClick={handleSugarForm}>Annuler</Button>
             </div>
             
           </div>

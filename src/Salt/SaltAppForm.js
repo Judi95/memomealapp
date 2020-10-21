@@ -95,9 +95,17 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const persistSaltRecipe = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople: quantityPeople}
+
+      if(quantityPeople === ''){
+        const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople: null}
+        saveSaltRecipe(newEntry)
+      }else{
+        const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople: quantityPeople}
+        saveSaltRecipe(newEntry)
+      }
+      
       handleSaltForm()
-      saveSaltRecipe(newEntry)
+
   } 
 
   return (
@@ -107,20 +115,35 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
 
           <div className="row">
               <div className="col-md-8">
-                <label htmlFor="exampleFormControlInput1">Nom</label>
-                <input type="Text" 
-                className="form-control" 
-                id="exampleFormControlInput1"
-                value ={name}
-                onChange={handleNameUpdate}/>
+                <div className="row">
+                    <div className="col-md-1">
+                      <label htmlFor="exampleFormControlInput1">Nom </label>
+                    </div>
+                    <div className="col-md-10">
+                      <input type="Text" 
+                        className="form-control" 
+                        id="exampleFormControlInput1"
+                        value ={name}
+                        onChange={handleNameUpdate}/>
+                      </div>
+                  </div>
               </div>
               <div className="col-md-3">
-                <label htmlFor="exampleFormControlInput1">Nombre de personne : </label>
-                <input type="Text" 
-                className="form-control" 
-                id="exampleFormControlInput1"
-                value ={quantityPeople}
-                onChange={handleQuantityPeopleUpdate}/>
+                <div className="row">
+                <div className="col-md-3 pt-2">
+                    <p> Pour </p>
+                  </div>
+                  <div className="col-md-3 p-0 mr-2">
+                    <input type="Text" 
+                    className="form-control " 
+                    id="exampleFormControlInput1"
+                    value ={quantityPeople}
+                    onChange={handleQuantityPeopleUpdate}/>
+                  </div>
+                  <div className="col-md-3 pt-2 pl-0">
+                    <p> personnes.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -189,7 +212,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
             <div className="btn-group-form">
               
               <Button className="salt-button-form" onClick={persistSaltRecipe}>Ajouter la recette</Button>
-              <Button variant="secondary" onClick={handleSaltForm}>Annuler</Button>
+              <Button variant="dark" onClick={handleSaltForm}>Annuler</Button>
             </div>
             
           </div>
