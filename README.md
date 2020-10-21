@@ -5,18 +5,18 @@ Livre de recette et oenologie en ligne.
 ### `V 0.1`
 
 - [x] 3 catégories : Salé, sucré, vins
-- Pouvoir ajouter des recettes salées, sucrées et des vins
-- Pouvoir ajouter des images
-- Pouvoir supprimer une recette salée, sucrée ou un vin
+- [x] Pouvoir ajouter des recettes salées, sucrées et des vins
+- [x] Pouvoir ajouter des images
+- [x] Pouvoir supprimer une recette salée, sucrée ou un vin
 
 ### `V 1.0`
 
-- Gérer le Bearer token
-- Ajouter une page de connexion
-- Gestion déconnexion
-- Ajouter une page d'incription
-- Gestion de compte individuel
-- Relier les recettes et vins a un utilisateur
+- [x] Gérer le Bearer token
+- [x] Ajouter une page de connexion
+- [x] Gestion déconnexion
+- [x] Ajouter une page d'incription
+- [x] Gestion de compte individuel
+- [x] Relier les recettes et vins a un utilisateur
 
 ### `V 1.1`
 
