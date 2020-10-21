@@ -30,6 +30,7 @@ Livre de recette et oenologie en ligne.
 - rechercher par type de vin
 - Gérer "mot de passe oublié"
 - envoi de mail à la création de compte
+- Gestion erreur en front / affichage message
 
 
 ### `V 2.0`
