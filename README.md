@@ -13,6 +13,7 @@ Livre de recette et oenologie en ligne.
 
 - Gérer le Bearer token
 - Ajouter une page de connexion
+- Gestion déconnexion
 - Ajouter une page d'incription
 - Gestion de compte individuel
 - Relier les recettes et vins a un utilisateur
