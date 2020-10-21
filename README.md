@@ -24,6 +24,7 @@ Livre de recette et oenologie en ligne.
 - Pouvoir calculer automatique les doses d'ingrédient si on augmente le nombre de personne dans le détail d'une recette
 - Pouvoir modifier une recette existante d'un utilisateur
 - Suppresion recettes et vins d'un utilisateur
+- gestion URL API prod
 
 ### `FIRST DEPLOYMENT`
 
