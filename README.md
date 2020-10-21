@@ -9,11 +9,6 @@ Livre de recette et oenologie en ligne.
 - Pouvoir ajouter des images
 - Pouvoir supprimer une recette salée, sucrée ou un vin
 
-### `V 0.2`
-
-- Pouvoir indiquer le nombre de personne pour la quantité d'une recette (formulaire + DB)
-- Pouvoir calculer automatique les doses d'ingrédient si on augmente le nombre de personne dans le détail d'une recette
-
 ### `V 1.0`
 
 - Gérer le Bearer token
@@ -21,6 +16,14 @@ Livre de recette et oenologie en ligne.
 - Ajouter une page d'incription
 - Gestion de compte individuel
 - Relier les recettes et vins a un utilisateur
+
+### `V 1.1`
+
+- Pouvoir indiquer le nombre de personne pour la quantité d'une recette (formulaire + DB)
+- Pouvoir calculer automatique les doses d'ingrédient si on augmente le nombre de personne dans le détail d'une recette
+- Pouvoir modifier une recette existante d'un utilisateur
+- Suppresion recettes et vins d'un utilisateur
+
 
 ### `V 2.0`
 
