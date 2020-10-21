@@ -25,9 +25,11 @@ Livre de recette et oenologie en ligne.
 - Pouvoir modifier une recette existante d'un utilisateur
 - Suppresion recettes et vins d'un utilisateur
 
-### `V 1.2 : Amélioration diverses`
+### `V 1.2`
 
 - rechercher par type de vin
+- Gérer "mot de passe oublié"
+- envoi de mail à la création de compte
 
 
 ### `V 2.0`
