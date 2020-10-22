@@ -12,6 +12,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
     const [password, setPassword] = useState("")
     const [isWrongLogin, setIsWrongLogin] = useState(false)
     const [isLogin, setIsLogin] = useState(false)
+    const [connexionError, setConnexionError] = useState(false)
   
     const handleUsernameUpdate = event => {
       setUsername(event.target.value)
@@ -51,6 +52,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
         },
         (error) => {
           console.log("ERROR : ", error)
+          setConnexionError(true)
         }
       )
     }
@@ -61,10 +63,10 @@ const MemoHomeLogin = ({getTokenAuth}) => {
           {isLogin && <Redirect to="/"/>}
             <div className="col-md-8">
             <div className="jumbotron">
-                    <div className="container">
+                    <div className="container text-center">
                     <img src="logo.png" alt="Logo MemoMeal" width="80%"/>
                     <div className="home-desc">
-                        <p>Bienvenu sur MemoMeal ! Ce site  va vous permettre de noté toutes les recettes que vous aimez en passant du salé au sucré en un clique ! Vous pouvez également renseigner des vins que vous avez apprécier (ou non !) afin de vous en souvenir et de les évaluer.</p>
+                        <p>Bienvenue sur MemoMeal ! Ce site  va vous permettre de noté toutes les recettes que vous aimez en passant du salé au sucré en un clique ! Vous pouvez également renseigner des vins que vous avez apprécier (ou non !) afin de vous en souvenir et de les évaluer.</p>
                         <p>MemoMeal est un carnet de recette personnalisé qui vous suit partout ! Vous pouvez commencer votre carnet de recette en vous inscrivant ICI. Vous pouvez créer un compte de façon individuel ou partager avec toute la famille si vous le souhaitez.</p>
                     </div>
                     </div>
@@ -100,6 +102,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
                         <div className="d-flex justify-content-center form_container">
                         <form>
                           {isWrongLogin && <p className="text-danger wrong-login"><small> <em>Informations incorrectes</em></small></p>}
+                          {connexionError && <p className="text-danger wrong-login"><small> <em>Erreur lors de la connexion. Veuillez réessayer.</em></small></p>}
                             <div className="input-group mb-3">
                             <div className="input-group-append">
                                 <span className="input-group-text"><i className="fas fa-user"></i></span>

@@ -121,7 +121,7 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
               </div>
               <div className="col-md-3">
                 <div className="row">
-                <div className="col-md-3 pt-2">
+                <div className="col-md-3 pt-2 mr-1">
                     <p> Pour </p>
                   </div>
                   <div className="col-md-3 p-0 mr-2">

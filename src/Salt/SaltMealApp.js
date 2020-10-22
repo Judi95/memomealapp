@@ -142,7 +142,7 @@ const SaltMealApp = () => {
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
-          {existingSaltMeal.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajouter votre première recette salée !</h2>}
+          {existingSaltMeal.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajoutez votre première recette salée !</h2>}
           {hiddenForm && <SaltAppForm handleSaltForm={handleSaltForm} saveSaltRecipe={saveSaltRecipe}/>} 
           <div className="row">
             {existingSaltMeal.map((recipe, index) => {
@@ -154,8 +154,7 @@ const SaltMealApp = () => {
                   <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>
-              
-                    {recipe.image !== null && recipe.image !== '' &&<img className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}
+                    {recipe.image !== null && recipe.image !== "" &&<img className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}
                   <Link to={`details/${recipe.id}`}> <button className="btn button-item salt-button-item">Recette</button></Link>
                 </div>)
             })

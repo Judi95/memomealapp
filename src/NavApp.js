@@ -5,15 +5,14 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  Link
+  Redirect
 } from "react-router-dom";
 import WineApp from './Wine/WineApp.js'
 import SaltMealApp from './Salt/SaltMealApp.js'
 import SugarMealApp from './Sugar/SugarMealApp.js'
 import Details from './Details.js'
 import LogoutApp from './LogoutApp'
-import CreateAccountApp from './CreateAccountApp'
+import MemoHomeCreate from './MemoHomeCreate'
 
 const  NavApp = ({getTokenAuth, resetTokenAuth}) => {
 
@@ -55,9 +54,9 @@ const  NavApp = ({getTokenAuth, resetTokenAuth}) => {
             <Route path="/logout">
                 <LogoutApp resetTokenAuth={resetTokenAuth}/>
             </Route>
-            <PrivateRoute path="/createAccount">
-                <CreateAccountApp />
-            </PrivateRoute>            
+            <Route path="/createAccount">
+                <MemoHomeCreate />
+            </Route>            
             <PrivateRoute path="/details/:id">
                 <Details/>
             </PrivateRoute>

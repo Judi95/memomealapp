@@ -39,6 +39,11 @@ body {
   margin-bottom: 8%;
 }
 
+.content-details{
+  margin-top: 10%;
+  margin-bottom: 8%;
+}
+
 .content-page-home .jumbotron {
   margin-top: 5%;
   padding-top: 0 !important;
@@ -65,7 +70,13 @@ body {
 }
 
 .description {
-  white-space: pre;
+  white-space: pre-line;
+}
+
+.update-details{
+  position: absolute;
+    left: 80%;
+    top: 22%;
 }
 
 :focus {
@@ -147,6 +158,15 @@ body {
   margin-bottom: 0;
 }
 
+.img-details{
+  margin-bottom: 3%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.20);
+}
+
 .title-item h2{
   text-align: center;
   font-size: x-large;
@@ -225,6 +245,10 @@ body {
 
 .chooseFileButton{
   background: #343a40 !important;
+}
+
+.clic-cursor:hover{
+  cursor:pointer;
 }
 
 /*
@@ -309,5 +333,12 @@ body {
 @media (max-width: 991px) {
   .home-page{
     height: 100% ;
+  }
+}
+
+@media (max-width: 728px) {
+  .content-details{
+    margin-top: 20%;
+    margin-bottom: 8%;
   }
 }

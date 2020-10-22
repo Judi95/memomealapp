@@ -70,7 +70,7 @@ const CreateAccountApp = () => {
                 <img src="/HomeIcone.png" class="brand_logo" alt="Logo"/>
               </div>
             </div>
-            <h2 className="wellcome">Bienvenu ! </h2>
+            <h2 className="wellcome">Bienvenue ! </h2>
             <div class="d-flex justify-content-center form_container">
               <form>
                 <div class="input-group mb-3">

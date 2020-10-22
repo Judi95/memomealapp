@@ -13,7 +13,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const [quantityPeople, setQuantityPeople] = useState('')
 
   const addInput = () => {
-    const newInput = [{id: ingredients.length + 1, name: '', quantity: 0}]
+    const newInput = [{id: ingredients.length + 1, name: '', quantity: 0, unit: ''}]
     return setIngredients(ingredients.concat( newInput ))
   }
 
@@ -77,7 +77,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   }
 
   const handleUnitUpdate = event => {
-
+    
     const newList = ingredients.map((item) => {
       if (item.id == event.target.id) {
         item.unit = event.target.value 
@@ -130,7 +130,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
               </div>
               <div className="col-md-3">
                 <div className="row">
-                <div className="col-md-3 pt-2">
+                <div className="col-md-3 pt-2 mr-1">
                     <p> Pour </p>
                   </div>
                   <div className="col-md-3 p-0 mr-2">
@@ -187,7 +187,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
 
                 <div className="col-ms-4">
                   <label htmlFor="exampleFormControlInput1">Unité</label>
-                  <select  className="form-control" onChange={handleUnitUpdate}>
+                  <select  className="form-control" id={nbIngredient.id} onChange={handleUnitUpdate}>
                     {unitIngredient.map((type, index) => <option key={index} value={type}>{type}</option>)}
                   </select>
                 </div>
