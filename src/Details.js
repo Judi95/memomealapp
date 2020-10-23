@@ -5,7 +5,9 @@ import Footer from './Footer'
 import './Details.css'
 import {
   Redirect
-} from "react-router-dom";
+} from "react-router-dom"
+import DetailsAppForm from './DetailsAppForm'
+import './Details.css';
 
 const Details = () => {
 
@@ -16,6 +18,7 @@ const Details = () => {
     const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
     const [quantityPeopleValue, setQuantityPeopleValue] = useState('')
     const [quantityPeopleInit, setQuantityPeopleInit] = useState('')
+    const [isModify, setIsModify] = useState(false)
 
     const getOneRecipe = () => {
         fetch(`http://localhost:8080/api/cooking-recipes/${param.id}`, { 
@@ -55,12 +58,46 @@ const Details = () => {
         }
     }
 
+    const handleSaltForm = event => {
+      return setIsModify(!isModify)
+    }
+
+    const saveRecipe = (entry) => {
+      entry.type = recipe.type
+      entry.id = recipe.id
+      
+      fetch("http://localhost:8080/api/cooking-recipes", { 
+        method: 'put', 
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(entry)
+      })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          if(result.status === 401){
+            localStorage.clear();
+            setIsSessionTimeOut(true)
+          } if( ! result.status){
+            setRecipe(result)
+          }
+          console.log(result)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  
+    }
+
     return (
         <div>
           <Header/>
           <Footer/>
           {isSessionTimeOut && <Redirect to ="/"/>}
-          {token &&
+          {token && !isModify &&
             <div className="container marketing content-details">
 
                 <div className="row">
@@ -68,10 +105,9 @@ const Details = () => {
                     <h1 className="title-sugar">{recipe.name}</h1>
                   </div>
                   <div className="col-md-4">
-                    <button className="btn my-2 my-sm-0 mr-4 btn-dark btn-sm" type="button" > Modifier </button>
+                    <button className="btn my-2 my-sm-0 mr-4 btn-dark btn-sm" type="button" onClick={() => setIsModify(true)}> Modifier </button>
                   </div>
                 </div>
-
 
                 <div className="col-lg-12 mt-5">
                   {recipe.quantityPeople && 
@@ -104,7 +140,9 @@ const Details = () => {
                          <li key={index} className="list-group-item">{ing.quantity > 0 && calculationQuantity(ing.quantity)} {ing.unit} {ing.name}</li>)
                     }
                 </ul>
-            </div>}
+              </div>
+            }
+            { token && isModify && <DetailsAppForm handleSaltForm={handleSaltForm} saveRecipe={saveRecipe} recipe={recipe}/>}
         </div>
     )
 }
