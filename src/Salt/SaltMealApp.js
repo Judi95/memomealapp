@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SaltAppForm from './SaltAppForm.js'
 import './Salt.css';
 import {
@@ -9,6 +9,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
+import { UrlContext } from '../UrlContext';
 
 const SaltMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
@@ -16,6 +17,7 @@ const SaltMealApp = () => {
   const [recipeId, setRecipeId] = useState(0)
   const token = localStorage.getItem('tokenSession')
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
+  const url = useContext(UrlContext)
 
   const handleSaltForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -24,7 +26,7 @@ const SaltMealApp = () => {
   const saveSaltRecipe = (entry) => {
     entry.type = "SALT"
     
-    fetch("http://localhost:8080/api/cooking-recipes", { 
+    fetch(url + "api/cooking-recipes", { 
       method: 'post', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -54,7 +56,7 @@ const SaltMealApp = () => {
   const getSaltRecipe = () => {
 
 
-    fetch("http://localhost:8080/api/cooking-recipe?type=SALT", { 
+    fetch(url + "api/cooking-recipe?type=SALT", { 
       method: 'get', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`
@@ -98,7 +100,7 @@ const SaltMealApp = () => {
   
   const deleteRecipe = (id) => {
     
-    fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
+    fetch(url + `api/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,

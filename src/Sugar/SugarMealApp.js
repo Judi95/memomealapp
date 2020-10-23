@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
 import SugarAppForm from './SugarAppForm.js'
 import './Sugar.css';
 import {
@@ -8,12 +8,14 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
+import { UrlContext } from '../UrlContext';
 
 const SugarMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingSugarMeal , setExistingSugarMeal] = useState([])
   const [recipeId, setRecipeId] = useState(0)
   const token = localStorage.getItem('tokenSession')
+  const url = useContext(UrlContext)
 
   const handleSugarForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -22,7 +24,7 @@ const SugarMealApp = () => {
   const saveSugarRecipe = (entry) => {
     entry.type = "SUGAR"
     
-    fetch("http://localhost:8080/api/cooking-recipes", { 
+    fetch(url + "api/cooking-recipes", { 
       method: 'post', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -44,7 +46,7 @@ const SugarMealApp = () => {
 
   
   const getSugarRecipe = () => {
-    fetch("http://localhost:8080/api/cooking-recipe?type=SUGAR", { 
+    fetch(url + "api/cooking-recipe?type=SUGAR", { 
       method: 'get', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -83,7 +85,7 @@ const SugarMealApp = () => {
   
   const deleteRecipe = (id) => {
     console.log("MON ID : ", id)
-    fetch(`http://localhost:8080/api/cooking-recipes/${id}`, { 
+    fetch(url + `api/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`

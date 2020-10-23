@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tooltip, Button, OverlayTrigger } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import ReactStars from 'react-rating-stars-component';
 import ImageUploader from 'react-images-upload'
 

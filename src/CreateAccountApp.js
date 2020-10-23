@@ -1,7 +1,8 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { Component, useContext, useEffect, useState } from 'react'
 import {
   Link, Redirect
 } from "react-router-dom";
+import { UrlContext } from './UrlContext';
 
 const CreateAccountApp = () => {
   
@@ -10,6 +11,7 @@ const CreateAccountApp = () => {
   const [password, setPassword] = useState("")
   const [passwordConfirmed, setPasswordConfirmed] = useState("")
   const [isSamePassword, setIsSamePassword] = useState(true)
+  const url = useContext(UrlContext)
 
   const handleUsernameUpdate = event => {
     setUsername(event.target.value)
@@ -37,7 +39,7 @@ const CreateAccountApp = () => {
 
     const entry = {login: username, email: username, password:password, authorities:["ROLE_USER"]}
 
-    fetch("http://localhost:8080/api/create-user", { 
+    fetch( url + "api/create-user", { 
       method: 'post', 
       headers: new Headers({
         'Content-Type': 'application/json'

@@ -6,6 +6,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
+import { UrlContext } from '../UrlContext';
 
 const WineApp = () => {
 
@@ -13,6 +14,8 @@ const WineApp = () => {
   const [existingWine , setExistingWine] = useState([])
   const [wineId, setWineId] = useState(0)
   const token = localStorage.getItem('tokenSession')
+  const url = useContext(UrlContext)
+  
 
   const handleWineForm = event => {
     setHiddenForm(!hiddenForm )
@@ -21,7 +24,7 @@ const WineApp = () => {
   const saveWine = (entry) => {
     setHiddenForm(!hiddenForm)
 
-    fetch("http://localhost:8080/api/wines", { 
+    fetch( url + "api/wines", { 
       method: 'post', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -43,7 +46,7 @@ const WineApp = () => {
   }
 
   const getWines = () => {
-    fetch("http://localhost:8080/api/wines", { 
+    fetch( url + "api/wines", { 
       method: 'get', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`
@@ -81,8 +84,8 @@ const WineApp = () => {
   }
   
   const deleteRecipe = (id) => {
-    console.log("MON ID : ", id)
-    fetch(`http://localhost:8080/api/wines/${id}`, { 
+
+    fetch(url + `api/wines/${id}`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`

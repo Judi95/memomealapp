@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Account.css';
 import {
     Link,
     Redirect
   } from "react-router-dom";
+  import { UrlContext } from './UrlContext';
 
 const MemoHomeLogin = ({getTokenAuth}) => {
 
@@ -13,6 +14,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
     const [isWrongLogin, setIsWrongLogin] = useState(false)
     const [isLogin, setIsLogin] = useState(false)
     const [connexionError, setConnexionError] = useState(false)
+    const url = useContext(UrlContext)
   
     const handleUsernameUpdate = event => {
       setUsername(event.target.value)
@@ -31,7 +33,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
       
       const entry = {username: username, password:password, rememberMe:rememberMe}
   
-      fetch("http://localhost:8080/api/authenticate", { 
+      fetch(url + "api/authenticate", { 
         method: 'post', 
         headers: new Headers({
           'Content-Type': 'application/json'

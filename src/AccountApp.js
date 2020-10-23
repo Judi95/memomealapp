@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
   Link, Redirect
 } from "react-router-dom";
+import { UrlContext } from './UrlContext';
 
 const AccountApp = (getTokenAuth) => {
 
@@ -10,6 +11,7 @@ const AccountApp = (getTokenAuth) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [token, setToken] = useState("")
+  const url = useContext(UrlContext)
 
   const handleUsernameUpdate = event => {
     setUsername(event.target.value)
@@ -28,7 +30,7 @@ const AccountApp = (getTokenAuth) => {
     
     const entry = {username: username, password:password, rememberMe:rememberMe}
 
-    fetch("http://localhost:8080/api/authenticate", { 
+    fetch( url + "api/authenticate", { 
       method: 'post', 
       headers: new Headers({
         'Content-Type': 'application/json'
