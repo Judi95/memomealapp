@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import NavApp from './NavApp';
+import { UrlContext } from './UrlContext';
 
 const  App = () => {
 
   const theTokenSession = localStorage.getItem('tokenSession')
+  const [url, setUrl] = useState("http://localhost:8080/")
 
   const getTokenAuth = (idToken) => {
     localStorage.setItem('tokenSession', idToken);
@@ -14,9 +16,18 @@ const  App = () => {
     localStorage.clear();
   }
 
-  return (
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production'){
+      setUrl("prod")
+      console.log("PROD : ", url)
+    }
+    console.log("MON URL : ", url)
+  }, [url])
 
+  return (
+    <UrlContext.Provider value={url}>
       <NavApp getTokenAuth={getTokenAuth} resetTokenAuth={resetTokenAuth}></NavApp>
+    </UrlContext.Provider>
 
         
   );
