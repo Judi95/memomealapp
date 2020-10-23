@@ -4,10 +4,10 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "npm start",
-    "build": "npm run build",
-    "test": "npm test",
-    "eject": "npm eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
