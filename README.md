@@ -34,7 +34,7 @@ Livre de recette et oenologie en ligne.
 
 - [ ] rechercher par type de vin
 - [ ] Gérer "mot de passe oublié"
-- [ ] envoi de mail à la création de compte / activation
+- [ ] envoi de mail à la création de compte / activation / changement
 - [ ] Gestion erreur en front / affichage message
 - [ ] Pouvoir supprimer son compte
 
