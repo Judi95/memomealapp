@@ -13,12 +13,12 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const [quantityPeople, setQuantityPeople] = useState('')
 
   const addInput = () => {
-    const newInput = [{id: ingredients.length + 1, name: '', quantity: 0, unit: ''}]
+    const newInput = [{index: ingredients.length + 1, name: '', quantity: 0, unit: ''}]
     return setIngredients(ingredients.concat( newInput ))
   }
 
-  const removeInput = (id) => {
-    const newListInput = ingredients.filter((item) => item.id !== id)
+  const removeInput = (index) => {
+    const newListInput = ingredients.filter((item) => item.index !== index)
     return setIngredients(newListInput)
   }
 
@@ -51,7 +51,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const handleQuantityUpdate = event => {
 
     const newList = ingredients.map((item) => {
-      if (item.id == event.target.id) {
+      if (item.index == event.target.id) {
         item.quantity = event.target.value
         return item;
       }
@@ -65,7 +65,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const handleIngredientNameUpdate = event => {
 
     const newList = ingredients.map((item) => {
-      if (item.id == event.target.id) {
+      if (item.index == event.target.id) {
         item.name = event.target.value 
         return item;
       }
@@ -79,7 +79,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const handleUnitUpdate = event => {
     
     const newList = ingredients.map((item) => {
-      if (item.id == event.target.id) {
+      if (item.index == event.target.id) {
         item.unit = event.target.value 
         return item;
       }
@@ -181,13 +181,15 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
                   <label htmlFor="exampleFormControlInput1">Quantité</label>
                   <input type="number" 
                   className="form-control" 
-                  id={nbIngredient.id}
+                  id={nbIngredient.index}
                   onChange={handleQuantityUpdate}/>
                 </div>
 
                 <div className="col-ms-4">
                   <label htmlFor="exampleFormControlInput1">Unité</label>
-                  <select  className="form-control" id={nbIngredient.id} onChange={handleUnitUpdate}>
+                  <select  className="form-control" 
+                  id={nbIngredient.index} 
+                  onChange={handleUnitUpdate}>
                     {unitIngredient.map((type, index) => <option key={index} value={type}>{type}</option>)}
                   </select>
                 </div>
@@ -196,7 +198,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
                   <label htmlFor="exampleFormControlInput1">Nom</label>
                   <input type="Text" 
                   className="form-control" 
-                  id={nbIngredient.id}
+                  id={nbIngredient.index}
                   onChange={handleIngredientNameUpdate}/>
                 </div>
 

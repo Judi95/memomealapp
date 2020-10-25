@@ -1,5 +1,5 @@
 /* GLOBAL STYLES
-#cff09e
+#c3f885
 #a8dba8
 #79bd9a
 #3b8686
@@ -64,7 +64,7 @@
     padding: 0 2rem;
 }
 .input-group-text {
-    background: #cff09e!important;
+    background: #c3f885!important;
     color: white !important;
     border: 0 !important;
     border-radius: 0.25rem 0 0 0.25rem !important;
@@ -75,10 +75,10 @@
     outline: 0px !important;
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #cff09e!important;
+    background-color: #c3f885!important;
 }
 .forget-password {
-    color: #cff09e;
+    color: #c3f885;
     margin-top: 2px;
 }
 

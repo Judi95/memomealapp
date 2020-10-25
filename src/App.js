@@ -19,7 +19,7 @@ const  App = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production'){
-      setUrl("prod")
+      setUrl("https://memomealapi.cleverapps.io/")
       console.log("PROD : ", url)
     }
     console.log("MON URL : ", url)

@@ -1,5 +1,5 @@
 /* GLOBAL STYLES
-#cff09e
+#bdef82   bdef82
 #a8dba8
 #79bd9a
 #3b8686
@@ -55,7 +55,7 @@ body {
 }
 
 .salt-icon{
-  color: #cff09e;
+  color: #bdef82;
   font-size: 80px;
 }
 
@@ -95,7 +95,7 @@ body {
 }
 
 .head-green{
-	background-color : #cff09e;
+	background-color : #bdef82;
 }
 
 @font-face {
@@ -111,7 +111,7 @@ body {
 
 .title-salt{
 	font-family: "Pretty Smile";
-  color : #cff09e;
+  color : #bdef82;
   margin-top: 5%;
   width: 100%;
   text-align: center;
@@ -192,7 +192,7 @@ body {
 }
 
 .user-account{
-  color: #cff09e;
+  color: #bdef82;
   text-align: right;
 }
 

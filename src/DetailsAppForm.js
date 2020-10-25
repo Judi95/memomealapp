@@ -1,39 +1,24 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap'
 import ImageUploader from 'react-images-upload'
 
-const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
+const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
 
   
-  const [name , setName] = useState('')
-  const [description , setDescription] = useState('')
-  const [ingredients , setIngredients] = useState([])
-  const [image , setImage] = useState('')
+  const [name , setName] = useState(recipe.name)
+  const [description , setDescription] = useState(recipe.description)
+  const [ingredients , setIngredients] = useState(recipe.ingredients)
   const [unitIngredient , setIUnitngredients] = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe"])
-  const [quantityPeople, setQuantityPeople] = useState('')
+  const [quantityPeople, setQuantityPeople] = useState(recipe.quantityPeople)
 
   const addInput = () => {
-    const newInput = [{index: ingredients.length + 1, name: '', quantity: 0}]
+    const newInput = [{id: ingredients.length + 1, name: '', quantity: 0, unit: ''}]
     return setIngredients(ingredients.concat( newInput ))
   }
 
-  const removeInput = (index) => {
-    const newListInput = ingredients.filter((item) => item.index !== index)
+  const removeInput = (id) => {
+    const newListInput = ingredients.filter((item) => item.id !== id)
     return setIngredients(newListInput)
-  }
-
-  const handlePictureUpdate = (newPicture) => {
-
-    if(newPicture.length > 0){
-      let reader = new FileReader();
-      reader.readAsDataURL(newPicture[0]);
-      reader.onloadend = () => {
-        setImage(reader.result)
-      };
-      
-    }else{
-      setImage('')
-    }
   }
 
   const handleNameUpdate = event => {
@@ -51,7 +36,7 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
   const handleQuantityUpdate = event => {
 
     const newList = ingredients.map((item) => {
-      if (item.index == event.target.id) {
+      if (item.id == event.target.id) {
         item.quantity = event.target.value
         return item;
       }
@@ -65,7 +50,7 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
   const handleIngredientNameUpdate = event => {
 
     const newList = ingredients.map((item) => {
-      if (item.index == event.target.id) {
+      if (item.id == event.target.id) {
         item.name = event.target.value 
         return item;
       }
@@ -77,9 +62,9 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
   }
 
   const handleUnitUpdate = event => {
-
+    
     const newList = ingredients.map((item) => {
-      if (item.index == event.target.id) {
+      if (item.id == event.target.id) {
         item.unit = event.target.value 
         return item;
       }
@@ -91,23 +76,34 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
   }
 
 
-  const persistSugarRecipe = event => {
+
+  const persistRecipe = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople:quantityPeople}
-      handleSugarForm()
-      saveSugarRecipe(newEntry)
+
+      if(quantityPeople === ''){
+        const newEntry = {name: name, description: description, ingredients: ingredients, quantityPeople: null}
+        saveRecipe(newEntry)
+      }else{
+        const newEntry = {name: name, description: description, ingredients: ingredients, quantityPeople: quantityPeople}
+        console.log("ENTRY : ", newEntry)
+        saveRecipe(newEntry)
+      }
+      
+
+      handleSaltForm()
+
   } 
 
   return (
     <div>
-      <form className="sugar-form" >
+      <form className="details-form text-center" >
           <div className="form-group">
 
           <div className="row">
               <div className="col-md-8">
                 <div className="row">
-                    <div className="col-md-1">
+                    <div className="col-md-1 mt-2">
                       <label htmlFor="exampleFormControlInput1">Nom </label>
                     </div>
                     <div className="col-md-10">
@@ -147,54 +143,46 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
             cols="100%"
             onChange={handleDescUpdate}/>
 
-            <ImageUploader
-                buttonText='Ajouter une image'
-                onChange={handlePictureUpdate}
-                imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-                withLabel= {false}
-                withIcon= {false}
-                withPreview= {true}
-                className= "add-picture"
-            />
-
             <div className="row ingredients">
               <h5>Ingrédients</h5>
-                <button className="fa-2x sugar-add-ingredient-button" type="button" onClick={addInput} >
+                <button className="fa-2x salt-add-ingredient-button" type="button" onClick={addInput} >
                   <i className="fa fa-plus-circle"></i>
                 </button>
             </div>
 
             {ingredients.map(nbIngredient => (
-              <div key={nbIngredient.index}  className="row">
+              <div key={nbIngredient.id}  className="row">
 
                 <div className="col-sm-2">
                   <label htmlFor="exampleFormControlInput1">Quantité</label>
                   <input type="number" 
                   className="form-control" 
-                  id={nbIngredient.index}
+                  id={nbIngredient.id}
+                  value= {nbIngredient.quantity}
                   onChange={handleQuantityUpdate}/>
                 </div>
 
                 <div className="col-ms-4">
                   <label htmlFor="exampleFormControlInput1">Unité</label>
                   <select  className="form-control" 
-                  id={nbIngredient.index}
+                  id={nbIngredient.id} 
+                  value={nbIngredient.unit}
                   onChange={handleUnitUpdate}>
                     {unitIngredient.map((type, index) => <option key={index} value={type}>{type}</option>)}
                   </select>
                 </div>
 
                 <div className="col-md-5">
-                  <label htmlFor="exampleFormControlInput1">Name</label>
+                  <label htmlFor="exampleFormControlInput1">Nom</label>
                   <input type="Text" 
                   className="form-control" 
-                  id={nbIngredient.index}
+                  id={nbIngredient.id}
+                  value= {nbIngredient.name}
                   onChange={handleIngredientNameUpdate}/>
                 </div>
 
                 <div className="col-md-2">
-                  <button className="fa-2x sugar-remove-ingredient-button" type="button" onClick={() => removeInput(nbIngredient.index)} >
+                  <button className="fa-2x salt-remove-ingredient-button" type="button" onClick={() => removeInput(nbIngredient.id)} >
                     <i className="fa fa-minus-circle"></i>
                   </button>
                 </div>
@@ -204,13 +192,13 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
             
             <div className="btn-group-form">
               
-              <Button className="sugar-button-form" onClick={persistSugarRecipe}>Ajouter la recette</Button>
-              <Button variant="dark" onClick={handleSugarForm}>Annuler</Button>
+              <Button className="salt-button-form" onClick={persistRecipe}>Modifer la recette</Button>
+              <Button variant="dark" onClick={handleSaltForm}>Annuler</Button>
             </div>
             
           </div>
           <div className="mb-4">
-            <hr className="sugar-solid"/>
+            <hr className="salt-solid"/>
           </div>
       </form>
     </div>
@@ -218,4 +206,4 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
 }
 
 
-export default SugarAppForm
+export default SaltAppForm
