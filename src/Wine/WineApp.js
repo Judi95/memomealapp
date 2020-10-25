@@ -10,7 +10,6 @@ import { UrlContext } from '../UrlContext';
 import {
   Redirect
 } from "react-router-dom";
-import FlipMove from 'react-flip-move';
 
 
 const WineApp = () => {
@@ -143,7 +142,7 @@ const WineApp = () => {
           </button>
         </div>
         {existingWine.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajoutez votre premier vin !</h2>}
-        { <FlipMove><WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/> </FlipMove>}
+        {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
         <div className="row">
           {existingWine.map ((wine) => {
             return (

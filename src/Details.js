@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import Header from './Header'
 import Footer from './Footer'
@@ -7,7 +7,8 @@ import {
   Redirect
 } from "react-router-dom"
 import DetailsAppForm from './DetailsAppForm'
-import './Details.css';
+import { UrlContext } from './UrlContext';
+
 
 const Details = () => {
 
@@ -19,9 +20,10 @@ const Details = () => {
     const [quantityPeopleValue, setQuantityPeopleValue] = useState('')
     const [quantityPeopleInit, setQuantityPeopleInit] = useState('')
     const [isModify, setIsModify] = useState(false)
+    const url = useContext(UrlContext)
 
     const getOneRecipe = () => {
-        fetch(`http://localhost:8080/api/cooking-recipes/${param.id}`, { 
+        fetch( url + `api/cooking-recipes/${param.id}`, { 
           method: 'get', 
           headers: new Headers({
             'Authorization': `Bearer ${token}`
@@ -66,7 +68,7 @@ const Details = () => {
       entry.type = recipe.type
       entry.id = recipe.id
       
-      fetch("http://localhost:8080/api/cooking-recipes", { 
+      fetch( url + "api/cooking-recipes", { 
         method: 'put', 
         headers: new Headers({
           'Authorization': `Bearer ${token}`,
@@ -82,6 +84,8 @@ const Details = () => {
             setIsSessionTimeOut(true)
           } if( ! result.status){
             setRecipe(result)
+            setQuantityPeopleValue(result.quantityPeople)
+            setQuantityPeopleInit(result.quantityPeople)
           }
           console.log(result)
         },

@@ -97,7 +97,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
                 withIcon= {false}
                 withPreview= {true}
                 className= "add-picture"
-            />
+              />
 
             <Button type="submit" className="wine-button-form">Ajouter</Button>
             <Button variant="dark" onClick={handleWineForm}>Annuler</Button>

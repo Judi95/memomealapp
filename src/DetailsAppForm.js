@@ -8,6 +8,7 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
   const [name , setName] = useState(recipe.name)
   const [description , setDescription] = useState(recipe.description)
   const [ingredients , setIngredients] = useState(recipe.ingredients)
+  const [image , setImage] = useState('')
   const [unitIngredient , setIUnitngredients] = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe"])
   const [quantityPeople, setQuantityPeople] = useState(recipe.quantityPeople)
 
@@ -31,6 +32,20 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
 
   const handleDescUpdate = event => {
     setDescription(event.target.value)
+  }
+
+  const handlePictureUpdate = (newPicture) => {
+
+    if(newPicture.length > 0){
+      let reader = new FileReader();
+      reader.readAsDataURL(newPicture[0]);
+      reader.onloadend = () => {
+        setImage(reader.result)
+      };
+      
+    }else{
+      setImage('')
+    }
   }
 
   const handleQuantityUpdate = event => {
@@ -82,10 +97,10 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
       event.preventDefault()
 
       if(quantityPeople === ''){
-        const newEntry = {name: name, description: description, ingredients: ingredients, quantityPeople: null}
+        const newEntry = {name: name, description: description, image:image, ingredients: ingredients, quantityPeople: null}
         saveRecipe(newEntry)
       }else{
-        const newEntry = {name: name, description: description, ingredients: ingredients, quantityPeople: quantityPeople}
+        const newEntry = {name: name, description: description, image:image, ingredients: ingredients, quantityPeople: quantityPeople}
         console.log("ENTRY : ", newEntry)
         saveRecipe(newEntry)
       }
@@ -142,6 +157,17 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
             rows="5" 
             cols="100%"
             onChange={handleDescUpdate}/>
+
+            <ImageUploader
+                buttonText= "Modifier l'image"
+                onChange={handlePictureUpdate}
+                imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                withLabel= {false}
+                withIcon= {false}
+                withPreview= {true}
+                className= "add-picture"
+            />
 
             <div className="row ingredients">
               <h5>Ingrédients</h5>
