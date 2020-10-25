@@ -21,10 +21,12 @@ Livre de recette et oenologie en ligne.
 ### `V 1.1`
 
 - [x] Pouvoir indiquer le nombre de personne pour la quantité d'une recette (formulaire + DB)
-- [ ] Pouvoir calculer automatique les doses d'ingrédient si on augmente le nombre de personne dans le détail d'une recette
-- [ ] Pouvoir modifier une recette existante d'un utilisateur
-- [ ] Suppresion recettes et vins d'un utilisateur
-- [ ] gestion URL API prod
+- [x] Pouvoir calculer automatique les doses d'ingrédient si on augmente le nombre de personne dans le détail d'une recette
+- [x] Pouvoir modifier une recette existante d'un utilisateur
+- [x] Suppresion recettes et vins d'un utilisateur
+- [x] gestion URL API prod
+- [ ] CORS policy
+- [ ] Page gestion de compte : changer mot de passe, changer email
 
 ### `FIRST DEPLOYMENT`
 
