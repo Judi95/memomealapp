@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import Header from './Header'
 import Footer from './Footer'
+import './Details.css'
 import {
   Redirect
 } from "react-router-dom";
