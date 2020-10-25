@@ -2,7 +2,8 @@ import React, {  useContext, useEffect, useState } from 'react'
 import SugarAppForm from './SugarAppForm.js'
 import './Sugar.css';
 import {
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -16,6 +17,7 @@ const SugarMealApp = () => {
   const [recipeId, setRecipeId] = useState(0)
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
+  const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
 
   const handleSugarForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -35,6 +37,11 @@ const SugarMealApp = () => {
     .then(res => res.json())
     .then(
       (result) => {
+        if(result.status === 401){
+          console.log(result)
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }
         setExistingSugarMeal(existingSugarMeal.concat( result ))
       },
       (error) => {
@@ -55,11 +62,16 @@ const SugarMealApp = () => {
     .then(res => res.json())
     .then(
       (result) => {
-          if(result.length > 0){
-            setExistingSugarMeal(existingSugarMeal.concat( result ))
-          }else{
-            console.log(result)
-          }
+        if(result.status === 401){
+          console.log(result)
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }
+        if(result.length > 0){
+          setExistingSugarMeal(existingSugarMeal.concat( result ))
+        }else{
+          console.log(result)
+        }
       },
       (error) => {
         console.log(error)
@@ -93,6 +105,11 @@ const SugarMealApp = () => {
     })
     .then(
       (result) => {
+        if(result.status === 401){
+          console.log(result)
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }
         console.log(result)
       },
       (error) => {
@@ -110,6 +127,7 @@ const SugarMealApp = () => {
 
     return (
       <div>
+        {isSessionTimeOut && <Redirect to ="/"/>}
         <Header/>
         <Footer/>
         { token &&

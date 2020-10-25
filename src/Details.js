@@ -34,9 +34,6 @@ const Details = () => {
             setRecipe(result)
             setQuantityPeopleValue(result.quantityPeople)
             setQuantityPeopleInit(result.quantityPeople)
-            console.log(result)
-            console.log("22 : ", quantityPeopleValue)
-            console.log("33 : ", quantityPeopleInit)
           },
           (error) => {
             console.log(error)
@@ -50,9 +47,10 @@ const Details = () => {
 
     const calculationQuantity = (ingrQuantity) => {
         if(quantityPeopleInit){
-          return parseInt(ingrQuantity) * parseInt(quantityPeopleValue) / parseInt(quantityPeopleInit)
+          let quantity =  parseFloat(ingrQuantity) * parseFloat(quantityPeopleValue) / parseFloat(quantityPeopleInit)
+          return parseFloat(quantity).toFixed(2)
         }else{
-          return parseInt(ingrQuantity)
+          return parseFloat(ingrQuantity)
         }
     }
 

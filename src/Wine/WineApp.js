@@ -7,6 +7,10 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
 import { UrlContext } from '../UrlContext';
+import {
+  Redirect
+} from "react-router-dom";
+
 
 const WineApp = () => {
 
@@ -15,6 +19,7 @@ const WineApp = () => {
   const [wineId, setWineId] = useState(0)
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
+  const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   
 
   const handleWineForm = event => {
@@ -35,6 +40,11 @@ const WineApp = () => {
     .then(res => res.json())
     .then(
       (result) => {
+        if(result.status === 401){
+          console.log(result)
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }
         setExistingWine(existingWine.concat( result ))  
       },
       (error) => {
@@ -55,11 +65,16 @@ const WineApp = () => {
     .then(res => res.json())
     .then(
       (result) => {
-          if(result.length > 0){
-            setExistingWine(existingWine.concat( result ))
-          }else{
-            console.log(result)
-          }
+        if(result.status === 401){
+          console.log(result)
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }
+        if(result.length > 0){
+          setExistingWine(existingWine.concat( result ))
+        }else{
+          console.log(result)
+        }
       },
       (error) => {
         console.log(error)
@@ -93,6 +108,11 @@ const WineApp = () => {
     })
     .then(
       (result) => {
+        if(result.status === 401){
+          console.log(result)
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }
         console.log(result)
       },
       (error) => {
@@ -110,6 +130,7 @@ const WineApp = () => {
 
   return (
     <div>
+      {isSessionTimeOut && <Redirect to ="/"/>}
       <Header/>
       <Footer/>
       {token &&
@@ -139,7 +160,7 @@ const WineApp = () => {
                         fullIcon="fa fa-star"
                         activeColor="#79bd9a"
                       />
-                      {console.log(wine.type)}
+                     
                 {wine.type !== null && wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
                 <p className="wine-desc">{wine.description}</p>
                 </div>
