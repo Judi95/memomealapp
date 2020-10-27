@@ -5,7 +5,6 @@ import { UrlContext } from './UrlContext';
 
 const  App = () => {
 
-  const theTokenSession = localStorage.getItem('tokenSession')
   const [url, setUrl] = useState("http://localhost:8080/")
   //const [url, setUrl] = useState("https://memomealapi.cleverapps.io/")
 

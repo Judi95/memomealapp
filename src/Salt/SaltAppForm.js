@@ -111,7 +111,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   return (
     <div>
       <form className="salt-form" >
-          <div className="form-group">
+        <div className="form-group">
 
           <div className="row">
               <div className="col-md-8">

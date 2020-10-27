@@ -241,7 +241,9 @@ body {
 .clic-cursor:hover{
   cursor:pointer;
 }
-
+ .account{
+  margin-top: 1%;
+ }
 /*
  MARKETING CONTENT
 -------------------------------------------------- */

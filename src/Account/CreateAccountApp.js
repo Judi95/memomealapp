@@ -2,7 +2,7 @@ import React, { Component, useContext, useEffect, useState } from 'react'
 import {
   Link, Redirect
 } from "react-router-dom";
-import { UrlContext } from './UrlContext';
+import { UrlContext } from '../UrlContext';
 
 const CreateAccountApp = () => {
   

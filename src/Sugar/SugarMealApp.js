@@ -151,7 +151,7 @@ const SugarMealApp = () => {
                     <i className="fa fa-minus-circle"></i>
                   </button>   
                   {recipe.image !== null && recipe.image !== '' && <img className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}  
-                  <p><Link className="link-recipe" to={`details/${recipe.id}`}> <button className="btn button-item sugar-button-item">Recette</button></Link></p>
+                  <p><Link className=" nav-link link-recipe" to={`details/${recipe.id}`}> <button className="btn button-item sugar-button-item">Recette</button></Link></p>
                   </div>
 
               )

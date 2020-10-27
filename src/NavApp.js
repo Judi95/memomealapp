@@ -1,6 +1,6 @@
 import React from 'react'
 import MemoHome from './MemoHome'
-import MemoHomeLogin from './MemoHomeLogin'
+import MemoHomeLogin from './Account/MemoHomeLogin'
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,9 +10,10 @@ import {
 import WineApp from './Wine/WineApp.js'
 import SaltMealApp from './Salt/SaltMealApp.js'
 import SugarMealApp from './Sugar/SugarMealApp.js'
-import Details from './Details.js'
-import LogoutApp from './LogoutApp'
-import MemoHomeCreate from './MemoHomeCreate'
+import Details from './Details/Details.js'
+import LogoutApp from './Account/LogoutApp'
+import MemoHomeCreate from './Account/MemoHomeCreate'
+import MyAccount from './Account/MyAccount';
 
 const  NavApp = ({getTokenAuth, resetTokenAuth}) => {
 
@@ -59,6 +60,9 @@ const  NavApp = ({getTokenAuth, resetTokenAuth}) => {
             </Route>            
             <PrivateRoute path="/details/:id">
                 <Details/>
+            </PrivateRoute>
+            <PrivateRoute path="/myAccount">
+                <MyAccount/>
             </PrivateRoute>
             <Route path="/login">
                  <MemoHomeLogin getTokenAuth={getTokenAuth}/>

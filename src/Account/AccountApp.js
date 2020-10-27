@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import {
-  Link, Redirect
+  Link
 } from "react-router-dom";
-import { UrlContext } from './UrlContext';
+import { UrlContext } from '../UrlContext';
 
 const AccountApp = (getTokenAuth) => {
 
