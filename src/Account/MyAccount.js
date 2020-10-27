@@ -70,38 +70,36 @@ const MyAccount = () => {
         setNewPassword2(event.target.value)
     }
 
-    const saveNewEmail = () => {
-        
-        const newEntry = {email: email}
-
-        console.log("entry : ", newEntry)
-        fetch(url + "api/account/change-email", { 
-          method: 'post', 
-          headers: new Headers({
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }),
-          body: JSON.stringify({email: email})
-        })        
-        .then(
-          (result) => {
-            console.log("RESULT : ", result)
-            if(result.status === 401){
-              localStorage.clear();
-              setIsSessionTimeOut(true)
-            } if(result.status === 200){
-              confirmInfos()
-            }
-            
-          },
-          (error) => {
-            console.log(error)
+  const saveNewEmail = () => {
+    if(isSameEmail && email){
+      fetch(url + "api/account/change-email", { 
+        method: 'post', 
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({email: email})
+      })        
+      .then(
+        (result) => {
+          console.log("RESULT : ", result)
+          if(result.status === 401){
+            localStorage.clear();
+            setIsSessionTimeOut(true)
+          } if(result.status === 200){
+            confirmInfos()
           }
-        )
-      }
+          
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+    }
+  }
 
-      const saveNewPassword = () => {
-        
+  const saveNewPassword = () => { 
+    if(isSamePassword && newPassword2){
         const newEntry = {currentPassword: currentPassword, newPassword: newPassword2}
         fetch(url + "api/account/change-password", { 
           method: 'post', 
@@ -126,25 +124,27 @@ const MyAccount = () => {
           }
         )
       }
+    }
 
-      const confirmInfos = () => {
-        confirmAlert({
-          message: 'Vous avez changé vos informations de connexion. Veuillez-vous reconnecter. ',
-          buttons: [
-            {
-              label: 'Valider',
-              onClick: () => {
-                localStorage.clear();
-                setIsSessionTimeOut(true)
-              }
-            }
-          ],
-          onClickOutside: () => {
+  const confirmInfos = () => {
+    confirmAlert({
+      message: 'Vous avez changé vos informations de connexion. Veuillez-vous reconnecter. ',
+      buttons: [
+        {
+          label: 'Valider',
+          onClick: () => {
             localStorage.clear();
             setIsSessionTimeOut(true)
           }
-        });
+        }
+      ],
+      onClickOutside: () => {
+        localStorage.clear();
+        setIsSessionTimeOut(true)
       }
+    });
+  }
+    
 
     return (
 
@@ -155,52 +155,61 @@ const MyAccount = () => {
             <h1> Mon compte </h1>
             <h2>Changer mon email</h2>
             <div className="form-group">
+              <form>
                 <input type="email" 
                     className="form-control m-2" 
                     value ={currentEmail}
                     onChange={handleCurrentEmailUpdate}
-                    placeholder="Email actuel"/>
+                    placeholder="Email actuel"
+                    required/>
 
                 <input type="email"  
                     className="form-control m-2" 
                     value ={newEmail1}
                     onChange={handleNewEmail1Update}
-                    placeholder="Nouvel email"/>
+                    placeholder="Nouvel email"
+                    required/>
                 
                 <input type="email"  
                     className="form-control m-2" 
                     value ={email}
                     onChange={handleEmailUpdate}
-                    placeholder="Confirmez email"/>
+                    placeholder="Confirmez email"
+                    required/>
 
                 { !isSameEmail && <p className="wrong-password">Les emails  doivent être identiques</p>}
-
                 <div className="d-flex justify-content-center"><Button className="btn-secondary btn-my-account" onClick={saveNewEmail}>Valider</Button></div>
+              </form>
             </div>
 
             <h2>Changer mon mot de passe</h2>
             <div className="form-group">
+              <form>
                 <input type="password" 
                     className="form-control m-2" 
                     value ={currentPassword}
                     onChange={handleCurrentPasswordUpdate}
-                    placeholder="Mot de passe actuel"/>
+                    placeholder="Mot de passe actuel"
+                    required/>
 
                 <input type="password"  
                     className="form-control m-2" 
                     value ={newPassword1}
                     onChange={handleNewPassword1Update}
-                    placeholder="Nouveau mot de passe"/>
+                    placeholder="Nouveau mot de passe"
+                    required/>
                 
                 <input type="password"  
                     className="form-control m-2" 
                     value ={newPassword2}
                     onChange={handleNewPassword2Update}
-                    placeholder="Confirmez mot de passe"/>
+                    placeholder="Confirmez mot de passe"
+                    required/>
 
                  { !isSamePassword && <p className="wrong-password">Les mots de passe doivent être identiques</p>}
 
                 <div className="d-flex justify-content-center"><Button className="btn-secondary btn-my-account" onClick={saveNewPassword}>Valider</Button></div>
+              </form>
             </div>
 
         </div>

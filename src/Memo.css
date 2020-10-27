@@ -11,6 +11,24 @@ body {
   color: #5a5a5a;
 }
 
+.navbar-memo li{
+  font-size: 18px;
+}
+
+.navbar-memo{
+  width: 100%;
+}
+
+.nav-item-account{
+  width: 150px;
+  margin-left: 50%;
+ 
+}
+
+.nav-item-deco{
+  
+}
+
 .home-page{
   background-color: #e9ecef;
   width: 100%;
@@ -315,6 +333,9 @@ body {
   .connexion {
     margin-top: 35% !important;
   }
+  .my-account-page{
+    margin-top: 15%;
+}
 }
 
 @media (min-width: 1600px) {

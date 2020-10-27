@@ -9,30 +9,32 @@ const Header = () => {
 
     return ( 
         <header>
-            <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bar-green">
                 <Link to="/" className="home-logo"><img src="/HomeIcon.png" alt="home" width="35%"/></Link> 
-                    { theToken &&              
-                    <div className="collapse navbar-collapse">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item mr-3">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav navbar-memo">
+                        <li class="nav-item mr-2">
                             <Link to="/salt" className="nav-link text-light">Salé</Link>
-                            </li>
-                            <li className="nav-item mr-3">
+                        </li>
+                        <li class="nav-item mr-2">
                             <Link to="/sugar" className="nav-link text-light" >Sucré</Link>
-                            </li>
-                            <li className="nav-item mr-3">
+                        </li>
+                        <li class="nav-item mr-2">
                             <Link to="/wine" className="nav-link text-light" >Vin</Link>
-                            </li>
-                        </ul>
-                        <div className="mt-2 mt-md-0">
-                            <div className="row">
-                                <Link to="/myAccount" className=" nav-link text-light account"><i className="fa fa-user"></i> Mon compte</Link>
-                                <small><Link to="/logout" className="nav-link"><button className="btn my-2 my-sm-0 mr-4 btn-dark btn-sm"> Déconnexion </button></Link></small>
-                            </div>
-                        </div>
-                    </div>
-                }
-                </nav>  
+                        </li>
+                        <li class="nav-item mr-2 nav-item-account">
+                            <Link to="/myAccount" className=" nav-link text-light"><i classN="fa fa-user"></i> Mon compte</Link>    
+                        </li>
+                        <li class="nav-item nav-item-deco">
+                            <Link to="/logout" className="nav-link text-light"> Déconnexion</Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
         </header>
         
     );
