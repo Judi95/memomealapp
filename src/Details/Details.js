@@ -12,8 +12,8 @@ import { UrlContext } from '../UrlContext';
 
 const Details = () => {
 
-    const [param, setParma] = useState(useParams())
-    const [countRecipe, setCountRecipe] = useState(0)
+    const param = useState(useParams())
+    const countRecipe = useState(0)
     const [recipe, setRecipe] = useState({name: '', description: '', quantityPeople: '', ingredients: []})
     const token = localStorage.getItem('tokenSession')
     const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
@@ -127,7 +127,7 @@ const Details = () => {
                         <p className="description text-justify">{recipe.description}</p>
                       </div>
                       <div className="col-md-4">
-                        <img className="img-details" src={recipe.image} alt="Recipe Image" width="100%"/>
+                        <image className="img-details" src={recipe.image} alt="Recipe Image" width="100%"/>
                       </div>
                     </div>
                   : 

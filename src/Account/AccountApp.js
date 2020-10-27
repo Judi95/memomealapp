@@ -63,7 +63,7 @@ const AccountApp = (getTokenAuth) => {
           <div className="user_card">
             <div className="d-flex justify-content-center">
               <div className="brand_logo_container">
-                <img src="/HomeIcone.png" className="brand_logo" alt="Logo"/>
+                <image src="/HomeIcone.png" className="brand_logo" alt="Logo"/>
               </div>
             </div>
             <h2 className="connexion">Connexion</h2>

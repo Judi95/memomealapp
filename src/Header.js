@@ -10,7 +10,7 @@ const Header = () => {
     return ( 
         <header>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
-                <Link to="/" className="home-logo"><img src="/HomeIcon.png" alt="Accueil MemoMeal" width="35%"/></Link> 
+                <Link to="/" className="home-logo"><image src="/HomeIcon.png" alt="Accueil MemoMeal" width="35%"/></Link> 
                     { theToken &&              
                     <div className="collapse navbar-collapse">
                         <ul className="navbar-nav mr-auto">

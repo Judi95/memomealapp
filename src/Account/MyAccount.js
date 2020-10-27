@@ -19,13 +19,11 @@ const MyAccount = () => {
     const [currentEmail, setCurrentEmail] = useState("")
     const [newEmail1, setNewEmail1] = useState("")
     const [email, setEmail] = useState("")
-    const [isEmailUpdated, setIsEmailUpdated] = useState(false)
     const [isSameEmail, setIsSameEmail] = useState(true)
 
     const [currentPassword, setCurrentPassword] = useState("")
     const [newPassword1, setNewPassword1] = useState("")
     const [newPassword2, setNewPassword2] = useState("")
-    const [isPasswordUpdated, setIsPasswordUpdated] = useState(false)
     const [isSamePassword, setIsSamePassword] = useState(true)
 
     const handleCurrentEmailUpdate = event => {
@@ -157,7 +155,6 @@ const MyAccount = () => {
             <h1> Mon compte </h1>
             <h2>Changer mon email</h2>
             <div className="form-group">
-                {isEmailUpdated && <small><p className="font-italic">Vous allez recevoir un email à votre nouvelle adresse pour confirmer le changement.</p></small> }
                 <input type="email" 
                     className="form-control m-2" 
                     value ={currentEmail}
@@ -183,7 +180,6 @@ const MyAccount = () => {
 
             <h2>Changer mon mot de passe</h2>
             <div className="form-group">
-                { isPasswordUpdated && <small><p className="font-italic">Vous allez recevoir un email pour confirmer le changement.</p></small>}
                 <input type="password" 
                     className="form-control m-2" 
                     value ={currentPassword}

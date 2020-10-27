@@ -16,7 +16,7 @@ const WineApp = () => {
 
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingWine , setExistingWine] = useState([])
-  const [wineId, setWineId] = useState(0)
+  const wineId= useState(0)
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
@@ -164,7 +164,7 @@ const WineApp = () => {
                 {wine.type !== null && wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
                 <p className="wine-desc">{wine.description}</p>
                 </div>
-                {wine.image != null && wine.image !== '' && <img className="img-item img-wine" src={wine.image} alt="Recipe Image" width="100%"/>}
+                {wine.image != null && wine.image !== '' && <image className="img-item img-wine" src={wine.image} alt="Recipe Image" width="100%"/>}
               </div>
 
             )
