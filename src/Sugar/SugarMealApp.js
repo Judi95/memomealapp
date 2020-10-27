@@ -14,7 +14,6 @@ import { UrlContext } from '../UrlContext';
 const SugarMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingSugarMeal , setExistingSugarMeal] = useState([])
-  const recipeId = useState(0)
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
@@ -122,7 +121,7 @@ const SugarMealApp = () => {
 
   useEffect(() => {
     getSugarRecipe()
-  }, [recipeId])
+  }, [])
 
 
     return (
@@ -150,7 +149,7 @@ const SugarMealApp = () => {
                   <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>   
-                  {recipe.image !== null && recipe.image !== '' && <image className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}  
+                  {recipe.image !== null && recipe.image !== '' && <image className="img-item" src={recipe.image} alt="recipe" width="100%"/>}  
                   <p><Link className=" nav-link link-recipe" to={`details/${recipe.id}`}> <button className="btn button-item sugar-button-item">Recette</button></Link></p>
                   </div>
 

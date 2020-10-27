@@ -13,7 +13,6 @@ import { UrlContext } from '../UrlContext';
 const Details = () => {
 
     const param = useState(useParams())
-    const countRecipe = useState(0)
     const [recipe, setRecipe] = useState({name: '', description: '', quantityPeople: '', ingredients: []})
     const token = localStorage.getItem('tokenSession')
     const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
@@ -23,7 +22,8 @@ const Details = () => {
     const url = useContext(UrlContext)
 
     const getOneRecipe = () => {
-        fetch( url + `api/cooking-recipes/${param.id}`, { 
+   
+        fetch( url + `api/cooking-recipes/${param[0].id}`, { 
           method: 'get', 
           headers: new Headers({
             'Authorization': `Bearer ${token}`
@@ -49,7 +49,7 @@ const Details = () => {
 
     useEffect(() => {
       getOneRecipe()
-    }, [countRecipe])
+    }, [])
 
     const calculationQuantity = (ingrQuantity) => {
         if(quantityPeopleInit){
@@ -127,7 +127,7 @@ const Details = () => {
                         <p className="description text-justify">{recipe.description}</p>
                       </div>
                       <div className="col-md-4">
-                        <image className="img-details" src={recipe.image} alt="Recipe Image" width="100%"/>
+                        <img className="img-details" src={recipe.image} alt="recipe" width="100%"/>
                       </div>
                     </div>
                   : 

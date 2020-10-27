@@ -14,7 +14,6 @@ import { UrlContext } from '../UrlContext';
 const SaltMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingSaltMeal , setExistingSaltMeal] = useState([])
-  const recipeId = useState(0)
   const token = localStorage.getItem('tokenSession')
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   const url = useContext(UrlContext)
@@ -127,7 +126,7 @@ const SaltMealApp = () => {
 
   useEffect(() => {
     getSaltRecipe()
-  }, [recipeId])
+  }, [])
 
 
     return (
@@ -135,6 +134,7 @@ const SaltMealApp = () => {
       <div>
         <Header/>
         <Footer/>
+        {console.log("is ok")}
         {isSessionTimeOut && <Redirect to ="/"/>}
         {token &&
         <div className="container marketing content-page">
@@ -156,7 +156,7 @@ const SaltMealApp = () => {
                   <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>
-                    {recipe.image !== null && recipe.image !== "" &&<image className="img-item" src={recipe.image} alt="Recipe Image" width="100%"/>}
+                    {recipe.image !== null && recipe.image !== "" &&<image className="img-item" src={recipe.image} alt="recipe" width="100%"/>}
                   <Link to={`details/${recipe.id}`}> <button className="btn button-item salt-button-item">Recette</button></Link>
                 </div>)
             })

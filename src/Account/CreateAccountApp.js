@@ -69,7 +69,7 @@ const CreateAccountApp = () => {
           <div class="user_card">
             <div class="d-flex justify-content-center">
               <div class="brand_logo_container">
-                <image src="/HomeIcone.png" class="brand_logo" alt="Logo"/>
+                <img src="/HomeIcone.png" class="brand_logo" alt="logo"/>
               </div>
             </div>
             <h2 className="wellcome">Bienvenue ! </h2>

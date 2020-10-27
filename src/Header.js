@@ -10,7 +10,7 @@ const Header = () => {
     return ( 
         <header>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
-                <Link to="/" className="home-logo"><image src="/HomeIcon.png" alt="Accueil MemoMeal" width="35%"/></Link> 
+                <Link to="/" className="home-logo"><img src="/HomeIcon.png" alt="home" width="35%"/></Link> 
                     { theToken &&              
                     <div className="collapse navbar-collapse">
                         <ul className="navbar-nav mr-auto">
@@ -26,7 +26,7 @@ const Header = () => {
                         </ul>
                         <div className="mt-2 mt-md-0">
                             <div className="row">
-                                <Link to="/myAccount" className=" nav-link text-light account"><i class="fa fa-user"></i> Mon compte</Link>
+                                <Link to="/myAccount" className=" nav-link text-light account"><i className="fa fa-user"></i> Mon compte</Link>
                                 <small><Link to="/logout" className="nav-link"><button className="btn my-2 my-sm-0 mr-4 btn-dark btn-sm"> Déconnexion </button></Link></small>
                             </div>
                         </div>

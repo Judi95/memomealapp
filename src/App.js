@@ -17,7 +17,7 @@ const  App = () => {
   }
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production'){
+    if (process.env.NODE_ENV === 'PROD'){
       setUrl("https://memomealapi.cleverapps.io/")
       console.log("PROD : ", url)
     }
