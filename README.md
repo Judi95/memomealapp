@@ -25,20 +25,25 @@ Livre de recette et oenologie en ligne.
 - [x] Pouvoir modifier une recette existante d'un utilisateur
 - [x] Suppresion recettes et vins d'un utilisateur
 - [x] gestion URL API prod
-- [ ] CORS policy
-- [ ] Page gestion de compte : changer mot de passe, changer email
-
-### `FIRST DEPLOYMENT`
+- [x] Page gestion de compte : changer mot de passe, changer email
 
 ### `V 1.2`
 
 - [ ] rechercher par type de vin
+- [ ] Pouvoir supprimer son compte
+
+### `FIRSY DEPLOYMENT`
+
+### `V 1.3`
+
+- [ ] CORS policy
+- [ ] Configuration envoi de mail
+
+### `V 1.4`
+
 - [ ] Gérer "mot de passe oublié"
 - [ ] envoi de mail à la création de compte / activation / changement
 - [ ] Gestion erreur en front / affichage message
-- [ ] Pouvoir supprimer son compte
-
-### `DEPLOYMENT`
 
 ### `V 2.0`
 
