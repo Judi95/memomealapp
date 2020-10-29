@@ -9,7 +9,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
   const [description , setDescription] = useState('')
   const [evaluation , setEvaluation] = useState(0)
   const [image , setImage] = useState('')
-  const wineType = useState(["Rosé", "Blanc", "Rouge", "Jaune"])
+  const [wineType, setWineType] = useState(["Rosé", "Blanc", "Rouge", "Jaune"])
   const [type , setType] = useState(wineType[0])
   
 

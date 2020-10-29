@@ -16,13 +16,27 @@ const WineApp = () => {
 
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingWine , setExistingWine] = useState([])
+  const [existingWineFilter , setExistingWineFilter] = useState([])
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
-  
+  const [wineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
 
   const handleWineForm = event => {
     setHiddenForm(!hiddenForm )
+  }
+
+  const handleTypeUpdate = event => {
+
+    if( event.target.value === "Tout"){
+      setExistingWineFilter(existingWine)
+    } else {
+      const newList = existingWine.filter((item) => {
+        return item.type == event.target.value
+      });
+   
+      setExistingWineFilter(newList);
+    }
   }
   
   const saveWine = (entry) => {
@@ -71,6 +85,7 @@ const WineApp = () => {
         }
         if(result.length > 0){
           setExistingWine(existingWine.concat( result ))
+          setExistingWineFilter(existingWine.concat( result ))
         }else{
           console.log(result)
         }
@@ -135,7 +150,14 @@ const WineApp = () => {
       {token &&
       <div className="container marketing content-page">
         <div className="row">
-          <h1 className="title-win">Vin</h1> 
+          <h1 className="title-win">Vin</h1>
+
+          <div className="col-md-2 ml-5">
+            <select  className="form-control" onChange={handleTypeUpdate}>
+              {wineType.map((type, index) => <option key={index} value={type}>{type}</option>)}
+            </select>
+          </div>
+
           <button className="fa-2x wine-button" type="button" onClick={handleWineForm} >
             <i className="fa fa-plus-circle"></i>
           </button>
@@ -143,7 +165,7 @@ const WineApp = () => {
         {existingWine.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajoutez votre premier vin !</h2>}
         {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
         <div className="row">
-          {existingWine.map ((wine) => {
+          {existingWineFilter.map ((wine) => {
             return (
               <div key={wine.id} className="col-md-3 mt-4 mr-4 ml-5 list-items">
               <div className="content-item">
