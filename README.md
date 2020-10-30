@@ -53,3 +53,16 @@ Livre de recette et oenologie en ligne.
 - [ ] Relier les recettes et vins a un groupe d'utilisateur
 
 ### `DEPLOYMENT`
+
+## Deployment
+
+- Hébergeur : ScaleWay
+- Ajouter une instance de 20G sur Ubuntu 20.04
+- Ajouter ma clé public dans mon compte Scaleway
+- Se connecter en SSH
+- Créer une clé SHH sur le serveur
+- Récupérer la clé public et la mettre dans github
+- Cloner le projet en SSH
+- apt update
+- apt install opendk-11
+- apt install ngnix
