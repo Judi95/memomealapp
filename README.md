@@ -62,7 +62,27 @@ Livre de recette et oenologie en ligne.
 - Se connecter en SSH
 - Créer une clé SHH sur le serveur
 - Récupérer la clé public et la mettre dans github
-- Cloner le projet en SSH
+- Cloner le projet en SSH dans www
+- git pull
 - apt update
-- apt install opendk-11
-- apt install ngnix
+- apt install nginx  et java 11 : apt install nginx openjdk-11-jdk
+- installation de nvm : curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+- nvm install
+- aller dans var/www/memomealapp
+- npm install
+- Création du Build de prod : npm run build
+- aller dans nginx/sites-available/
+- apt install vim
+- vim memomeal.conf
+server {
+  listen 80;
+  
+  root var/www/memomealapp/build
+  index index.html;
+}
+- Liaison des deux deux dossiers : ln -s /etc/nginx/sites-available/memomeal.conf /etc/nginx/sites-enabled/memomeal.conf
+- systemctl restart nginx
+- systemctl status nginx
+- (systemctl reload nginx)
+
+
