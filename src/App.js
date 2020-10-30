@@ -22,7 +22,7 @@ const  App = () => {
       setUrl("https://memomealapi.cleverapps.io/")
       console.log("PROD : ", url)
     }
-    console.log("MON URL : ", url)
+    console.log("MON URLl : ", url)
   }, [url])
 
   return (
