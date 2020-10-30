@@ -84,5 +84,9 @@ server {
 - systemctl restart nginx
 - systemctl status nginx
 - (systemctl reload nginx)
-
+### `BDD`
+### `API`
+- git clone API
+- apt install maven
+- mvn clean install -P prod
 
