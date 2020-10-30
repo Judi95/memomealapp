@@ -9,26 +9,26 @@ const Header = () => {
 
     return ( 
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bar-green">
+            <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
                 <Link to="/" className="home-logo"><img src="/HomeIcon.png" alt="home" width="35%"/></Link> 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav navbar-memo">
-                        <li class="nav-item mr-2">
+                <div className="collapse navbar-collapse" id="navbarCollapse">
+                    <ul className="navbar-nav navbar-memo">
+                        <li className="nav-item mr-2">
                             <Link to="/salt" className="nav-link text-light">Salé</Link>
                         </li>
-                        <li class="nav-item mr-2">
+                        <li className="nav-item mr-2">
                             <Link to="/sugar" className="nav-link text-light" >Sucré</Link>
                         </li>
-                        <li class="nav-item mr-2">
+                        <li className="nav-item mr-2">
                             <Link to="/wine" className="nav-link text-light" >Vin</Link>
                         </li>
-                        <li class="nav-item mr-2 nav-item-account">
-                            <Link to="/myAccount" className=" nav-link text-light"><i classN="fa fa-user"></i> Mon compte</Link>    
+                        <li className="nav-item mr-2 nav-item-account">
+                            <Link to="/myAccount" className=" nav-link text-light"><i className="fa fa-user"></i> Mon compte</Link>    
                         </li>
-                        <li class="nav-item nav-item-deco">
+                        <li className="nav-item nav-item-deco">
                             <Link to="/logout" className="nav-link text-light"> Déconnexion</Link>
                         </li>
                     </ul>
