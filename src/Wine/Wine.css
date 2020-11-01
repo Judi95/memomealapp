@@ -6,6 +6,14 @@
 */
 
 
+.title-win{
+	font-family: "Pretty Smile";
+  color : #79bd9a;
+  margin-top: 5%;
+  width: 100%;
+  text-align: center;
+}
+
 .wine-button{
   margin-top: 4%;
   margin-left: 4%;

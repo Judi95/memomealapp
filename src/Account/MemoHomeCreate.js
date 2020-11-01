@@ -69,11 +69,14 @@ const MemoHomeCreate = ({getTokenAuth}) => {
             <div className="col-md-8">
             <div className="jumbotron">
                     <div className="container text-center">
-                    <img src="logo.png" alt="logo" width="80%"/>
-                    <div className="home-desc">
-                        <p>Bienvenue sur MemoMeal ! Ce site  va vous permettre de noter toutes les recettes que vous aimez en passant du salé au sucré en un clic ! Vous pouvez également renseigner les vins que vous avez apprécié (ou non !) afin de vous en souvenir et de les évaluer.</p>
-                        <p>MemoMeal est un carnet de recette personnalisé qui vous suit partout ! Vous pouvez commencer votre carnet de recette en vous inscrivant  <Link to="/createAccount" className="col-ms-5"> ici </Link>. Vous pouvez créer un compte de façon individuel ou partager avec toute la famille si vous le souhaitez.</p>
-                    </div>
+                      <div className="row">
+                          <img className="memo-logo" src="logo-icon.png" alt="logo" width="80%"/>
+                          <h1 className="logo pl-3 ml-3">MemoMeal</h1>
+                      </div>
+                      <div className="home-desc">
+                          <p>Bienvenue sur MemoMeal ! Ce site  va vous permettre de noter toutes les recettes que vous aimez en passant du salé au sucré en un clic ! Vous pouvez également renseigner les vins que vous avez apprécié (ou non !) afin de vous en souvenir et de les évaluer.</p>
+                          <p>MemoMeal est un carnet de recette personnalisé qui vous suit partout ! Vous pouvez commencer votre carnet de recette en vous inscrivant  <Link to="/createAccount" className="col-ms-5"> ici </Link>. Vous pouvez créer un compte de façon individuel ou partager avec toute la famille si vous le souhaitez.</p>
+                      </div>
                     </div>
                 </div>
             <div className="container marketing">
@@ -142,7 +145,12 @@ const MemoHomeCreate = ({getTokenAuth}) => {
                 <button type="button" name="button" onClick={createUser} className="btn login_btn">Créer</button>
                 </form>
               </div>
-        
+              <div className="d-flex justify-content-center come-in">
+                <small>
+                  <p className="col-ms-8 no-account mr-1 ">Déjà un compte ? 
+                  <Link to="/login" className="col-ms-5"> Connectez-vous ! </Link></p>
+                </small>
+              </div>
             </div>
           </div>
         </div>

@@ -5,6 +5,14 @@
 #3b8686
 */
 
+.title-salt{
+	font-family: "Pretty Smile";
+  color : #bdef82;
+  margin-top: 5%;
+  width: 100%;
+  text-align: center;
+}
+
 .salt-button{
   margin-top: 4%;
   margin-left: 4%;
@@ -13,6 +21,7 @@
   border-color: transparent;
   position: absolute;
   left: 70%;
+  font-size: 30px;
 }
 
 .salt-button:active{

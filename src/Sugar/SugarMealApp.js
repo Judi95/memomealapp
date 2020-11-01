@@ -133,7 +133,7 @@ const SugarMealApp = () => {
         <div className="container marketing content-page">
           <div className="row">
             <h1 className="title-sugar mb-3">Sucré</h1>
-            <button className="fa-2x sugar-button" type="button" onClick={handleSugarForm} >
+            <button className="sugar-button" type="button" onClick={handleSugarForm} >
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
@@ -146,7 +146,7 @@ const SugarMealApp = () => {
                   <div className="content-item">
                     <div className="title-item"><h2>{recipe.name}</h2></div>
                   </div>
-                  <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
+                  <button className="delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>   
                   {recipe.image !== null && recipe.image !== '' && <image className="img-item" src={recipe.image} alt="recipe" width="100%"/>}  

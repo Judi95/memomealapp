@@ -16,12 +16,9 @@ const  App = () => {
   }
 
   useEffect(() => {
-    console.log("ENV : ", process.env.NODE_ENV)
     if (process.env.NODE_ENV === 'production'){
       setUrl("http://163.172.184.101:8080/")
-      console.log("PROD : ", url)
     }
-    console.log("MON URLl : ", url)
   }, [url])
 
   return (

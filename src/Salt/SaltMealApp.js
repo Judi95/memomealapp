@@ -134,13 +134,12 @@ const SaltMealApp = () => {
       <div>
         <Header/>
         <Footer/>
-        {console.log("is ok")}
         {isSessionTimeOut && <Redirect to ="/"/>}
         {token &&
         <div className="container marketing content-page">
         <div className="row">
           <h1 className="title-salt mb-3">Salé</h1>
-            <button className="fa-2x salt-button" type="button" onClick={handleSaltForm} >
+            <button className="salt-button" type="button" onClick={handleSaltForm} >
               <i className="fa fa-plus-circle"></i>
             </button>
           </div>
@@ -149,11 +148,11 @@ const SaltMealApp = () => {
           <div className="row">
             {existingSaltMeal.map((recipe, index) => {
               return(
-                <div key={index} className="col-sm-3 mt-4 mr-4 ml-5 list-items">
+                <div key={index} className="col-md-3 mt-4 mr-4 ml-5 list-items">
                   <div className="content-item">
                     <div className="title-item"><h2>{recipe.name}</h2></div>
                   </div>
-                  <button className="fa-2x delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
+                  <button className="delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>
                     {recipe.image !== null && recipe.image !== "" &&<image className="img-item" src={recipe.image} alt="recipe" width="100%"/>}

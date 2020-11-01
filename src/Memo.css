@@ -1,5 +1,5 @@
 /* GLOBAL STYLES
-#bdef82   bdef82
+#bdef82 
 #a8dba8
 #79bd9a
 #3b8686
@@ -19,10 +19,6 @@ body {
   width: 100%;
 }
 
-.nav-item-deco{
-  
-}
-
 .home-page{
   background-color: #e9ecef;
   width: 100%;
@@ -32,6 +28,21 @@ body {
 
 .memo-logo {
   margin-left: 10%;
+  width: 16%;
+}
+
+.logo{
+	font-family: "Pretty Smile";
+  color : #79bd9a;
+  font-size: 4.5rem;
+  border-left: solid #626262;
+}
+
+.logo-home {
+	font-family: "Pretty Smile";
+  color : #79bd9a;
+  font-size: 6.5rem;
+  margin-top: 10%;
 }
 
 .jumbotron{
@@ -62,7 +73,7 @@ body {
 }
 
 .nav-item{
-  font-size: 20px;
+  font-size: 17px;
   margin-right: 5%;
 }
 
@@ -114,36 +125,6 @@ body {
 	font-family: "Pretty Smile";
 	src: url("Pretty_Smile.otf") format("opentype");
   font-display: auto;
-}
-
-.logo{
-	font-family: "Pretty Smile";
-	color : #79bd9a
-}
-
-.title-salt{
-	font-family: "Pretty Smile";
-  color : #bdef82;
-  margin-top: 5%;
-  width: 100%;
-  text-align: center;
-}
-
-
-.title-sugar{
-	font-family: "Pretty Smile";
-  color : #a8dba8;
-  margin-top: 5%;
-  width: 100%;
-  text-align: center;
-}
-
-.title-win{
-	font-family: "Pretty Smile";
-  color : #79bd9a;
-  margin-top: 5%;
-  width: 100%;
-  text-align: center;
 }
 
 .btn-green {
@@ -215,7 +196,7 @@ body {
 
 .wellcome{
   font-family: "Pretty Smile";
-  margin-top: 15%;
+  margin-top: 32%;
   text-align: center;
   color: white;
 }
@@ -342,6 +323,48 @@ body {
   .home-page{
     height: 100% ;
   }
+
+  .logo-home {
+    margin-top: 15%;
+  }
+}
+
+@media (max-width: 768px) {
+  .delete-recipe {
+    font-size: 25px;
+    left: 90%;
+  }
+  
+}
+
+@media (max-width: 767px) {
+  .logo-home {
+    margin-top: 20%;
+    font-size: 4.5rem;
+  }
+  .navbar-nav li {
+    padding-left: 2%;
+    border-top: solid #79bd9a ;
+  }
+  .btn-deco{
+    width: 100%;
+  }
+  
+  .title-win{
+    margin-top: 10% !important;
+    margin-bottom: 2%;
+  }
+
+  .title-salt{
+    margin-top: 10% !important;
+    margin-bottom: 2%;
+  }
+
+  .title-sugar{
+    margin-top: 10% !important;
+    margin-bottom: 2%;
+  }
+
 }
 
 @media (max-width: 728px) {

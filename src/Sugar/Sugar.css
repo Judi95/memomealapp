@@ -5,6 +5,15 @@
 #3b8686
 */
 
+.title-sugar{
+	font-family: "Pretty Smile";
+  color : #a8dba8;
+  margin-top: 5%;
+  width: 100%;
+  text-align: center;
+}
+
+
 .sugar-button{
   margin-top: 4%;
   margin-left: 4%;
@@ -13,6 +22,7 @@
   border-color: transparent;
   position: absolute;
   left: 70%;
+  font-size: 30px;
 }
 
 .sugar-button:active{
