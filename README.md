@@ -38,5 +38,6 @@ server {
 ### `API`
 - git clone API
 - apt install maven
-- mvn clean install -P prod
+- mvn spring-boot:run -P prod &
+- mvn spring-boot:stop
 
