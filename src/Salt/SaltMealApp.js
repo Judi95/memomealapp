@@ -155,7 +155,7 @@ const SaltMealApp = () => {
                   <button className="delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>
-                    {recipe.image !== null && recipe.image !== "" &&<image className="img-item" src={recipe.image} alt="recipe" width="100%"/>}
+                    {recipe.image !== null && recipe.image !== "" && <img className="img-item" src={recipe.image} alt="recipe" width="100%"/>}
                   <Link to={`details/${recipe.id}`}> <button className="btn button-item salt-button-item">Recette</button></Link>
                 </div>)
             })

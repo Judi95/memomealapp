@@ -5,8 +5,6 @@ import {
 
 const Header = () => {
 
-    const theToken = localStorage.getItem('tokenSession')
-
     return ( 
         <header>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
@@ -29,7 +27,7 @@ const Header = () => {
                             <Link to="/myAccount" className=" nav-link text-light"> <i className="fa fa-user pl-2 pr-2"></i> Mon compte </Link>    
                         </li>
                     </ul>
-                        <Link to="/logout"> <button class="btn btn-secondary my-2 my-sm-0 mr-2 btn-deco" type="submit">Déconnexion</button></Link>
+                        <Link to="/logout"> <button className="btn btn-dark btn-sm my-2 my-sm-0 mr-2 btn-deco" type="submit">Déconnexion</button></Link>
                     
                 </div>
             </nav>

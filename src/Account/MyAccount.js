@@ -144,6 +144,54 @@ const MyAccount = () => {
       }
     });
   }
+
+  const confirmDeleteAccount = () => {
+    confirmAlert({
+      message: 'Êtes-vous sûr de vouloir supprimer votre compte ? Toutes vos recettes et vins seront supprimés.',
+      buttons: [
+        {
+          label: 'Supprimer',
+          onClick: () => {
+            console.log("Suppression compte") 
+            deleteUser()
+          }
+        },
+        {
+          label: 'Annuler',
+          onClick: () => {}
+        }
+      ],
+      onClickOutside: () => {}
+    });
+  }
+
+  const deleteUser = () => {
+    console.log("Suppression user") 
+
+    fetch(url + `api/users`, { 
+      method: 'delete', 
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+      })
+    })
+    .then(
+      (result) => {
+        if(result.status === 401){
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }if(result.status === 204){
+          localStorage.clear();
+          setIsSessionTimeOut(true)
+        }else{
+          console.log("KO : " ,result)
+        }
+        
+      },
+      (error) => {
+        console.log(error)
+      }
+    ) 
+  }
     
 
     return (
@@ -152,7 +200,14 @@ const MyAccount = () => {
             <Header/>
             <Footer/>
             {isSessionTimeOut && <Redirect to ="/"/>}
-            <h1> Mon compte </h1>
+            <div className="row">
+              <div className="col-md-8">
+                <h1> Mon compte </h1>
+              </div>
+              <div className="col-md-4">
+                <Button className="btn-danger float-right" onClick={confirmDeleteAccount}>Supprimer mon compte</Button>
+              </div>
+            </div>
             <h2>Changer mon email</h2>
             <div className="form-group">
               <form>
@@ -210,6 +265,8 @@ const MyAccount = () => {
 
                 <div className="d-flex justify-content-center"><Button className="btn-secondary btn-my-account" onClick={saveNewPassword}>Valider</Button></div>
               </form>
+
+              
             </div>
 
         </div>

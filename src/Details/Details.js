@@ -105,11 +105,11 @@ const Details = () => {
             <div className="container marketing content-details">
 
                 <div className="row">
-                  <div className="col-md-8">
+                  <div className="col-md-10">
                     <h1 className="title-sugar">{recipe.name}</h1>
                   </div>
-                  <div className="col-md-4">
-                    <button className="btn my-2 my-sm-0 mr-4 btn-dark btn-sm" type="button" onClick={() => setIsModify(true)}> Modifier </button>
+                  <div className="col-md-2v pt-5">
+                    <button className="btn btn-dark btn-sm float-left" type="button" onClick={() => setIsModify(true)}> Modifier </button>
                   </div>
                 </div>
 

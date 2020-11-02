@@ -13,9 +13,13 @@ const MemoHomeCreate = ({getTokenAuth}) => {
     const [password, setPassword] = useState("")
     const [passwordConfirmed, setPasswordConfirmed] = useState("")
     const [isSamePassword, setIsSamePassword] = useState(true)
+    const [isValidEmail, setIsValidEmail] = useState(true)
+    const [isValidPassword, setIsValidPassword] = useState(true)
+    const [isExistingUser, setIsExistingUser] = useState(false)
     const url = useContext(UrlContext)
   
     const handleUsernameUpdate = event => {
+
       setUsername(event.target.value)
     }
   
@@ -38,28 +42,52 @@ const MemoHomeCreate = ({getTokenAuth}) => {
     }
   
     const createUser = () => {
+
+      var emailReg = new RegExp(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i);
+      var valid = emailReg.test(username);
+      if(!valid) {
+        setIsValidEmail(false)
+      } else {
+        setIsValidEmail(true)
+      }
+      
+      if ( ! password){
+        setIsValidPassword(false)
+      } else {
+        setIsValidPassword(true)
+      }
+
+      if(valid && password) {
+
+        const entry = {login: username, email: username, password:password, authorities:["ROLE_USER"]}
   
-      const entry = {login: username, email: username, password:password, authorities:["ROLE_USER"]}
-  
-      fetch(url + "api/create-user", { 
-        method: 'post', 
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify(entry)
-      })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if(result.status){
-            console.log(result)
+        fetch(url + "api/create-user", { 
+          method: 'post', 
+          headers: new Headers({
+            'Content-Type': 'application/json'
+          }),
+          body: JSON.stringify(entry)
+        })
+        .then(res => res.json())
+        .then(
+          (result) => {
+            if(result.status !== 200){
+              if(result.errorKey === "userexists"){
+                setIsExistingUser(true)
+                console.log("Erreur existe", result.errorKey)
+              }else {
+                setIsExistingUser(false)
+              }
+              console.log(result)
+            } else {
+              setIsCreated(true)
+            }
+          },
+          (error) => {
+            console.log(error)
           }
-          setIsCreated(true)
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+        )
+      }
     }
   
 
@@ -110,7 +138,9 @@ const MemoHomeCreate = ({getTokenAuth}) => {
               <h2 className="wellcome">Bienvenue ! </h2>
               <div className="d-flex justify-content-center form_container">
                 <form>
-                  <div className="input-group mb-3">
+                { !isValidEmail && <p className="wrong-password">Addresse mail invalide.</p>}
+                { isExistingUser && <p className="wrong-password">Un compte existe déjà avec cette adresse mail.</p>}
+                  <div className="input-group mb-3">                  
                     <div className="input-group-append">
                       <span className="input-group-text"><i className="fas fa-user"></i></span>
                     </div>
@@ -120,6 +150,7 @@ const MemoHomeCreate = ({getTokenAuth}) => {
                       onChange={handleUsernameUpdate}
                       placeholder="exemple@gmail.com"/>
                   </div>
+                  { !isValidPassword && <p className="wrong-password">Mot de passe invalide.</p>}
                   <div className="input-group mb-2">
                     <div className="input-group-append">
                       <span className="input-group-text"><i className="fas fa-key"></i></span>
