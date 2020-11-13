@@ -28,7 +28,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
       
       const entry = {username: username, password:password}
   
-      fetch(url + "api/authenticate", { 
+      fetch(url + "/api/authenticate", { 
         method: 'post', 
         headers: new Headers({
           'Content-Type': 'application/json'

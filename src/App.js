@@ -17,7 +17,7 @@ const  App = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production'){
-      setUrl("http://163.172.184.101:8080/")
+      setUrl("http://163.172.184.101")
     }
   }, [url])
 
