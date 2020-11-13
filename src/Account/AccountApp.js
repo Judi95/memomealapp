@@ -30,7 +30,7 @@ const AccountApp = (getTokenAuth) => {
     
     const entry = {username: username, password:password, rememberMe:rememberMe}
 
-    fetch( url + "api/authenticate", { 
+    fetch( url + "/api/authenticate", { 
       method: 'post', 
       headers: new Headers({
         'Content-Type': 'application/json'

@@ -42,7 +42,7 @@ const WineApp = () => {
   const saveWine = (entry) => {
     setHiddenForm(!hiddenForm)
 
-    fetch( url + "api/wines", { 
+    fetch( url + "/api/wines", { 
       method: 'post', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -69,7 +69,7 @@ const WineApp = () => {
   }
 
   const getWines = () => {
-    fetch( url + "api/wines", { 
+    fetch( url + "/api/wines", { 
       method: 'get', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`
@@ -114,7 +114,7 @@ const WineApp = () => {
   
   const deleteRecipe = (id) => {
 
-    fetch(url + `api/wines/${id}`, { 
+    fetch(url + `/api/wines/${id}`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`

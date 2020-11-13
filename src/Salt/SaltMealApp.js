@@ -25,7 +25,7 @@ const SaltMealApp = () => {
   const saveSaltRecipe = (entry) => {
     entry.type = "SALT"
     
-    fetch(url + "api/cooking-recipes", { 
+    fetch(url + "/api/cooking-recipes", { 
       method: 'post', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -55,7 +55,7 @@ const SaltMealApp = () => {
   const getSaltRecipe = () => {
 
 
-    fetch(url + "api/cooking-recipe?type=SALT", { 
+    fetch(url + "/api/cooking-recipe?type=SALT", { 
       method: 'get', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`
@@ -99,7 +99,7 @@ const SaltMealApp = () => {
   
   const deleteRecipe = (id) => {
     
-    fetch(url + `api/cooking-recipes/${id}`, { 
+    fetch(url + `/api/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
