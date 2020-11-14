@@ -62,7 +62,7 @@ const MemoHomeCreate = ({getTokenAuth}) => {
 
         const entry = {login: username, email: username, password:password, authorities:["ROLE_USER"]}
   
-        fetch(url + "/create-user", { 
+        fetch(url + "/create", { 
           method: 'post', 
           headers: new Headers({
             'Content-Type': 'application/json'
