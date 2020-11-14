@@ -72,7 +72,8 @@ const MemoHomeCreate = ({getTokenAuth}) => {
         .then(res => res.json())
         .then(
           (result) => {
-            if(result.status !== 200){
+            
+            if(result.status !== 201){
               if(result.errorKey === "userexists"){
                 setIsExistingUser(true)
                 console.log("Erreur existe", result.errorKey)
@@ -80,7 +81,8 @@ const MemoHomeCreate = ({getTokenAuth}) => {
                 setIsExistingUser(false)
               }
               console.log(result)
-            } else {
+            } 
+            if(result.id) {
               setIsCreated(true)
             }
           },
@@ -95,35 +97,8 @@ const MemoHomeCreate = ({getTokenAuth}) => {
   return ( 
 
     <div className="row home-page">
-            <div className="col-md-8">
-            <div className="jumbotron">
-                    <div className="container text-center">
-                          <h1 className="logo">MemoMeal</h1>
-                      <div className="home-desc">
-                          <p>Bienvenue sur MemoMeal ! Ce site  va vous permettre de noter toutes les recettes que vous aimez en passant du salé au sucré en un clic ! Vous pouvez également renseigner les vins que vous avez apprécié (ou non !) afin de vous en souvenir et de les évaluer.</p>
-                          <p>MemoMeal est un carnet de recette personnalisé qui vous suit partout ! Vous pouvez commencer votre carnet de recette en vous inscrivant  <Link to="/createAccount" className="col-ms-5"> ici </Link>. Vous pouvez créer un compte de façon individuel ou partager avec toute la famille si vous le souhaitez.</p>
-                      </div>
-                    </div>
-                </div>
-            <div className="container marketing">
-                <div className="row">
-                <div className="col-lg-4">
-                    <div className="salt-icon"><i className="fa fa-hamburger"></i></div>
-                    <h2>Mes recettes salées</h2>
-                </div>
-                <div className="col-lg-4">
-                <div className="sugar-icon"><i className="fa fa-ice-cream"></i></div>
-                    <h2>Mes recettes sucrées</h2>
-                </div>
-                <div className="col-lg-4">
-                <div className="wine-icon"><i className="fa fa-wine-bottle"></i></div>
-                    <h2>Ma cave à vins</h2>
-                </div>
-                </div> 
-            </div>
-        </div>
-        <div className="col-md-4">
-      <div>
+      <div className="col-md-5">
+        {console.log(isCreated)}
       {isCreated && <Redirect to="/login"/>}
       {token && <Redirect to="/"/>}
       <div className="container h-100 login-container">
@@ -185,8 +160,35 @@ const MemoHomeCreate = ({getTokenAuth}) => {
           </div>
         </div>
       </div>
+      <div className="col-md-7">
+        <div className="jumbotron">
+            <div className="container text-center">
+                  <h1 className="logo">MemoMeal</h1>
+              <div className="home-desc">
+                  <p>Bienvenue sur MemoMeal ! Ce site  va vous permettre de noter toutes les recettes que vous aimez en passant du salé au sucré en un clic ! Vous pouvez également renseigner les vins que vous avez apprécié (ou non !) afin de vous en souvenir et de les évaluer.</p>
+                  <p>MemoMeal est un carnet de recette personnalisé qui vous suit partout ! Vous pouvez commencer votre carnet de recette en vous inscrivant  <Link to="/createAccount" className="col-ms-5"> ici </Link>. Vous pouvez créer un compte de façon individuel ou partager avec toute la famille si vous le souhaitez.</p>
+              </div>
+            </div>
+          </div>
+      <div className="container marketing">
+          <div className="row">
+          <div className="col-lg-4">
+              <div className="salt-icon"><i className="fa fa-hamburger"></i></div>
+              <h2>Mes recettes salées</h2>
+          </div>
+          <div className="col-lg-4">
+          <div className="sugar-icon"><i className="fa fa-ice-cream"></i></div>
+              <h2>Mes recettes sucrées</h2>
+          </div>
+          <div className="col-lg-4">
+          <div className="wine-icon"><i className="fa fa-wine-bottle"></i></div>
+              <h2>Ma cave à vins</h2>
+          </div>
+          </div> 
       </div>
-    </div>
+  </div>
+
+  </div>
   );
 }
 

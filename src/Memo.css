@@ -11,6 +11,10 @@ body {
   color: #5a5a5a;
 }
 
+.presetation{
+  margin-left: -4%;
+}
+
 .navbar-memo li{
   font-size: 18px;
 }
@@ -282,24 +286,15 @@ body {
 }
 
 @media (min-width: 1161px) {
-  .login-container {
-    margin-top: 40% !important;
-  }
   .connexion {
     margin-top: 33% !important;
   }
 }
 
 @media (max-width: 1160px) {
-  .login-container {
-    margin-top: 50% !important;
-  }
 }
 
 @media (max-width: 980px) {
-  .login-container {
-    margin-top: 70% !important;
-  }
   .connexion {
     margin-top: 35% !important;
   }
@@ -309,9 +304,7 @@ body {
 }
 
 @media (min-width: 1600px) {
-  .login-container {
-    margin-left: -20% !important;
-  }
+
 }
 
 @media (max-width: 991px) {
@@ -333,16 +326,33 @@ body {
 }
 
 @media (max-width: 767px) {
+
+  .user_card{
+    margin-top: 20% !important;
+  }
+  
+  .presetation{
+    margin-left: 0 !important;
+  }
+
   .logo-home {
     margin-top: 20%;
     font-size: 4.5rem;
   }
+
+  .logo{
+    font-size: 4.5rem;
+  }
+
   .navbar-nav li {
     padding-left: 2%;
     border-top: solid #79bd9a ;
   }
   .btn-deco{
     width: 100%;
+    margin: 0 !important;
+    padding: 3%;
+    margin-top: 0 !important;
   }
   
   .title-win{
@@ -367,12 +377,61 @@ body {
     margin-top: 20%;
     margin-bottom: 8%;
   }
+
+  
+}
+
+@media (max-width: 660px) {
+  .salt-button{
+    margin-top: 10% !important;
+  }
+
+  .sugar-button{
+    margin-top: 10% !important;
+  }
+
+  .wine-button{
+    margin-top: 10% !important;
+  }
 }
 
 @media (max-width: 470px) {
+
+  .user_card{
+    margin-top: 30% !important;
+  }
+
   .logo-home {
     margin-top: 30%;
     font-size: 4rem;
+  }
+
+  .logo{
+    font-size: 4rem;
+  }
+
+  .salt-button{
+    margin-top: 13% !important;
+  }
+
+  .title-salt{
+    margin-top: 20% !important;
+  }
+
+  .sugar-button{
+    margin-top: 13% !important;
+  }
+
+  .title-sugar{
+    margin-top: 20% !important;
+  }
+
+  .wine-button{
+    margin-top: 13% !important;
+  }
+
+  .title-wine{
+    margin-top: 20% !important;
   }
 }
 
@@ -380,5 +439,44 @@ body {
   .logo-home {
     margin-top: 30%;
     font-size: 43px;
+  }
+
+  .logo{
+    font-size: 43px;
+  }
+}
+
+@media (max-width: 340px) {
+  .logo-home {
+    margin-top: 40%;
+    font-size: 35px;
+  }
+
+  .logo{
+    font-size: 35px;
+  }
+
+  .salt-button{
+    margin-top: 25% !important;
+  }
+
+  .title-salt{
+    margin-top: 25% !important;
+  }
+
+  .sugar-button{
+    margin-top: 25% !important;
+  }
+
+  .title-sugar{
+    margin-top: 25% !important;
+  }
+
+  .wine-button{
+    margin-top: 25% !important;
+  }
+
+  .title-wine{
+    margin-top: 25% !important;
   }
 }

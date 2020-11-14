@@ -6,15 +6,10 @@
 */
 
 
-.login-container{
-    margin-top: 10%;
-    margin-left: -5%;
-}
-
 .user_card {
     height: 400px;
     width: 350px;
-    margin-top: auto;
+    margin-top: 35%;
     margin-bottom: auto;
     background: #79bd9a;
     position: relative;
