@@ -134,7 +134,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
                     <p> Pour </p>
                   </div>
                   <div className="col-md-3 p-0 mr-2">
-                    <input type="Text" 
+                    <input type="number" 
                     className="form-control " 
                     id="exampleFormControlInput1"
                     value ={quantityPeople}

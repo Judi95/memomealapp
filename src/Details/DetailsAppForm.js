@@ -9,7 +9,7 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
   const [description , setDescription] = useState(recipe.description)
   const [ingredients , setIngredients] = useState(recipe.ingredients)
   const [image , setImage] = useState('')
-  const unitIngredient = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe"])
+  const [unitIngredient] = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe"])
   const [quantityPeople, setQuantityPeople] = useState(recipe.quantityPeople)
 
   const addInput = () => {
@@ -136,7 +136,7 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
                     <p> Pour </p>
                   </div>
                   <div className="col-md-3 p-0 mr-2">
-                    <input type="Text" 
+                    <input type="number" 
                     className="form-control " 
                     id="exampleFormControlInput1"
                     value ={quantityPeople}

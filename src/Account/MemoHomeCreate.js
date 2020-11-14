@@ -98,7 +98,6 @@ const MemoHomeCreate = ({getTokenAuth}) => {
 
     <div className="row home-page">
       <div className="col-md-5">
-        {console.log(isCreated)}
       {isCreated && <Redirect to="/login"/>}
       {token && <Redirect to="/"/>}
       <div className="container h-100 login-container">
