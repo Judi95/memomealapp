@@ -72,7 +72,7 @@ const MyAccount = () => {
 
   const saveNewEmail = () => {
     if(isSameEmail && email){
-      fetch(url + "/api/account/change-email", { 
+      fetch(url + "/account/change-email", { 
         method: 'post', 
         headers: new Headers({
           'Authorization': `Bearer ${token}`,
@@ -101,7 +101,7 @@ const MyAccount = () => {
   const saveNewPassword = () => { 
     if(isSamePassword && newPassword2){
         const newEntry = {currentPassword: currentPassword, newPassword: newPassword2}
-        fetch(url + "/api/account/change-password", { 
+        fetch(url + "/account/change-password", { 
           method: 'post', 
           headers: new Headers({
             'Authorization': `Bearer ${token}`,
@@ -168,7 +168,7 @@ const MyAccount = () => {
   const deleteUser = () => {
     console.log("Suppression user") 
 
-    fetch(url + `/api/users`, { 
+    fetch(url + `/users`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,

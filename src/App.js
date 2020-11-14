@@ -5,7 +5,7 @@ import { UrlContext } from './UrlContext';
 
 const  App = () => {
 
-  const [url, setUrl] = useState("http://localhost:8080/")
+  const [url, setUrl] = useState("http://localhost:8081/api")
 
   const getTokenAuth = (idToken) => {
     localStorage.setItem('tokenSession', idToken);
@@ -17,7 +17,7 @@ const  App = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production'){
-      setUrl("http://163.172.184.101")
+      setUrl("http://163.172.184.101/api")
     }
   }, [url])
 

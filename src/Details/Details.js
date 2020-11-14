@@ -23,7 +23,7 @@ const Details = () => {
 
     const getOneRecipe = () => {
    
-        fetch( url + `/api/cooking-recipes/${param[0].id}`, { 
+        fetch( url + `/cooking-recipes/${param[0].id}`, { 
           method: 'get', 
           headers: new Headers({
             'Authorization': `Bearer ${token}`
@@ -68,7 +68,7 @@ const Details = () => {
       entry.type = recipe.type
       entry.id = recipe.id
       
-      fetch( url + "/api/cooking-recipes", { 
+      fetch( url + "/cooking-recipes", { 
         method: 'put', 
         headers: new Headers({
           'Authorization': `Bearer ${token}`,

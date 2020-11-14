@@ -26,22 +26,17 @@ body {
   height: 100vh;
 }
 
-.memo-logo {
-  margin-left: 10%;
-  width: 16%;
-}
 
 .logo{
 	font-family: "Pretty Smile";
   color : #79bd9a;
   font-size: 4.5rem;
-  border-left: solid #626262;
 }
 
 .logo-home {
 	font-family: "Pretty Smile";
   color : #79bd9a;
-  font-size: 6.5rem;
+  font-size: 5.5rem;
   margin-top: 10%;
 }
 
@@ -371,5 +366,19 @@ body {
   .content-details{
     margin-top: 20%;
     margin-bottom: 8%;
+  }
+}
+
+@media (max-width: 470px) {
+  .logo-home {
+    margin-top: 30%;
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo-home {
+    margin-top: 30%;
+    font-size: 43px;
   }
 }

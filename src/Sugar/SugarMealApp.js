@@ -25,7 +25,7 @@ const SugarMealApp = () => {
   const saveSugarRecipe = (entry) => {
     entry.type = "SUGAR"
     
-    fetch(url + "/api/cooking-recipes", { 
+    fetch(url + "/cooking-recipes", { 
       method: 'post', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -52,7 +52,7 @@ const SugarMealApp = () => {
 
   
   const getSugarRecipe = () => {
-    fetch(url + "/api/cooking-recipe?type=SUGAR", { 
+    fetch(url + "/cooking-recipe?type=SUGAR", { 
       method: 'get', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -96,7 +96,7 @@ const SugarMealApp = () => {
   
   const deleteRecipe = (id) => {
     console.log("MON ID : ", id)
-    fetch(url + `/api/cooking-recipes/${id}`, { 
+    fetch(url + `/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`

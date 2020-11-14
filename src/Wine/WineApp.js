@@ -20,7 +20,7 @@ const WineApp = () => {
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
-  const [wineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
+  const [wineType, setWineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
 
   const handleWineForm = event => {
     setHiddenForm(!hiddenForm )
@@ -42,7 +42,7 @@ const WineApp = () => {
   const saveWine = (entry) => {
     setHiddenForm(!hiddenForm)
 
-    fetch( url + "/api/wines", { 
+    fetch( url + "/wines", { 
       method: 'post', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`,
@@ -58,7 +58,9 @@ const WineApp = () => {
           localStorage.clear();
           setIsSessionTimeOut(true)
         }
-        setExistingWine(existingWine.concat( result ))  
+        setExistingWine(existingWine.concat( result ))
+        setExistingWineFilter(existingWine.concat( result ))
+     
       },
       (error) => {
         console.log(error)
@@ -69,7 +71,7 @@ const WineApp = () => {
   }
 
   const getWines = () => {
-    fetch( url + "/api/wines", { 
+    fetch( url + "/wines", { 
       method: 'get', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`
@@ -114,7 +116,7 @@ const WineApp = () => {
   
   const deleteRecipe = (id) => {
 
-    fetch(url + `/api/wines/${id}`, { 
+    fetch(url + `/wines/${id}`, { 
       method: 'delete', 
       headers: new Headers({
         'Authorization': `Bearer ${token}`
@@ -151,19 +153,17 @@ const WineApp = () => {
       <div className="container marketing content-page">
         <div className="row">
           <h1 className="title-win">Vin</h1>
-
-          <div className="col-md-2 ml-5">
-            <select  className="form-control" onChange={handleTypeUpdate}>
-              {wineType.map((type, index) => <option key={index} value={type}>{type}</option>)}
-            </select>
-          </div>
-
           <button className="fa-2x wine-button" type="button" onClick={handleWineForm} >
             <i className="fa fa-plus-circle"></i>
           </button>
         </div>
         {existingWine.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajoutez votre premier vin !</h2>}
         {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
+        <div className="col-md-2 ml-5">
+            <select  className="form-control" onChange={handleTypeUpdate}>
+              {wineType.map((type, index) => <option key={index} value={type}>{type}</option>)}
+            </select>
+          </div>
         <div className="row">
           {existingWineFilter.map ((wine) => {
             return (
@@ -185,7 +185,7 @@ const WineApp = () => {
                 {wine.type !== null && wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
                 <p className="wine-desc">{wine.description}</p>
                 </div>
-                {wine.image != null && wine.image !== '' && <image className="img-item img-wine" src={wine.image} alt="wine" width="100%"/>}
+                {wine.image != null && wine.image !== '' && <img className="img-item img-wine" src={wine.image} alt="wine" width="100%"/>}
               </div>
 
             )
