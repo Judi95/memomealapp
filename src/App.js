@@ -17,7 +17,7 @@ const  App = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production'){
-      setUrl("http://163.172.184.101/api")
+      setUrl("https://memomeal.fr/api")
     }
   }, [url])
 
