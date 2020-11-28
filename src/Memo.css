@@ -253,6 +253,10 @@ body {
   margin-left: .75rem;
 }
 
+.marketing a {
+  color: #5a5a5a;
+}
+
 
 /* Featurettes
 ------------------------- */

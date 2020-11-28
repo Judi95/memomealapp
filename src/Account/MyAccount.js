@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
 import { UrlContext } from '../UrlContext';
@@ -193,7 +193,35 @@ const MyAccount = () => {
     ) 
   }
     
+ const isAuthenticated = () => {
+    
+    fetch(url + "/account", { 
+      method: 'get', 
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    })
+    .then(
+      (result) => {
+        console.log(result)
+        if(result.status === 401){
+            console.log(result)
+            localStorage.clear();
+            setIsSessionTimeOut(true)
+        }
+        
+      },
+      (error) => {
+        console.log("ERROR : ", error)
+      }
+    )
+  }
 
+  useEffect(() => {
+    isAuthenticated()
+  }, [])
+  
     return (
 
         <div className="container marketing content-page my-account-page">
