@@ -34,6 +34,8 @@ server {
 - systemctl restart nginx
 - systemctl status nginx
 - (systemctl reload nginx)
+- Mettre à jour le certificat : certbot --nginx
+
 ### `BDD`
 ### `API`
 - git clone API
