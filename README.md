@@ -42,4 +42,5 @@ server {
 - apt install maven
 - mvn spring-boot:run -P prod &
 - mvn spring-boot:stop
+- Lister les process : ps aux
 
