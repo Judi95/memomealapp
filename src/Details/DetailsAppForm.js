@@ -162,7 +162,7 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
                 buttonText= "Modifier l'image"
                 onChange={handlePictureUpdate}
                 imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
-                maxFileSize={5242880}
+                maxFileSize={15*1024*1024} // 15Mo
                 withLabel= {false}
                 withIcon= {false}
                 withPreview= {true}
