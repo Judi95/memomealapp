@@ -147,6 +147,17 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
             cols="100%"
             onChange={handleDescUpdate}/>
 
+            <ImageUploader
+                buttonText='Ajouter une image'
+                onChange={handlePictureUpdate}
+                imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                withLabel= {false}
+                withIcon= {false}
+                withPreview= {true}
+                className= "add-picture"
+            />
+
             <div className="row ingredients">
               <h5>Ingrédients</h5>
                 <button className="fa-2x sugar-add-ingredient-button" type="button" onClick={addInput} >

@@ -12,6 +12,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
   const [wineType, setWineType] = useState(["Rosé", "Blanc", "Rouge", "Jaune"])
   const [type , setType] = useState(wineType[0])
   
+  
 
   const handleNameUpdate = event => {
     setName(event.target.value)
@@ -87,6 +88,17 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
                   />
                 </div>
               </div>
+
+              <ImageUploader
+                buttonText='Ajouter une image'
+                onChange={handlePictureUpdate}
+                imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                withLabel= {false}
+                withIcon= {false}
+                withPreview= {true}
+                className= "add-picture"
+              />
 
             <Button type="submit" className="wine-button-form">Ajouter</Button>
             <Button variant="dark" onClick={handleWineForm}>Annuler</Button>
