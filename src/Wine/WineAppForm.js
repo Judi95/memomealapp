@@ -92,7 +92,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
               <ImageUploader
                 buttonText='Ajouter une image'
                 onChange={handlePictureUpdate}
-                imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
+                imgExtension={['.jpg', '.jpeg', '.png', '.gif']}
                 maxFileSize={15*1024*1024} // 15Mo
                 withLabel= {false}
                 withIcon= {false}

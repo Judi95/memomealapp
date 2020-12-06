@@ -188,7 +188,7 @@ const WineApp = () => {
                 {wine.type !== null && wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
                 <p className="wine-desc">{wine.description}</p>
                 </div>
-                { wine.picture != null && <img className="img-item img-wine" src={`https://memomeal.fr/${wine.picture.path}`} alt="wine" width="100%"/>}
+                { wine.picture != null && <img className="img-item img-wine" src={`${url}/picture/${wine.picture.name}`} alt="wine" width="100%"/>}
               </div>
 
             )
