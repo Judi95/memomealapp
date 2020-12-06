@@ -47,7 +47,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
   const persistWine = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      const newEntry = {name: name, description: description, evaluation:evaluation, type: type, image: image}
+      const newEntry = {name: name, description: description, evaluation:evaluation, type: type, imageContent: image}
       saveWine(newEntry)
   } 
 

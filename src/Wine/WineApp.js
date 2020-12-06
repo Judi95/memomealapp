@@ -20,7 +20,8 @@ const WineApp = () => {
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
-  const [wineType, setWineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
+  const [wineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
+  const [hasPicture, setHasPicture] = useState(false);
 
   const handleWineForm = event => {
     setHiddenForm(!hiddenForm )
@@ -41,7 +42,7 @@ const WineApp = () => {
   
   const saveWine = (entry) => {
     setHiddenForm(!hiddenForm)
-
+    console.log(entry.image)
     fetch( url + "/wines", { 
       method: 'post', 
       headers: new Headers({
@@ -86,8 +87,9 @@ const WineApp = () => {
           setIsSessionTimeOut(true)
         }
         if(result.length > 0){
-          setExistingWine(existingWine.concat( result ))
-          setExistingWineFilter(existingWine.concat( result ))
+          console.log(result)
+          setExistingWine(result)
+          setExistingWineFilter(result)
         }else{
           console.log(result)
         }
@@ -104,7 +106,7 @@ const WineApp = () => {
       buttons: [
         {
           label: 'Valider',
-          onClick: () => deleteRecipe(id)
+          onClick: () => deleteWine(id)
         },
         {
           label: 'Annuler',
@@ -114,7 +116,7 @@ const WineApp = () => {
     });
   }
   
-  const deleteRecipe = (id) => {
+  const deleteWine = (id) => {
 
     fetch(url + `/wines/${id}`, { 
       method: 'delete', 
@@ -136,6 +138,7 @@ const WineApp = () => {
       }
     )
     const newList = existingWine.filter((item) => item.id !== id)
+    setExistingWineFilter(newList)
     return setExistingWine(newList)
 }
 
@@ -165,7 +168,7 @@ const WineApp = () => {
             </select>
           </div>
         <div className="row">
-          {existingWineFilter.map ((wine) => {
+          {existingWine.map ((wine) => {
             return (
               <div key={wine.id} className="col-md-3 mt-4 mr-4 ml-5 list-items">
               <div className="content-item">
@@ -185,7 +188,7 @@ const WineApp = () => {
                 {wine.type !== null && wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}
                 <p className="wine-desc">{wine.description}</p>
                 </div>
-                {wine.image != null && wine.image !== '' && <img className="img-item img-wine" src={wine.image} alt="wine" width="100%"/>}
+                { wine.picture != null && <img className="img-item img-wine" src={`https://memomeal.fr/${wine.picture.path}`} alt="wine" width="100%"/>}
               </div>
 
             )
