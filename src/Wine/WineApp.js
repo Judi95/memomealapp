@@ -88,7 +88,7 @@ const WineApp = () => {
           setExistingWine(result)
           setExistingWineFilter(result)
         }else{
-          console.log("Error : " + result)
+          console.log(result)
         }
       },
       (error) => {

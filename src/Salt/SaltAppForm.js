@@ -95,7 +95,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const persistSaltRecipe = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      console.log("IMAGE : " + image)
+      
       if(quantityPeople === ''){
         const newEntry = {name: name, description: description, ingredients: ingredients, imageContent: image, quantityPeople: null}
         saveSaltRecipe(newEntry)

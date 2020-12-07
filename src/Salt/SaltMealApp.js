@@ -76,7 +76,7 @@ const SaltMealApp = () => {
           if(result.length > 0){
             setExistingSaltMeal(existingSaltMeal.concat( result ))
           }else{
-            console.log("Error : " + result)
+            console.log(result)
           }
       },
       (error) => {
