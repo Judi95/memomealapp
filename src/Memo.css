@@ -236,6 +236,13 @@ body {
  .account{
   margin-top: 1%;
  }
+
+ .loader{
+  z-index: 10000;
+  position: absolute;
+  left: 48%;
+  top: 20%;
+ }
 /*
  MARKETING CONTENT
 -------------------------------------------------- */

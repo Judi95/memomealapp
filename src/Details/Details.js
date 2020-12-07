@@ -33,7 +33,6 @@ const Details = () => {
         .then(
           (result) => {
             if(result.status === 401){
-              console.log(result)
               localStorage.clear();
               setIsSessionTimeOut(true)
             }
@@ -87,7 +86,6 @@ const Details = () => {
             setQuantityPeopleValue(result.quantityPeople)
             setQuantityPeopleInit(result.quantityPeople)
           }
-          console.log(result)
         },
         (error) => {
           console.log(error)
@@ -121,13 +119,13 @@ const Details = () => {
                       <i className="fa fa-minus ml-3 pt-1 clic-cursor" onClick={() => setQuantityPeopleValue(parseInt(quantityPeopleValue) - 1)}></i>
                     </div>
                   }
-                  {recipe.image !== null && recipe.image !== "" ?
+                  {recipe.image !== null ?
                     <div className="row">
                       <div className="col-md-8">
                         <p className="description text-justify">{recipe.description}</p>
                       </div>
                       <div className="col-md-4">
-                        <img className="img-details" src={recipe.image} alt="recipe" width="100%"/>
+                        {recipe.picture !== null && recipe.picture !== undefined && <img className="img-details" src={`${url}/picture/${recipe.picture.name}`} alt="recipe" width="100%"/>}
                       </div>
                     </div>
                   : 

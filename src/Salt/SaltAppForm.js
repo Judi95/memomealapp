@@ -95,12 +95,12 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
   const persistSaltRecipe = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-
+      console.log("IMAGE : " + image)
       if(quantityPeople === ''){
-        const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople: null}
+        const newEntry = {name: name, description: description, ingredients: ingredients, imageContent: image, quantityPeople: null}
         saveSaltRecipe(newEntry)
       }else{
-        const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople: quantityPeople}
+        const newEntry = {name: name, description: description, ingredients: ingredients, imageContent: image, quantityPeople: quantityPeople}
         saveSaltRecipe(newEntry)
       }
       
@@ -159,7 +159,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
             <ImageUploader
                 buttonText='Ajouter une image'
                 onChange={handlePictureUpdate}
-                imgExtension={['.jpg', '.jpeg','.gif', '.png', '.gif']}
+                imgExtension={['.jpg', '.jpeg', '.png', '.gif']}
                 maxFileSize={15*1024*1024} // 15Mo
                 withLabel= {false}
                 withIcon= {false}

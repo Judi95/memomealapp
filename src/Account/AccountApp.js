@@ -45,7 +45,6 @@ const AccountApp = (getTokenAuth) => {
         }else{
           setToken(result.id_token)
           setIsLogin(true)
-          console.log("FONC :", getTokenAuth())
         }
         
       },

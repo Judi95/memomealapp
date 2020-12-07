@@ -94,7 +94,7 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
   const persistSugarRecipe = event => {
     // Empecher le submit vers un serveur
       event.preventDefault()
-      const newEntry = {name: name, description: description, ingredients: ingredients, image: image, quantityPeople:quantityPeople}
+      const newEntry = {name: name, description: description, ingredients: ingredients, imageContent: image, quantityPeople:quantityPeople}
       handleSugarForm()
       saveSugarRecipe(newEntry)
   } 

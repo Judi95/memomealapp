@@ -42,7 +42,7 @@ const WineApp = () => {
   
   const saveWine = (entry) => {
     setHiddenForm(!hiddenForm)
-    console.log(entry.image)
+
     fetch( url + "/wines", { 
       method: 'post', 
       headers: new Headers({
@@ -55,7 +55,6 @@ const WineApp = () => {
     .then(
       (result) => {
         if(result.status === 401){
-          console.log(result)
           localStorage.clear();
           setIsSessionTimeOut(true)
         }
@@ -82,16 +81,14 @@ const WineApp = () => {
     .then(
       (result) => {
         if(result.status === 401){
-          console.log(result)
           localStorage.clear();
           setIsSessionTimeOut(true)
         }
         if(result.length > 0){
-          console.log(result)
           setExistingWine(result)
           setExistingWineFilter(result)
         }else{
-          console.log(result)
+          console.log("Error : " + result)
         }
       },
       (error) => {
@@ -127,11 +124,9 @@ const WineApp = () => {
     .then(
       (result) => {
         if(result.status === 401){
-          console.log(result)
           localStorage.clear();
           setIsSessionTimeOut(true)
         }
-        console.log(result)
       },
       (error) => {
         console.log(error)

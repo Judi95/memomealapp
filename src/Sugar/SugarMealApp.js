@@ -37,7 +37,6 @@ const SugarMealApp = () => {
     .then(
       (result) => {
         if(result.status === 401){
-          console.log(result)
           localStorage.clear();
           setIsSessionTimeOut(true)
         }
@@ -62,14 +61,13 @@ const SugarMealApp = () => {
     .then(
       (result) => {
         if(result.status === 401){
-          console.log(result)
           localStorage.clear();
           setIsSessionTimeOut(true)
         }
         if(result.length > 0){
           setExistingSugarMeal(existingSugarMeal.concat( result ))
         }else{
-          console.log(result)
+          console.log("Error : " + result)
         }
       },
       (error) => {
@@ -95,7 +93,7 @@ const SugarMealApp = () => {
   }
   
   const deleteRecipe = (id) => {
-    console.log("MON ID : ", id)
+
     fetch(url + `/cooking-recipes/${id}`, { 
       method: 'delete', 
       headers: new Headers({
@@ -105,11 +103,9 @@ const SugarMealApp = () => {
     .then(
       (result) => {
         if(result.status === 401){
-          console.log(result)
           localStorage.clear();
           setIsSessionTimeOut(true)
         }
-        console.log(result)
       },
       (error) => {
         console.log(error)

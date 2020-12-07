@@ -101,7 +101,6 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
         saveRecipe(newEntry)
       }else{
         const newEntry = {name: name, description: description, image:image, ingredients: ingredients, quantityPeople: quantityPeople}
-        console.log("ENTRY : ", newEntry)
         saveRecipe(newEntry)
       }
       

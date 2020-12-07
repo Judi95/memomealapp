@@ -82,7 +82,6 @@ const MyAccount = () => {
       })        
       .then(
         (result) => {
-          console.log("RESULT : ", result)
           if(result.status === 401){
             localStorage.clear();
             setIsSessionTimeOut(true)
@@ -152,7 +151,6 @@ const MyAccount = () => {
         {
           label: 'Supprimer',
           onClick: () => {
-            console.log("Suppression compte") 
             deleteUser()
           }
         },
@@ -166,7 +164,6 @@ const MyAccount = () => {
   }
 
   const deleteUser = () => {
-    console.log("Suppression user") 
 
     fetch(url + `/users`, { 
       method: 'delete', 
@@ -183,7 +180,7 @@ const MyAccount = () => {
           localStorage.clear();
           setIsSessionTimeOut(true)
         }else{
-          console.log("KO : " ,result)
+          console.log("Error : " ,result)
         }
         
       },
@@ -204,9 +201,7 @@ const MyAccount = () => {
     })
     .then(
       (result) => {
-        console.log(result)
         if(result.status === 401){
-            console.log(result)
             localStorage.clear();
             setIsSessionTimeOut(true)
         }

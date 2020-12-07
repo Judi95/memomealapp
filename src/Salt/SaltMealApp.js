@@ -10,6 +10,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
 import { UrlContext } from '../UrlContext';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 
 const SaltMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
@@ -17,6 +19,7 @@ const SaltMealApp = () => {
   const token = localStorage.getItem('tokenSession')
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   const url = useContext(UrlContext)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSaltForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -24,6 +27,8 @@ const SaltMealApp = () => {
 
   const saveSaltRecipe = (entry) => {
     entry.type = "SALT"
+
+    setIsLoading(true)
     
     fetch(url + "/cooking-recipes", { 
       method: 'post', 
@@ -48,7 +53,7 @@ const SaltMealApp = () => {
         console.log(error)
       }
     )
-
+    setIsLoading(false)
   }
 
   
@@ -65,14 +70,13 @@ const SaltMealApp = () => {
     .then(
       (result) => {
           if(result.status === 401){
-            console.log(result)
             localStorage.clear();
             setIsSessionTimeOut(true)
           }
           if(result.length > 0){
             setExistingSaltMeal(existingSaltMeal.concat( result ))
           }else{
-            console.log(result)
+            console.log("Error : " + result)
           }
       },
       (error) => {
@@ -114,7 +118,7 @@ const SaltMealApp = () => {
           const newList = existingSaltMeal.filter((item) => item.id !== id)
           setExistingSaltMeal(newList)
         }else{
-          console.log("KO : " ,result)
+          console.log("Error : " ,result)
         }
         
       },
@@ -134,6 +138,17 @@ const SaltMealApp = () => {
       <div>
         <Header/>
         <Footer/>
+
+        {isLoading && 
+          <Loader
+            type="Puff"
+            color="#a8dba8"
+            className="loader"
+            height={100}
+            width={100}
+          />
+        }
+
         {isSessionTimeOut && <Redirect to ="/"/>}
         {token &&
         <div className="container marketing content-page">
@@ -155,7 +170,7 @@ const SaltMealApp = () => {
                   <button className="delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>
-                    {recipe.image !== null && recipe.image !== "" && <img className="img-item" src={recipe.image} alt="recipe" width="100%"/>}
+                    {recipe.picture !== null && <img className="img-item" src={`${url}/picture/${recipe.picture.name}`} alt="recipe" width="100%"/>}
                   <Link to={`details/${recipe.id}`}> <button className="btn button-item salt-button-item">Recette</button></Link>
                 </div>)
             })

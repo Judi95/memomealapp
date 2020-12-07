@@ -76,7 +76,7 @@ const MemoHomeCreate = ({getTokenAuth}) => {
             if(result.status !== 201){
               if(result.errorKey === "userexists"){
                 setIsExistingUser(true)
-                console.log("Erreur existe", result.errorKey)
+                console.log("User exist", result.errorKey)
               }else {
                 setIsExistingUser(false)
               }
