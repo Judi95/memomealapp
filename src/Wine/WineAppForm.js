@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button } from 'react-bootstrap';
 import ReactStars from 'react-rating-stars-component';
 import ImageUploader from 'react-images-upload'
+import imageCompression from 'browser-image-compression';
 
 const WineAppForm = ({saveWine, handleWineForm}) => {
 
@@ -32,11 +33,38 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
     setEvaluation(newRating)
   }
 
+  async function handleImageUpload(imageFile) {
+ 
+    console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+   
+    const options = {
+      maxWidthOrHeight: 1920,
+      useWebWorker: true
+    }
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+   
+      let reader = new FileReader();
+      reader.readAsDataURL(compressedFile);
+      reader.onloadend = () => {
+        setImage(reader.result)
+      };
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
   const handlePictureUpdate = (newPicture) => {
 
     if(newPicture.length > 0){
 
-      let test = resizeImageFn(newPicture[0]);
+      handleImageUpload(newPicture[0])
+      //let test = resizeImageFn(newPicture[0]);
 
       /*let reader = new FileReader();
       reader.readAsDataURL(newPicture[0]);
@@ -49,7 +77,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
     }
   }
 
-  async function resizeImageFn(file) {
+  /*async function resizeImageFn(file) {
 
     const resizedImage = await compress.compress([file], {
       size: 15*1024*1024, // the max size in MB, defaults to 2MB
@@ -68,7 +96,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
         setImage(reader.result)
       };
     return resizedFiile;
-  }
+  }*/
 
   const persistWine = event => {
     // Empecher le submit vers un serveur
