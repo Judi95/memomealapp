@@ -62,7 +62,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
   const handlePictureUpdate = (newPicture) => {
 
     if(newPicture.length > 0){
-
+      console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
       handleImageUpload(newPicture[0])
       //let test = resizeImageFn(newPicture[0]);
 
