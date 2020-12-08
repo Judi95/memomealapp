@@ -57,10 +57,12 @@ const WineApp = () => {
         if(result.status === 401){
           localStorage.clear();
           setIsSessionTimeOut(true)
+        } else if (result.status){
+          console.log(result)
+        } else {
+          setExistingWine(existingWine.concat( result ))
+          setExistingWineFilter(existingWine.concat( result ))
         }
-        setExistingWine(existingWine.concat( result ))
-        setExistingWineFilter(existingWine.concat( result ))
-     
       },
       (error) => {
         console.log(error)

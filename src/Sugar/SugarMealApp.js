@@ -145,7 +145,7 @@ const SugarMealApp = () => {
                   <button className="delete-recipe" onClick={() => confirmDelete(recipe.id, recipe.name)}  >
                     <i className="fa fa-minus-circle"></i>
                   </button>   
-                  {recipe.image !== null && recipe.image !== '' && <img className="img-item" src={recipe.image} alt="recipe" width="100%"/>}  
+                  {recipe.picture !== null && <img className="img-item" src={`${url}/picture/${recipe.picture.name}`} alt="recipe" width="100%"/>}  
                   <p><Link className=" nav-link link-recipe" to={`details/${recipe.id}`}> <button className="btn button-item sugar-button-item">Recette</button></Link></p>
                   </div>
 
