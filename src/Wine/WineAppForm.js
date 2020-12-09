@@ -54,17 +54,13 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
       };
       
     } catch (error) {
-      console.log(error);
+      console.log("ERROR compressing picture : " + error);
     }
-   
   }
 
   const handlePictureUpdate = (newPicture) => {
-
     if(newPicture.length > 0){
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
-      handleImageUpload(newPicture[0])
-      
+      handleImageUpload(newPicture[0]) 
     }else{
       setImage('')
     }

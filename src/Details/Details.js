@@ -100,7 +100,7 @@ const Details = () => {
           <Footer/>
           {isSessionTimeOut && <Redirect to ="/"/>}
           {token && !isModify &&
-            <div className="container marketing content-details">
+            <div id="content-page-id" className="container marketing content-details">
 
                 <div className="row">
                   <div className="col-md-10">

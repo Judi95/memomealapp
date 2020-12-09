@@ -9,7 +9,9 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
-import { UrlContext } from '../UrlContext';
+import { UrlContext } from '../UrlContext'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import RiseLoader from "react-spinners/RiseLoader";
 
 const SugarMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
@@ -17,6 +19,16 @@ const SugarMealApp = () => {
   const token = localStorage.getItem('tokenSession')
   const url = useContext(UrlContext)
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const override = `
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  z-index: 10000;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+`;
 
   const handleSugarForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -24,6 +36,10 @@ const SugarMealApp = () => {
 
   const saveSugarRecipe = (entry) => {
     entry.type = "SUGAR"
+
+    document.getElementById("content-page-id")
+    .setAttribute("style", "filter: blur(5px);");
+    setIsLoading(true)
     
     fetch(url + "/cooking-recipes", { 
       method: 'post', 
@@ -39,8 +55,12 @@ const SugarMealApp = () => {
         if(result.status === 401){
           localStorage.clear();
           setIsSessionTimeOut(true)
+        }else  if( ! result.status){
+          setExistingSugarMeal(existingSugarMeal.concat( result ))
         }
-        setExistingSugarMeal(existingSugarMeal.concat( result ))
+        setIsLoading(false)
+        document.getElementById("content-page-id")
+        .setAttribute("style", "");
       },
       (error) => {
         console.log(error)
@@ -67,7 +87,7 @@ const SugarMealApp = () => {
         if(result.length > 0){
           setExistingSugarMeal(existingSugarMeal.concat( result ))
         }else{
-          console.log("Error : " + result)
+          console.log(result)
         }
       },
       (error) => {
@@ -125,8 +145,15 @@ const SugarMealApp = () => {
         {isSessionTimeOut && <Redirect to ="/"/>}
         <Header/>
         <Footer/>
+        <RiseLoader
+          css={override}
+          size={100}
+          color={"#3b8686"}
+          loading={isLoading}
+        />
+        
         { token &&
-        <div className="container marketing content-page">
+        <div id="content-page-id" className="container marketing content-page">
           <div className="row">
             <h1 className="title-sugar mb-3">Sucré</h1>
             <button className="sugar-button" type="button" onClick={handleSugarForm} >

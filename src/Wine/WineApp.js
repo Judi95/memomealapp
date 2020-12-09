@@ -11,12 +11,7 @@ import {
   Redirect
 } from "react-router-dom";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import BounceLoader from "react-spinners/BounceLoader"; // OK
-import DotLoader from "react-spinners/DotLoader"; // OK + 
-import GridLoader from "react-spinners/GridLoader"; // OK
-import PuffLoader from "react-spinners/PuffLoader"; // OK
-import PulseLoader from "react-spinners/PulseLoader"; // OK
-import RiseLoader from "react-spinners/RiseLoader"; // OK
+import RiseLoader from "react-spinners/RiseLoader";
 
 const WineApp = () => {
   
@@ -28,7 +23,6 @@ const WineApp = () => {
   const url = useContext(UrlContext)
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   const [wineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
-  const [hasPicture, setHasPicture] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
 
   const override = `
@@ -59,12 +53,13 @@ const WineApp = () => {
   }
   
   const saveWine = (entry) => {
-
-    document.getElementById("content-page-id").setAttribute("style", "filter: blur(5px);");
-
     setHiddenForm(!hiddenForm)
-    console.log("DEBUT LOADING")
+
+
+    document.getElementById("content-page-id")
+    .setAttribute("style", "filter: blur(5px);");
     setIsLoading(true)
+
     fetch( url + "/wines", { 
       method: 'post', 
       headers: new Headers({
@@ -86,8 +81,8 @@ const WineApp = () => {
           setExistingWineFilter(existingWine.concat( result ))
         }
         setIsLoading(false)
-        document.getElementById("content-page-id").setAttribute("style", "");
-        console.log("FIN LOADING")
+        document.getElementById("content-page-id")
+        .setAttribute("style", "");
       },
       (error) => {
         console.log(error)
@@ -174,14 +169,12 @@ const WineApp = () => {
       {isSessionTimeOut && <Redirect to ="/"/>}
       <Header/>
       <Footer/>
-
       <RiseLoader
           css={override}
           size={100}
           color={"#3b8686"}
           loading={isLoading}
         />
-
 
       {token &&
       <div id="content-page-id" className="container marketing content-page">

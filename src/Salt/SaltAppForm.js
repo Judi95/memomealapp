@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import ImageUploader from 'react-images-upload'
+import imageCompression from 'browser-image-compression';
 
 const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
 
@@ -30,15 +31,34 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
     setQuantityPeople(event.target.value)
   }
 
-  const handlePictureUpdate = (newPicture) => {
-
-    if(newPicture.length > 0){
+  async function handleImageUpload(imageFile) {
+ 
+    console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+   
+    const options = {
+      maxWidthOrHeight: 1020,
+      useWebWorker: true
+    }
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+   
       let reader = new FileReader();
-      reader.readAsDataURL(newPicture[0]);
+      reader.readAsDataURL(compressedFile);
       reader.onloadend = () => {
         setImage(reader.result)
       };
       
+    } catch (error) {
+      console.log("ERROR compressing picture : " + error);
+    }
+  }
+
+  const handlePictureUpdate = (newPicture) => {
+    if(newPicture.length > 0){
+      handleImageUpload(newPicture[0]) 
     }else{
       setImage('')
     }

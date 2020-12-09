@@ -12,6 +12,8 @@ import Footer from '../Footer'
 import { UrlContext } from '../UrlContext';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import RiseLoader from "react-spinners/RiseLoader";
 
 const SaltMealApp = () => {
   const [hiddenForm , setHiddenForm] = useState(false)
@@ -20,6 +22,15 @@ const SaltMealApp = () => {
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   const url = useContext(UrlContext)
   const [isLoading, setIsLoading] = useState(false)
+  const override = `
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  z-index: 10000;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+`;
 
   const handleSaltForm = event => {
     return setHiddenForm(!hiddenForm)
@@ -28,6 +39,8 @@ const SaltMealApp = () => {
   const saveSaltRecipe = (entry) => {
     entry.type = "SALT"
 
+    document.getElementById("content-page-id")
+    .setAttribute("style", "filter: blur(5px);");
     setIsLoading(true)
     
     fetch(url + "/cooking-recipes", { 
@@ -47,6 +60,9 @@ const SaltMealApp = () => {
         } if( ! result.status){
           setExistingSaltMeal(existingSaltMeal.concat( result ))
         }
+        setIsLoading(false)
+        document.getElementById("content-page-id")
+        .setAttribute("style", "");
         
       },
       (error) => {
@@ -138,20 +154,16 @@ const SaltMealApp = () => {
       <div>
         <Header/>
         <Footer/>
-
-        {isLoading && 
-          <Loader
-            type="Puff"
-            color="#a8dba8"
-            className="loader"
-            height={100}
-            width={100}
-          />
-        }
+        <RiseLoader
+          css={override}
+          size={100}
+          color={"#3b8686"}
+          loading={isLoading}
+        />
 
         {isSessionTimeOut && <Redirect to ="/"/>}
         {token &&
-        <div className="container marketing content-page">
+        <div id="content-page-id" className="container marketing content-page">
         <div className="row">
           <h1 className="title-salt mb-3">Salé</h1>
             <button className="salt-button" type="button" onClick={handleSaltForm} >
