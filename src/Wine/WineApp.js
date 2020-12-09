@@ -25,7 +25,7 @@ const WineApp = () => {
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   const [wineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
   const [hasPicture, setHasPicture] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const override = `
   display: block;
