@@ -178,7 +178,7 @@ const WineApp = () => {
       <BounceLoader
           css={override}
           size={150}
-          color={"#123abc"}
+          color={"#3b8686"}
           loading={isLoading}
         />
 
