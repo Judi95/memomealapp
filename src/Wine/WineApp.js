@@ -79,14 +79,15 @@ const WineApp = () => {
           setExistingWine(existingWine.concat( result ))
           setExistingWineFilter(existingWine.concat( result ))
         }
+        setIsLoading(false)
+        console.log("FIN LOADING")
       },
       (error) => {
         console.log(error)
       }
     )
 
-    setIsLoading(false)
-    console.log("FIN LOADING")
+   
   }
 
   const getWines = () => {
