@@ -25,7 +25,7 @@ const WineApp = () => {
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   const [wineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
   const [hasPicture, setHasPicture] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   const override = `
   display: block;
@@ -57,6 +57,7 @@ const WineApp = () => {
   const saveWine = (entry) => {
     
     setHiddenForm(!hiddenForm)
+    console.log("DEBUT LOADING")
     setIsLoading(true)
     fetch( url + "/wines", { 
       method: 'post', 
@@ -85,6 +86,7 @@ const WineApp = () => {
     )
 
     setIsLoading(false)
+    console.log("FIN LOADING")
   }
 
   const getWines = () => {
