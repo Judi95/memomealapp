@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { Suspense, useContext, useEffect, useState } from 'react'
 import ReactStars from 'react-rating-stars-component';
 import './Wine.css';
 import WineAppForm from './WineAppForm'
@@ -10,9 +10,13 @@ import { UrlContext } from '../UrlContext';
 import {
   Redirect
 } from "react-router-dom";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 const WineApp = () => {
+  
 
   const [hiddenForm , setHiddenForm] = useState(false)
   const [existingWine , setExistingWine] = useState([])
@@ -22,6 +26,17 @@ const WineApp = () => {
   const [isSessionTimeOut, setIsSessionTimeOut] = useState(false)
   const [wineType] = useState(["Tout", "Rosé", "Blanc", "Rouge", "Jaune"])  
   const [hasPicture, setHasPicture] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+
+  const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  z-index: 10000;
+  position: absolute;
+  left: 48%;
+  top: 20%;
+`;
 
   const handleWineForm = event => {
     setHiddenForm(!hiddenForm )
@@ -41,8 +56,9 @@ const WineApp = () => {
   }
   
   const saveWine = (entry) => {
+    
     setHiddenForm(!hiddenForm)
-
+    setIsLoading(true)
     fetch( url + "/wines", { 
       method: 'post', 
       headers: new Headers({
@@ -69,7 +85,7 @@ const WineApp = () => {
       }
     )
 
-
+    setIsLoading(false)
   }
 
   const getWines = () => {
@@ -145,10 +161,19 @@ const WineApp = () => {
 
 
   return (
-    <div>
+    <div id="content-page">
       {isSessionTimeOut && <Redirect to ="/"/>}
       <Header/>
       <Footer/>
+
+      <ClipLoader
+          css={override}
+          size={150}
+          color={"#123abc"}
+          loading={isLoading}
+        />
+
+
       {token &&
       <div className="container marketing content-page">
         <div className="row">
