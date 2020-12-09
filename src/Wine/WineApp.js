@@ -11,8 +11,12 @@ import {
   Redirect
 } from "react-router-dom";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import ClipLoader from "react-spinners/ClipLoader";
-
+import BounceLoader from "react-spinners/BounceLoader"; // OK
+import DotLoader from "react-spinners/DotLoader"; // OK
+import GridLoader from "react-spinners/GridLoader"; // OK
+import PuffLoader from "react-spinners/PuffLoader"; // OK
+import PulseLoader from "react-spinners/PulseLoader"; // OK
+import RiseLoader from "react-spinners/RiseLoader"; // OK
 
 const WineApp = () => {
   
@@ -55,7 +59,9 @@ const WineApp = () => {
   }
   
   const saveWine = (entry) => {
-    
+
+    document.getElementById("content-page-id").setAttribute("style", "filter: blur(5px);");
+
     setHiddenForm(!hiddenForm)
     console.log("DEBUT LOADING")
     setIsLoading(true)
@@ -80,6 +86,7 @@ const WineApp = () => {
           setExistingWineFilter(existingWine.concat( result ))
         }
         setIsLoading(false)
+        document.getElementById("content-page-id").setAttribute("style", "");
         console.log("FIN LOADING")
       },
       (error) => {
@@ -163,12 +170,12 @@ const WineApp = () => {
 
 
   return (
-    <div id="content-page">
+    <div>
       {isSessionTimeOut && <Redirect to ="/"/>}
       <Header/>
       <Footer/>
 
-      <ClipLoader
+      <BounceLoader
           css={override}
           size={150}
           color={"#123abc"}
@@ -177,7 +184,7 @@ const WineApp = () => {
 
 
       {token &&
-      <div className="container marketing content-page">
+      <div id="content-page-id" className="container marketing content-page">
         <div className="row">
           <h1 className="title-win">Vin</h1>
           <button className="fa-2x wine-button" type="button" onClick={handleWineForm} >
