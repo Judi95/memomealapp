@@ -66,7 +66,6 @@ const SaltMealApp = () => {
         console.log(error)
       }
     )
-    setIsLoading(false)
   }
 
   
