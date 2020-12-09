@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import BounceLoader from "react-spinners/BounceLoader"; // OK
-import DotLoader from "react-spinners/DotLoader"; // OK
+import DotLoader from "react-spinners/DotLoader"; // OK + 
 import GridLoader from "react-spinners/GridLoader"; // OK
 import PuffLoader from "react-spinners/PuffLoader"; // OK
 import PulseLoader from "react-spinners/PulseLoader"; // OK
@@ -37,8 +37,8 @@ const WineApp = () => {
   border-color: red;
   z-index: 10000;
   position: absolute;
-  left: 48%;
-  top: 20%;
+  left: 30%;
+  top: 30%;
 `;
 
   const handleWineForm = event => {
@@ -175,9 +175,9 @@ const WineApp = () => {
       <Header/>
       <Footer/>
 
-      <BounceLoader
+      <RiseLoader
           css={override}
-          size={150}
+          size={100}
           color={"#3b8686"}
           loading={isLoading}
         />
