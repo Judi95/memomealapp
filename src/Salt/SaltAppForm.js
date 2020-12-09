@@ -37,7 +37,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
     console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
    
     const options = {
-      maxWidthOrHeight: 1020,
+      maxWidthOrHeight: 980,
       useWebWorker: true
     }
     try {

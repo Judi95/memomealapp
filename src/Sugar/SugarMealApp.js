@@ -10,7 +10,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
 import { UrlContext } from '../UrlContext'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import RiseLoader from "react-spinners/RiseLoader";
 
 const SugarMealApp = () => {
@@ -66,10 +65,8 @@ const SugarMealApp = () => {
         console.log(error)
       }
     )
-
   }
 
-  
   const getSugarRecipe = () => {
     fetch(url + "/cooking-recipe?type=SUGAR", { 
       method: 'get', 

@@ -72,7 +72,6 @@ const SaltMealApp = () => {
   
   const getSaltRecipe = () => {
 
-
     fetch(url + "/cooking-recipe?type=SALT", { 
       method: 'get', 
       headers: new Headers({
