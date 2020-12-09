@@ -8,7 +8,7 @@ import {
 } from "react-router-dom"
 import DetailsAppForm from './DetailsAppForm'
 import { UrlContext } from '../UrlContext';
-
+import RiseLoader from "react-spinners/RiseLoader";
 
 const Details = () => {
 
@@ -20,6 +20,16 @@ const Details = () => {
     const [quantityPeopleInit, setQuantityPeopleInit] = useState('')
     const [isModify, setIsModify] = useState(false)
     const url = useContext(UrlContext)
+    const [isLoading, setIsLoading] = useState(false)
+    const override = `
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  z-index: 10000;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+`;
 
     const getOneRecipe = () => {
    
@@ -66,6 +76,10 @@ const Details = () => {
     const saveRecipe = (entry) => {
       entry.type = recipe.type
       entry.id = recipe.id
+
+      document.getElementById("content-page-id")
+      .setAttribute("style", "filter: blur(5px);");
+      setIsLoading(true)
       
       fetch( url + "/cooking-recipes", { 
         method: 'put', 
@@ -86,6 +100,9 @@ const Details = () => {
             setQuantityPeopleValue(result.quantityPeople)
             setQuantityPeopleInit(result.quantityPeople)
           }
+          setIsLoading(false)
+          document.getElementById("content-page-id")
+          .setAttribute("style", "");
         },
         (error) => {
           console.log(error)
@@ -98,6 +115,13 @@ const Details = () => {
         <div>
           <Header/>
           <Footer/>
+          <RiseLoader
+            css={override}
+            size={100}
+            color={"#3b8686"}
+            loading={isLoading}
+          />
+
           {isSessionTimeOut && <Redirect to ="/"/>}
           {token && !isModify &&
             <div id="content-page-id" className="container marketing content-details">

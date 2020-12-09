@@ -10,7 +10,6 @@ import { UrlContext } from '../UrlContext';
 import {
   Redirect
 } from "react-router-dom";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import RiseLoader from "react-spinners/RiseLoader";
 
 const WineApp = () => {

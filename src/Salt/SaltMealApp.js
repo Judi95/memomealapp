@@ -10,9 +10,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Header from '../Header'
 import Footer from '../Footer'
 import { UrlContext } from '../UrlContext';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Loader from 'react-loader-spinner'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import RiseLoader from "react-spinners/RiseLoader";
 
 const SaltMealApp = () => {
