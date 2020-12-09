@@ -11,7 +11,6 @@ import {
   Redirect
 } from "react-router-dom";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 
 
@@ -28,7 +27,7 @@ const WineApp = () => {
   const [hasPicture, setHasPicture] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
 
-  const override = css`
+  const override = `
   display: block;
   margin: 0 auto;
   border-color: red;
