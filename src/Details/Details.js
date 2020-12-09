@@ -76,9 +76,7 @@ const Details = () => {
     const saveRecipe = (entry) => {
       entry.type = recipe.type
       entry.id = recipe.id
-
-      document.getElementById("content-page-id")
-      .setAttribute("style", "filter: blur(5px);");
+      
       setIsLoading(true)
       
       fetch( url + "/cooking-recipes", { 
@@ -101,8 +99,6 @@ const Details = () => {
             setQuantityPeopleInit(result.quantityPeople)
           }
           setIsLoading(false)
-          document.getElementById("content-page-id")
-          .setAttribute("style", "");
         },
         (error) => {
           console.log(error)
