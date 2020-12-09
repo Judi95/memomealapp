@@ -39,7 +39,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
     console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
    
     const options = {
-      maxWidthOrHeight: 1920,
+      maxWidthOrHeight: 1020,
       useWebWorker: true
     }
     try {
@@ -64,39 +64,11 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
     if(newPicture.length > 0){
       console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
       handleImageUpload(newPicture[0])
-      //let test = resizeImageFn(newPicture[0]);
-
-      /*let reader = new FileReader();
-      reader.readAsDataURL(newPicture[0]);
-      reader.onloadend = () => {
-        setImage(reader.result)
-      };*/
       
     }else{
       setImage('')
     }
   }
-
-  /*async function resizeImageFn(file) {
-
-    const resizedImage = await compress.compress([file], {
-      size: 15*1024*1024, // the max size in MB, defaults to 2MB
-      quality: 1, // the quality of the image, max is 1,
-      maxWidth: 1920, // the max width of the output image, defaults to 1920px
-      maxHeight: 1920, // the max height of the output image, defaults to 1920px
-      resize: false // defaults to true, set false if you do not want to resize the image width and height
-    })
-    const img = resizedImage[0];
-    const base64str = img.data
-    const imgExt = img.ext
-    const resizedFiile = Compress.convertBase64ToFile(base64str, imgExt)
-    let reader = new FileReader();
-      reader.readAsDataURL(resizedFiile);
-      reader.onloadend = () => {
-        setImage(reader.result)
-      };
-    return resizedFiile;
-  }*/
 
   const persistWine = event => {
     // Empecher le submit vers un serveur
