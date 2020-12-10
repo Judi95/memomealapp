@@ -108,7 +108,7 @@ const WineApp = () => {
         if(result.length > 0){
           setExistingWine(result)
           setExistingWineFilter(result)
-        }else{
+        } if (result.status) {
           console.log(result)
         }
       },

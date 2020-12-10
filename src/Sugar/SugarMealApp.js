@@ -83,7 +83,7 @@ const SugarMealApp = () => {
         }
         if(result.length > 0){
           setExistingSugarMeal(existingSugarMeal.concat( result ))
-        }else{
+        } if (result.status) {
           console.log(result)
         }
       },

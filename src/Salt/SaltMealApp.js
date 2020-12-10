@@ -86,7 +86,7 @@ const SaltMealApp = () => {
           }
           if(result.length > 0){
             setExistingSaltMeal(existingSaltMeal.concat( result ))
-          }else{
+          } if (result.status) {
             console.log(result)
           }
       },

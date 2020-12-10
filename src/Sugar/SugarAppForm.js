@@ -10,7 +10,7 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
   const [description , setDescription] = useState('')
   const [ingredients , setIngredients] = useState([])
   const [image , setImage] = useState('')
-  const [unitIngredient] = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe"])
+  const [unitIngredient] = useState(["", "g", "kg", "ml", "cl", "dl", "l", "cuillère à café", "cuillère à soupe", "pincée"])
   const [quantityPeople, setQuantityPeople] = useState('')
 
   const addInput = () => {
