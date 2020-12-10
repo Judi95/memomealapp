@@ -145,7 +145,7 @@ const SugarMealApp = () => {
         <RiseLoader
           css={override}
           size={100}
-          color={"#3b8686"}
+          color={"#490A3D"}
           loading={isLoading}
         />
         

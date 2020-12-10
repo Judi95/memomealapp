@@ -68,7 +68,7 @@ const CreateAccountApp = () => {
         <div class="d-flex justify-content-center h-100">
           <div class="user_card">
             <div class="d-flex justify-content-center">
-              <div class="brand_logo_container">
+              <div class="brand_logo_container text-center">
                 <img src="/HomeIcone.png" class="brand_logo" alt="logo"/>
               </div>
             </div>

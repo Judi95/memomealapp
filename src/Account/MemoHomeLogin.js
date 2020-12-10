@@ -63,7 +63,7 @@ const MemoHomeLogin = ({getTokenAuth}) => {
                 <div className="d-flex justify-content-center h-100">
                 <div className="user_card">
                     <div className="d-flex justify-content-center">
-                    <div className="brand_logo_container">
+                    <div className="brand_logo_container text-center">
                         <img src="/HomeIcon.png" className="brand_logo" alt="logo"/>
                     </div>
                     </div>

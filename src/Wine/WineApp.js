@@ -171,7 +171,7 @@ const WineApp = () => {
       <RiseLoader
           css={override}
           size={100}
-          color={"#3b8686"}
+          color={"#490A3D"}
           loading={isLoading}
         />
 
@@ -205,7 +205,7 @@ const WineApp = () => {
                         value={wine.evaluation}
                         edit={false}
                         fullIcon="fa fa-star"
-                        activeColor="#79bd9a"
+                        activeColor="#F7BA53"
                       />
                      
                 {wine.type !== null && wine.type !== "" && <p className="wine-type">Type : {wine.type}</p>}

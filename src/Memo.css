@@ -1,8 +1,8 @@
 /* GLOBAL STYLES
-#bdef82 
-#a8dba8
-#79bd9a
-#3b8686
+#E1804D 
+#B94E4D
+#F7BA53
+#490A3D
 */
 
 body {
@@ -33,13 +33,13 @@ body {
 
 .logo{
 	font-family: "Pretty Smile";
-  color : #79bd9a;
+  color : #AF3162;
   font-size: 4.5rem;
 }
 
 .logo-home {
 	font-family: "Pretty Smile";
-  color : #79bd9a;
+  color : #AF3162;
   font-size: 5.5rem;
   margin-top: 10%;
 }
@@ -77,17 +77,17 @@ body {
 }
 
 .salt-icon{
-  color: #bdef82;
+  color: #E1804D;
   font-size: 80px;
 }
 
 .sugar-icon{
-  color: #a8dba8;
+  color: #B94E4D;
   font-size: 80px;
 }
 
 .wine-icon{
-  color: #79bd9a;
+  color: #F7BA53;
   font-size: 80px;
 }
 
@@ -106,18 +106,18 @@ body {
 }
 
 .bar-green{
-  background-color : #3b8686;
+  background-color : #490A3D;
   padding: 0 !important;
 }
 
 .home-logo{
-
+  width: 17%;
   margin-right: -5%;
   margin-left: 5%;
 }
 
 .head-green{
-	background-color : #bdef82;
+	background-color : #E1804D;
 }
 
 @font-face {
@@ -127,8 +127,8 @@ body {
 }
 
 .btn-green {
-    background-color: #3b8686 !important;
-    border-color: #3b8686 !important;
+    background-color: #490A3D !important;
+    border-color: #490A3D !important;
 }
 
 .fileContainer{
@@ -184,7 +184,7 @@ body {
 }
 
 .user-account{
-  color: #bdef82;
+  color: #E1804D;
   text-align: right;
 }
 
@@ -215,7 +215,7 @@ body {
 }
 
 .green-footer{
-  background-color: #3b8686;
+  background-color: #490A3D;
   width: 100%;
   height: 30px;
 }
@@ -361,7 +361,7 @@ body {
 
   .navbar-nav li {
     padding-left: 2%;
-    border-top: solid #79bd9a ;
+    border-top: solid #F7BA53 ;
   }
   .btn-deco{
     width: 100%;

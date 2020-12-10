@@ -11,3 +11,12 @@
     margin-top: 10%;
     margin-left: 10%;
 }
+
+.title-details{
+    font-family: "Pretty Smile";
+  color : #AF3162;
+  margin-top: 5%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}

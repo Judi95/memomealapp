@@ -235,8 +235,7 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
               </div>
             ))}
             
-            <div className="btn-group-form">
-              
+            <div className="btn-group-form text-right">
               <Button className="salt-button-form" onClick={persistRecipe}>Modifer la recette</Button>
               <Button variant="dark" onClick={handleSaltForm}>Annuler</Button>
             </div>

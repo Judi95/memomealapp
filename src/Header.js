@@ -8,7 +8,7 @@ const Header = () => {
     return ( 
         <header>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bar-green">
-                <Link to="/" className="home-logo"><img src="/HomeIcon.png" alt="home" width="35%"/></Link> 
+                <Link to="/" className="home-logo"><img src="/HomeIcon.png" alt="home" width="50px"/></Link> 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

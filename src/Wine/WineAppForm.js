@@ -106,7 +106,7 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
                     onChange={handleEvaluationUpdate}
                     size={45}
                     fullIcon="fa fa-star"
-                    activeColor="#79bd9a"
+                    activeColor="#F7BA53"
                   />
                 </div>
               </div>
@@ -122,8 +122,11 @@ const WineAppForm = ({saveWine, handleWineForm}) => {
                 className= "add-picture"
               />
 
-            <Button type="submit" className="wine-button-form">Ajouter</Button>
-            <Button variant="dark" onClick={handleWineForm}>Annuler</Button>
+              <div className="btn-group-form text-right">
+                  <Button type="submit" className="wine-button-form">Ajouter</Button>
+                  <Button variant="dark" onClick={handleWineForm}>Annuler</Button>
+              </div>
+            
             </div>
             <div className="mb-4">
               <hr className="wine-solid"/>

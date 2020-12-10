@@ -114,7 +114,7 @@ const Details = () => {
           <RiseLoader
             css={override}
             size={100}
-            color={"#3b8686"}
+            color={"#490A3D"}
             loading={isLoading}
           />
 
@@ -124,7 +124,7 @@ const Details = () => {
 
                 <div className="row">
                   <div className="col-md-10">
-                    <h1 className="title-sugar">{recipe.name}</h1>
+                    <h1 className="title-details">{recipe.name}</h1>
                   </div>
                   <div className="col-md-2v pt-5">
                     <button className="btn btn-dark btn-sm float-left" type="button" onClick={() => setIsModify(true)}> Modifier </button>

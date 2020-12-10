@@ -1,22 +1,24 @@
 /* GLOBAL STYLES
-#bdef82 SALT
-#a8dba8 SUGAR
-#79bd9a WINE
-#3b8686
+#E1804D SALT
+#B94E4D SUGAR
+#F7BA53 WINE
+#490A3D HEADER
+#AF3162 TITLE
 */
 
 .title-salt{
 	font-family: "Pretty Smile";
-  color : #bdef82;
+  color : #E1804D;
   margin-top: 5%;
   width: 100%;
   text-align: center;
+  font-weight: bold;
 }
 
 .salt-button{
   margin-top: 4%;
   margin-left: 4%;
-  color : #bdef82;
+  color : #E1804D;
   background-color: transparent;
   border-color: transparent;
   position: absolute;
@@ -35,14 +37,14 @@
 .salt-add-ingredient-button{
   margin-top: -1%;
   margin-left: 1%;
-  color : #bdef82;
+  color : #E1804D;
   background-color: transparent;
   border-color: transparent;
 }
 
 .salt-remove-ingredient-button{
   margin-top: 12%;
-  color : #bdef82;
+  color : #E1804D;
   background-color: transparent;
   border-color: transparent;
 }
@@ -58,20 +60,20 @@
 .salt-button-form{
   margin-left: 1%;
   margin-right: 1%;
-  background-color: #bdef82 !important;
-  border-color:#bdef82 !important;
+  background-color: #E1804D !important;
+  border-color:#E1804D !important;
   color: white;
 }
 
 .salt-button-item{
   background-color: white !important;
   border-color: white!important;
-  color: #bdef82;
+  color: #E1804D;
   font-size: 20px;
 }
 
 .salt-button-item:active, .salt-button-item:hover{
-  color: #bdef82 !important;
+  color: #E1804D !important;
   text-decoration: none !important;
 }
 
@@ -85,7 +87,7 @@
 
 hr.salt-solid {
   margin-top: 3%;
-  border-top: 2px solid #bdef82;
+  border-top: 2px solid #E1804D;
 }
 
 
