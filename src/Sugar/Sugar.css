@@ -68,6 +68,8 @@
   background-color: white !important;
   border-color: white!important;
   color: #B94E4D;
+  font-size: 18px;
+  font-style: italic;
 }
 
 .sugar-button-item:active, .sugar-button-item:hover{

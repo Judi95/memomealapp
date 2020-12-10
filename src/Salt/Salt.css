@@ -69,7 +69,8 @@
   background-color: white !important;
   border-color: white!important;
   color: #E1804D;
-  font-size: 20px;
+  font-size: 18px;
+  font-style: italic;
 }
 
 .salt-button-item:active, .salt-button-item:hover{
