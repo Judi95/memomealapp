@@ -16,7 +16,7 @@
 }
 
 .wine-button{
-  margin-top: 4%;
+  margin-top: 20px;
   margin-left: 4%;
   color : #F7BA53;
   background-color: transparent;
@@ -98,4 +98,8 @@ hr.wine-solid {
 
 .wine-desc{
   margin-bottom: 0 !important;
+}
+
+.choose-type{
+  margin-right: 20px;
 }

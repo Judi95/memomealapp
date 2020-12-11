@@ -16,7 +16,7 @@
 }
 
 .salt-button{
-  margin-top: 4%;
+  margin-top: 20px;
   margin-left: 4%;
   color : #E1804D;
   background-color: transparent;
@@ -75,7 +75,6 @@
 
 .salt-button-item:active, .salt-button-item:hover{
   color: #E1804D !important;
-  text-decoration: none !important;
 }
 
 .salt-button-item:focus{

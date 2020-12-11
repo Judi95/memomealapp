@@ -139,9 +139,15 @@ const Details = () => {
                       <i className="fa fa-minus ml-3 pt-1 clic-cursor" onClick={() => setQuantityPeopleValue(parseInt(quantityPeopleValue) - 1)}></i>
                     </div>
                   }
-                  {recipe.image !== null ?
+                  {recipe.picture !== null ?
                     <div className="row">
                       <div className="col-md-8">
+                        <ul className="list-group list-group-flush mb-3">
+                            {typeof recipe.ingredients != 'undefined' && recipe.ingredients !== null && recipe.ingredients.length > 0 &&
+                                recipe.ingredients.filter((item) => item.name !== "").map((ing, index) =>
+                                <li key={index} className="list-group-item">{ing.quantity > 0 && calculationQuantity(ing.quantity)} {ing.unit} {ing.name}</li>)
+                            }
+                        </ul>
                         <p className="description text-justify">{recipe.description}</p>
                       </div>
                       <div className="col-md-4">
@@ -151,17 +157,19 @@ const Details = () => {
                   : 
                     <div className="row">
                       <div className="col-md-12">
+                        <ul className="list-group list-group-flush mb-3">
+                          {typeof recipe.ingredients != 'undefined' && recipe.ingredients !== null && recipe.ingredients.length > 0 &&
+                              recipe.ingredients.filter((item) => item.name !== "").map((ing, index) =>
+                              <li key={index} className="list-group-item">{ing.quantity > 0 && calculationQuantity(ing.quantity)} {ing.unit} {ing.name}</li>)
+                          }
+                        </ul>
                         <p className="description text-justify">{recipe.description}</p>
                       </div>
                     </div>
+           
                   }
                 </div>
-                <ul className="list-group list-group-flush">
-                    {typeof recipe.ingredients != 'undefined' && recipe.ingredients !== null && recipe.ingredients.length > 0 &&
-                        recipe.ingredients.filter((item) => item.name !== "").map((ing, index) =>
-                         <li key={index} className="list-group-item">{ing.quantity > 0 && calculationQuantity(ing.quantity)} {ing.unit} {ing.name}</li>)
-                    }
-                </ul>
+               
               </div>
             }
             { token && isModify && <DetailsAppForm handleSaltForm={handleSaltForm} saveRecipe={saveRecipe} recipe={recipe}/>}

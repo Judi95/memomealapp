@@ -185,7 +185,7 @@ const WineApp = () => {
         </div>
         {existingWine.length < 1 && <h2 className="text-center font-weight-light font-italic mt-2">Ajoutez votre premier vin !</h2>}
         {hiddenForm && <WineAppForm saveWine={saveWine} handleWineForm={handleWineForm}/>}
-        <div className="col-md-2 ml-5">
+        <div className="col-md-2 choose-type">
             <select  className="form-control" onChange={handleTypeUpdate}>
               {wineType.map((type, index) => <option key={index} value={type}>{type}</option>)}
             </select>

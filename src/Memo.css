@@ -61,11 +61,6 @@ body {
   margin-bottom: 8%;
 }
 
-.content-details{
-  margin-top: 10%;
-  margin-bottom: 8%;
-}
-
 .content-page-home .jumbotron {
   margin-top: 5%;
   padding-top: 0 !important;
@@ -388,20 +383,11 @@ body {
 }
 
 @media (max-width: 728px) {
-  .content-details{
-    margin-top: 20%;
-    margin-bottom: 8%;
-  }
-
   
 }
 
 @media (max-width: 660px) {
   .salt-button{
-    margin-top: 10% !important;
-  }
-
-  .sugar-button{
     margin-top: 10% !important;
   }
 
@@ -493,5 +479,14 @@ body {
 
   .title-wine{
     margin-top: 25% !important;
+  }
+
+  .delete-recipe{
+    left: 86%;
+  }
+  
+  .title-win{
+    margin-top: 26% !important;
+    margin-bottom: 8%;
   }
 }
