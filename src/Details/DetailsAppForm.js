@@ -155,7 +155,7 @@ const SaltAppForm = ({handleSaltForm, saveRecipe, recipe}) => {
                     <p> Pour </p>
                   </div>
                   <div className="col-md-3 p-0 mr-2">
-                    <input type="number" min="0"
+                    <input type="number" min="1"
                     className="form-control " 
                     id="quantityPeople"
                     value ={quantityPeople}
