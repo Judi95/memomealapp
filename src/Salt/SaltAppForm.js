@@ -137,12 +137,12 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
               <div className="col-md-8">
                 <div className="row">
                     <div className="col-md-1">
-                      <label htmlFor="exampleFormControlInput1">Nom </label>
+                      <label htmlFor="name">Nom </label>
                     </div>
                     <div className="col-md-10">
                       <input type="Text" 
                         className="form-control" 
-                        id="exampleFormControlInput1"
+                        id="name"
                         value ={name}
                         onChange={handleNameUpdate}/>
                       </div>
@@ -154,9 +154,9 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
                     <p> Pour </p>
                   </div>
                   <div className="col-md-3 p-0 mr-2">
-                    <input type="number" 
+                    <input type="number" min="0"
                     className="form-control " 
-                    id="exampleFormControlInput1"
+                    id="quantityPeople"
                     value ={quantityPeople}
                     onChange={handleQuantityPeopleUpdate}/>
                   </div>
@@ -167,10 +167,10 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
               </div>
             </div>
 
-            <label htmlFor="exampleFormControlInput1">Descriptif</label>
+            <label htmlFor="description">Descriptif</label>
             <textarea type="Text" 
             className="form-control" 
-            id="exampleFormControlInput1"
+            id="description"
             value ={description}
             rows="5" 
             cols="100%"
@@ -198,15 +198,15 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
               <div key={nbIngredient.id}  className="row">
 
                 <div className="col-sm-2">
-                  <label htmlFor="exampleFormControlInput1">Quantité</label>
-                  <input type="number" 
+                  <label htmlFor="quantity">Quantité</label>
+                  <input type="number" min="0"
                   className="form-control" 
                   id={nbIngredient.index}
                   onChange={handleQuantityUpdate}/>
                 </div>
 
                 <div className="col-ms-4">
-                  <label htmlFor="exampleFormControlInput1">Unité</label>
+                  <label htmlFor="unity">Unité</label>
                   <select  className="form-control" 
                   id={nbIngredient.index} 
                   onChange={handleUnitUpdate}>
@@ -215,7 +215,7 @@ const SaltAppForm = ({handleSaltForm, saveSaltRecipe}) => {
                 </div>
 
                 <div className="col-md-5">
-                  <label htmlFor="exampleFormControlInput1">Nom</label>
+                  <label htmlFor="nameIngredient">Nom</label>
                   <input type="Text" 
                   className="form-control" 
                   id={nbIngredient.index}

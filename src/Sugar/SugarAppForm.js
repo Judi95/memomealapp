@@ -128,12 +128,12 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
               <div className="col-md-8">
                 <div className="row">
                     <div className="col-md-1">
-                      <label htmlFor="exampleFormControlInput1">Nom </label>
+                      <label htmlFor="name">Nom </label>
                     </div>
                     <div className="col-md-10">
                       <input type="Text" 
                         className="form-control" 
-                        id="exampleFormControlInput1"
+                        id="name"
                         value ={name}
                         onChange={handleNameUpdate}/>
                       </div>
@@ -145,9 +145,9 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
                     <p> Pour </p>
                   </div>
                   <div className="col-md-3 p-0 mr-2">
-                    <input type="number" 
+                    <input type="number" min="0"
                     className="form-control " 
-                    id="exampleFormControlInput1"
+                    id="quantityPeople"
                     value ={quantityPeople}
                     onChange={handleQuantityPeopleUpdate}/>
                   </div>
@@ -158,10 +158,10 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
               </div>
             </div>
 
-            <label htmlFor="exampleFormControlInput1">Descriptif</label>
+            <label htmlFor="description">Descriptif</label>
             <textarea type="Text" 
             className="form-control" 
-            id="exampleFormControlInput1"
+            id="description"
             value ={description}
             rows="5" 
             cols="100%"
@@ -189,15 +189,15 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
               <div key={nbIngredient.index}  className="row">
 
                 <div className="col-sm-2">
-                  <label htmlFor="exampleFormControlInput1">Quantité</label>
-                  <input type="number" 
+                  <label htmlFor="quantity">Quantité</label>
+                  <input type="number" min="0"
                   className="form-control" 
                   id={nbIngredient.index}
                   onChange={handleQuantityUpdate}/>
                 </div>
 
                 <div className="col-ms-4">
-                  <label htmlFor="exampleFormControlInput1">Unité</label>
+                  <label htmlFor="unity">Unité</label>
                   <select  className="form-control" 
                   id={nbIngredient.index}
                   onChange={handleUnitUpdate}>
@@ -206,7 +206,7 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
                 </div>
 
                 <div className="col-md-5">
-                  <label htmlFor="exampleFormControlInput1">Name</label>
+                  <label htmlFor="nameIngredient">Name</label>
                   <input type="Text" 
                   className="form-control" 
                   id={nbIngredient.index}
@@ -214,7 +214,8 @@ const SugarAppForm = ({handleSugarForm, saveSugarRecipe}) => {
                 </div>
 
                 <div className="col-md-2">
-                  <button className="fa-2x sugar-remove-ingredient-button" type="button" onClick={() => removeInput(nbIngredient.index)} >
+                  <button className="fa-2x sugar-remove-ingredient-button" type="button"
+                   onClick={() => removeInput(nbIngredient.index)} >
                     <i className="fa fa-minus-circle"></i>
                   </button>
                 </div>
