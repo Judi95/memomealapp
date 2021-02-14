@@ -21,7 +21,7 @@ Livre de recette et oenologie en ligne.
 - aller dans var/www/memomealapp
 - npm install
 - Création du Build de prod : npm run build
-- aller dans nginx/sites-available/
+- aller dans etc/nginx/sites-available/
 - apt install vim
 - vim memomeal.conf
 server {
