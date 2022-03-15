@@ -48,5 +48,5 @@ tunnel SSH : ssh -L 3307:localhost:3306 {Commande SSH hébergeur}
 - Lister les process : ps aux
 
 ### Script DUMP
-./db_backup.sh puis copier les scp
+./db_backup.sh puis exécuter les deux commandes scp via le terminal du poste
 
