@@ -37,6 +37,7 @@ server {
 - Mettre à jour le certificat : certbot --nginx
 
 ### `BDD`
+tunnel SSH : ssh -L 3307:localhost:3306 {Commande SSH hébergeur}
 
 
 ### `API`
