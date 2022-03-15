@@ -37,10 +37,15 @@ server {
 - Mettre à jour le certificat : certbot --nginx
 
 ### `BDD`
+
+
 ### `API`
 - git clone API
 - apt install maven
 - mvn spring-boot:run -P prod &
 - mvn spring-boot:stop
 - Lister les process : ps aux
+
+### Script DUMP
+./db_backup.sh puis copier les scp
 
